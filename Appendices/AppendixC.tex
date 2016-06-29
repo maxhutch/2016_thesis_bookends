@@ -1,0 +1,23 @@
+\chapter{Adjoints}
+
+\section{Example: Burger's equation}
+
+Let the objective function be the total kinetic energy, $T = \frac{1}{2} \int u^2 dx$.
+This can be written as:
+\begin{align} \elabel{burg_T}
+T &= \frac{1}{2} \int u(x,t)^2 dx \\
+&= \int dx \\
+&\left[-2 \nu \pder{}{x} \ln \left\{(4 \pi \nu t)^{-1/2} \int_{-\infty}^\infty \exp\left[-\frac{(x-x')^2}{4\nu t} - \frac{1}{2\nu} \int_0^{x'} u(x'',0) dx''\right] dx'\right\} \right]^2 \\
+\end{align}
+
+We use the chain rule:
+\begin{equation}
+\pder{T(t)}{u(x,0)} = \pder{T}{u(y,t)} \pder{u(y,t)}{\phi(z,t)} \pder{\phi(z,t)}{\phi(w,0)} \pder{\phi(w,0)}{u(x,0} 
+\end{equation}
+We can write each of these down:
+\begin{align*}
+\pder{T}{u(y,t)} &= u(y,t) \\
+\pder{u(y,t)}{\phi(z,t)} &= -\frac{2 \nu}{\phi(z,t)} \left[\ppder{\phi(z,t)}{z} - \frac{1}{\phi} \pder{\phi(z,t)}{z}\right] \delta(y-z) \\
+\pder{\phi(z,t)}{\phi(w,0)} &= \frac{1}{\sqrt{4 \nu \pi t}} e^{-(z-w)^2/(4 \nu t)} \\
+\pder{\phi(w,0)}{u(x,0)} &= - \frac{\phi(x,0)}{2 \nu} \Theta(w-x) 
+\end{align*}

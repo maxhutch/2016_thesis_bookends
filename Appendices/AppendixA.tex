@@ -1,0 +1,143 @@
+\chapter{Derivations}
+
+\section{Linear stability theory} \alabel{LST}
+We start with the incompressible Euler:
+$$ \rho \left[ \frac{\partial u}{\partial t} + u \nabla u\right] = -\nabla P + g \rho \qquad \nabla \cdot u = 0$$
+
+We write $P = \bar{P} + \tilde{P}$ and $\rho = \bar\rho + \tilde\rho$:
+$$ (\bar\rho +\tilde \rho) \left[ \frac{\partial u}{\partial t} + u \nabla u\right] = -\nabla \tilde{P} + g (\bar\rho+\tilde\rho) \qquad \nabla \cdot u = 0$$
+
+Neglecting terms that go with $|u|^2$ or $u \tilde\rho$ and subtracting $g\bar\rho$:
+$$ \bar\rho \frac{\partial u}{\partial t} = -\nabla \tilde{P} + g \tilde\rho \qquad \nabla \cdot u = 0$$
+
+Use a spectral decomposition:
+$$ F(x,z,t) \sim \exp(i k x) \exp(i \gamma t) f(z)$$
+
+The momentum equation becomes ($\vec{u} = (u,w)$):
+\begin{align}
+\bar\rho \gamma u &= - k \tilde{P} \\
+i \bar\rho \gamma w &= - \frac{d\tilde{P}}{dz} - g \tilde\rho \\
+\end{align}
+And incompressibility:
+$$ i k u + \frac{dw}{dz} = 0 $$
+$$ i \gamma \tilde\rho + w \frac{d\bar\rho}{dz} = 0 $$
+
+Using continuity and the transverse momentum:
+$$ \gamma \bar\rho \frac{dw}{dz} = i k^2 \tilde{P}  $$
+Take a vertical derviative:
+$$ \gamma \frac{d}{dz} \left(\bar\rho \frac{dw}{dz}\right) = i k^2 \frac{d\tilde{P}}{dz}  $$
+And use the vertical momentum equation:
+$$ \gamma \frac{d}{dz} \left(\bar\rho \frac{dw}{dz}\right) = - i k^2 \left(i \bar\rho \gamma w + g \tilde\rho\right)  $$
+
+Substituting in momentum advection:
+$$ \gamma \frac{d}{dz} \left(\bar\rho \frac{dw}{dz}\right) = - i k^2 \left(i \bar\rho \gamma w + \frac{i g w}{\gamma} \frac{d \bar\rho}{dz}\right)  $$
+Cleaning up a bit:
+$$ \frac{d}{dz} \left(\bar\rho \frac{dw}{dz}\right) = w k^2 \left(\bar\rho   + \frac{ g }{\gamma^2} \frac{d \bar\rho}{dz}\right)  $$
+
+Away from the interface:
+$$ \frac{d^2}{dz^2}w  = w k^2  $$
+So in the upper fluid:
+$$ w \sim \exp(ikx) \exp(i\gamma t) \exp(-kz) $$
+
+Now integrate across the interface $\Delta z$:
+$$ \left(\bar\rho \frac{dw}{dz}\right)_2 - \left(\bar\rho \frac{dw}{dz}\right)_1 = w k^2 \bar\rho \Delta z  + \left(w k^2 \frac{ g }{\gamma^2}  \bar\rho\right)_2 - \left(w k^2 \frac{ g }{\gamma^2}  \bar\rho\right)_1  $$
+We know $dw/dz \sim \pm k w$: Take $\Delta z \rightarrow 0$:
+$$ \bar\rho_2 k w + \bar\rho_1 k w = w k^2 \frac{ g }{\gamma^2}  (\bar\rho_2 - \bar\rho_1) $$
+Which gives:
+$$ \gamma^2 = k g \frac{\bar\rho_2 - \bar\rho_1}{\bar\rho_2+\bar\rho_1}  \equiv A g k $$
+
+\section{Layzer model} \alabel{Layzer}
+Since the flow is invicid and irrotational, Layzer~\cite{Layzer1955} uses the potential flow technique, writing the velocity as the gradient of a scalar potential:
+\begin{equation}
+v = \nabla \phi
+\end{equation}
+where 
+$v$ is the velocity and 
+$\phi$ is the scalar potential.
+Incompressibility zeroes the Laplacian of the potential:
+\begin{equation}
+\nabla^2 \phi = 0
+\end{equation}
+A Bernoulli equation is used model the interface:
+\begin{equation} \elabel{layzer_jump}
+\der{\phi}{t}(r, \eta(r,t), t) + \frac{1}{2} \left(\left(\pder{\phi}{z}\right)^2(r, \eta(r,t), t) +\left(\pder{\phi}{r}\right)^2(r, \eta(r,t), t)\right) + g \eta(r,t) = f(t)
+\end{equation}
+where 
+$\eta(r,t)$ is the height of the interface,
+$g$ is the gravitational acceleration, and 
+$f(t)$ is an arbitrary function of time but not space.
+The flow is axially symmetric with a vanishing radial component at transverse walls and vanishing vertical component far away from the bubble:
+\begin{equation}
+\pder{\phi}{r}(R,z,t) = 0 \qquad \pder{\phi}{z}(r, \pm \infty, t) = 0
+\end{equation}
+Finally, the fluid advects the interface:
+\begin{equation} \elabel{layzer_adv}
+\der{\eta}{t}(r,t) = \pder{\phi}{z}(r, \eta(r,t), t) - \pder{\phi}{r}(r, \eta(r,t), t) \der{\eta}{r}(r,t)
+\end{equation}
+
+The simplest non-trivial potential that fits the boundary conditions is:
+\begin{equation}
+\phi(r,z,t) = F(t) J_0(r) e^{-z}
+\end{equation}
+
+Substituting this potential into \eref{layzer_jump} and \eref{layzer_adv}:
+\begin{align}
+f(t) &= F'(t) J_0(r) e^{-\eta(r,t)} + \frac{F^2(t) e^{-2\eta(r,t)}}{2} \left[ J_0^2(r)  + J_1^2(r) \right] + g \eta(r,t) \\
+\der{\eta}{t}(r,t) &=  -F(t) J_0(r)e^{-\eta(r,t)}  + F(t) J_1(r) e^{-\eta(r,t)} \der{\eta}{r}(r,t)
+\end{align}
+
+Expanding the bubble tip to the 2nd order as $\eta(r,t) = \eta_0(t) + r^2 \eta_2(t)$:
+\begin{align}
+f(t) &= F'(t) J_0(r) e^{-\eta_0(t)-\eta_2(t)r^2} + \frac{F^2(t) e^{-2\eta_0(t)-2\eta_2(t)r^2}}{2} \left[ J_0^2(r)  + J_1^2(r) \right] + g \eta_0(t) + g \eta_2(t)r^2 \\
+\dot\eta_0 + r^2 \dot\eta_2 &=  -F(t) J_0(r)e^{-\eta_0(t) - \eta_2 r^2}  + 2 F(t) J_1(r) e^{-\eta_0(t) - \eta_2(t)r^2} r \eta_2(t) 
+\end{align}
+
+Keeping terms up to $r^2$:
+\begin{align}
+f(t) &= F'(t) \left(1-r^2/4\right) (1-\eta_2(t)r^2) e^{-\eta_0(t)} + \frac{F^2(t) (1-2\eta_2(t)r^2) e^{-2\eta_0(t)}}{2} \left[1-r^2/4\right] + g \eta_0(t) + g \eta_2(t)r^2 \\
+\dot\eta_0 + r^2 \dot\eta_2 &= (-1+r^2/4 + r^2 \eta_2(t)) F(t) (1-\eta_2(t)r^2) e^{-\eta_0(t)} 
+\end{align}
+
+We collect the terms based on their $r$-dependence:
+\begin{align}
+f(t) &= F'(t) e^{-\eta_0(t)} + \frac{F^2(t) e^{-2\eta_0(t)}}{2} + g \eta_0(t)  \\
+0 &= - F'(t)(\eta_2(t)+ 1/4) e^{-\eta_0(t)} - \frac{F^2(t) e^{-2\eta_0(t)}}{2}(2\eta_2(t)+1/4) + g \eta_2(t) \\
+\dot\eta_0  &= - F(t)  e^{-\eta_0(t)}  \\
+\dot\eta_2 &= (1/4 + 2\eta_2(t)) F(t)  e^{-\eta_0(t)} 
+\end{align}
+Cleaning up:
+\begin{align}
+f(t) &= F'(t) e^{-\eta_0(t)} + \frac{F^2(t) e^{-2\eta_0(t)}}{2} + g \eta_0(t)  \\
+0 &= - F'(t) e^{-\eta_0(t)} (4\eta_2(t)+ 1)- \frac{F^2(t) e^{-2\eta_0(t)}}{2}(8\eta_2(t)+1) + 4g \eta_2(t) \\
+\dot\eta_0  &= - F(t)  e^{-\eta_0(t)}  \\
+\dot\eta_2 &= (1/4 + 2\eta_2(t)) F(t)  e^{-\eta_0(t)} 
+\end{align}
+
+At late time, $\eta_2 = -1/8$ such that $\dot\eta_2 = 0$:
+\begin{align}
+f(t) &= F'(t) e^{-\eta_0(t)} + \frac{F^2(t) e^{-2\eta_0(t)}}{2} + g \eta_0(t)  \\
+0 &=  F'(t) e^{-\eta_0(t)}  + g  \\
+\dot\eta_0  &= - F(t)  e^{-\eta_0(t)}  \\
+\end{align}
+
+Using the evolution equation for $\eta_0$ to eliminate $F$:
+\begin{align}
+F(t) &= -\dot\eta_0 e^{\eta_0(t)}    \\
+0 &= -\left(\ddot\eta_0(t)+(\dot\eta_0(t))^2\right) + g 
+\end{align}
+
+The solution to this second order nonlinear ordinary differential equation is:
+\begin{equation}
+\eta_0(t) = \log\left( \exp\left[2 \sqrt{g} (c_1 + t) \right] + 1 \right) - \sqrt{g}t + c_2
+\end{equation}
+
+For large $t$:
+\begin{equation}
+\eta_0(t>>1) \approx  \sqrt{g}t 
+\end{equation}
+
+Substituting back $r = \frac{R}{\beta_1}$, where $J_1(\beta_1) = 0$:
+\begin{equation}
+V = \sqrt{\frac{g R}{\beta_1}} \approx 0.511 \sqrt{g R}
+\end{equation}
+
