@@ -1,0 +1,151 @@
+\chapter{Introduction}
+
+\section{Formal definition}
+The Rayleigh-Taylor instability occurs when the pressure and density gradients are in opposition:
+\begin{equation}
+(\nabla P)(\nabla \rho) < 0
+\end{equation}
+The canonical example of the Rayleigh-Taylor instability is a heavy fluid superposed over a lighter one in a gravitational field.
+The standard terminology is based on this case.
+
+Consider a horizontal planar interface at $z=0$ between a fluids of densities $\rho_h > \rho_l$ with the denser fluid at $z > 0$ and the lighter at $z < 0$, and a gravitational acceleration $-g \hat{z}$.
+In equilibrium, the pressure must balance the gravitational force:
+\begin{equation}
+P(x,y,z) = \begin{cases}- \rho_h g z + C& \text{ if } z > 0 \\
+                        - \rho_l g z + C& \text{ else}
+           \end{cases}
+\end{equation}
+A small perturbation is introduced, moving some heavy fluid below the interface and some light fluid above it.
+The forcing on the heavier fluid below the interface is:
+\begin{equation}\elabel{force1}
+\sum F = - \nabla P + F_g = \rho_l g  - \rho_h g < 0
+\end{equation}
+so the heavier fluid is forced downwards through the lighter fluid.
+Conversely, the forcing on the lighter fluid above the interface is:
+\begin{equation} \elabel{force2}
+\sum F = - \nabla P + F_g = \rho_l g  - \rho_h g > 0
+\end{equation}
+so the lighter fluid is forced upwards through the heavier fluid.
+Perturbations in the interface grow, so the configuration is unstable.
+
+\section{Instances and motivation}
+The Rayleigh-Taylor instability is present in both natural and constructed systems at many scales.
+This section describes a few such systems of particular importance.
+
+\paragraph{Supernovae}
+One of the earliest motivations for the study of the Rayleigh-Taylor instability comes from the stability 
+
+\paragraph{Salt fingers}
+Salt fingers are an instance of the Rayleigh-Taylor instability set up by a difference in the diffusivity of two mass carriers, in this case salinity and temperature.
+
+\paragraph{ICF}
+Inertial confinement fusion (ICF) is a fusion technique that confines hot dense plasma temporarily via an implosion, rather than magnetic field lines.
+In ICF, the cryogenic hydrogen is coated with a plastic ablator forming very small hollow spheres, or microcapsules.
+The microcapsules are through a cylindrical hohlraum.
+When the capsule is at the center of the hohlraum, the hohlraum is illuminated with a high energy burst of laser light and radiates x-rays.
+The x-ray radiation is absorbed by the plastic ablator causing it to rapidly expand and blow off the microcapsule, creating an implosion in the hydrogen fuel.
+
+The implosion isn't perfectly uniform; the x-ray radition provides non-uniform acceleration and there are asymmetries in the microcapsue.
+These perturbations are Rayleigh-Taylor unstable: the dense plastic ablator is being accelerated through lighter hydrogen fuel.
+The carbon in the ablator is much better at radiating energy than the hydrogen, so as the RTI mixes the plastic into the fuel the fuel cools, preventing ignition.
+
+\paragraph{Reactors}
+
+
+\section{Terminology}
+
+\paragraph{Atwood number}
+The Atwood number characterizes the density contrast:
+\begin{equation} \elabel{atwood}
+A = \frac{\rho_1 - \rho_2}{\rho_1 + \rho_2} \in (-1,1)
+\end{equation}
+where $\rho_1 > \rho_2$ corresponds to positive Atwood number.
+
+There are three distinct regimes for the Atwood number: high, low, and moderate.
+At high Atwood number, e.g. air and water, the internal dynamics of the light fluid are decoupled from the heavy fluid.
+The transfer of momentum through the interface into the dense fluid can be neglected.
+In this regime, potential flow models are reasonable.
+
+At low Atwood number, e.g. salt water and fresh water, the governing equations can be linearized about the Atwood number, leading to the Boussinesq approximation.
+The behavior of the bubbles and spikes are identical.
+
+At moderate Atwood number, e.g. oil and water, not only is enough vorticity is generated to invalidate potential flow models but also the density difference breaks bubble-spike symmetry.
+
+\paragraph{Boussinesq approximation}
+If the density contrast, $\Delta \rho$ is small compared to the average density $\bar{\rho}$, then 
+the governing equations can be linearized with respect to density.
+This is known as the Boussinesq approximation and has the primary effect of neglecting differences in the inertia of the two fluids.
+
+\paragraph{Constant property}
+In the spirit of the Boussinesq approximation, which neglects differences in the inertial of the two fluids, we furhter assume the two fluids share all other material properties, such as viscosity.
+
+\paragraph{Miscible interface}
+In most cases where the Boussinesq and constant property approximations are valid, the interface between the two fluids is miscible.
+For example, low-concetration solutions in a common solvent have interfaces governed by a diffusion coefficient, $D$, and small temperature graidents are governed by a thermal diffusivity $\alpha$.
+In the limit where $D$ or $\alpha$ goes to zero, the interface is immiscible but there is no surface tension.
+
+\paragraph{Single-mode}
+
+\paragraph{Multi-mode}
+
+\paragraph{Governing equations}
+Given a miscible interface between two Boussinesq,  constant property fluids, the governing equations can be recaste in terms of an active scalar:
+\begin{align}
+\der{u}{t} + u \cdot \nabla u &= \nu \nabla^2 u - \nabla P - A g \phi \hat{z}\\
+\der{\phi}{t} + u \cdot \nabla \phi &= D \nabla^2 \phi \\
+\nabla \cdot u  &= 0
+\end{align}
+These equations have three governing parameters; $Ag$, $\nu$, and $D$; which admit the construction of two dimensionless numbers:
+\begin{equation}
+\text{Grashof} = \frac{Ag L^3}{\nu^2}
+\end{equation}
+\begin{equation}
+\text{Schmidt} = \frac{\nu}{D}
+\end{equation}
+If the initial and boundary conditions can be characterized by a single length scale, then these two parameters uniquely identify the system.
+
+\paragraph{Bubble height / spike depth / mixing width}
+
+Experiment and theory focus on the observation and explanation of a set of observables that are much smaller than the full degrees of freedom of the system.
+The selection of these observables is informed by practical aplication and methodological analogy.
+
+
+The bubble height refers to the distance beyond the initial interface that the bubble front has traveled, as a function of time.
+The standard experimental definition projects the density onto a line normal to the initial interface and defines the front interface as the point at which the density is at its 99th or 95th percentile.
+More formally:
+\begin{equation}
+H[\epsilon] = \sup \left\{z : \int dx dy \rho(x,y,z) < (1-\epsilon) \int dx dy \rho(x,y,\infty) \right\}
+\end{equation}
+
+
+
+\begin{comment}
+\section{Stages}
+
+\subsection{Linear growth} 
+When the amplitude of the surface perturbation is small compared to its wave-length, the perturbation grows exponentially.
+The growth rate is seen to depend on the forcing, wave-length, viscosity, diffusivity, and interface thickness.
+This stage can be treated with linear and weakly-nonlinear theories, as discussed further in \sref{linear}.
+
+
+\subsection{Single-mode stagnation}
+As the growing Rayleigh-Taylor modes saturate, the acceleration of the bubble tip decreases.
+The stagnation stage of the single-mode Rayleigh-Taylor instability is defined as a stage of the flow that exhibits nearly constant bubble velocity.
+It had been believed that the first such stage was terminal, i.e. steady state.
+It has recently been shown, via both simulation~\cite{Ramaprabhu2006} and experiment~\cite{Wilkinson2007}, that at low Atwood number and high Reynolds number the flow continues to develop into re-acceleration stage.
+For this reason, the nearly constant velocity is termed the \textit{stagnation velocity}.
+The primary observable of a stagnation stage is the stagnation velocity, but there is secondary interest in the velocity profile through the transition from the weakly non-linear to stagnation stages and in the bubble height at which stagnation velocity is reached.
+
+\subsection{Single-mode late time}
+For low Atwood and high Reynolds numbers, the stagnation stage is followed by a reacceleration stage around unity aspect ratio.
+Reacceleration has been seen in both numerical simulations \cite{Ramaprabhu2006, Ramaprabhu2012, Wei2012} and experiments{Wilkinson2007}.
+Following the immediate reacceleration, there is disagreement as to whether or not the single mode problem ultimatly reaches a terminal stage.
+Ramaprabhu \etal suggest that the re-acceleration is transient, with the bubble velocity ultimately returning to a potential-flow-like value.
+Wei and Livescu, on the other hand, suggest the terminal stage to be one of `chaotic development` with quadratic growth dynamics.
+Unfortunately, the late-time stages have yet to be accessed experimentally.
+
+\subsection{Multi-mode}
+Under natural multi-mode initial conditions, the linear growth modes couple as the aspect ratio increases, forming bubble and spike structures.
+The bubbles and spikes interact with one another, competetively and constructively, leading to successively larger structures.
+It is generally observed that the multi-mode aspect ratio, $D_b / h$, remains nearly constant.
+\end{comment}
