@@ -1,7 +1,8 @@
 BASE = main
 TARGET = Thesis
+SLIDES=talk
 
-executive:
+thesis:
 	cp ~/Dropbox/writings/bib/library.bib .;
 	latex --shell-escape -file-line-error ${TARGET}.tex;
 	if [ -f ${TARGET}.aux ]; then bibtex ${TARGET}.aux; fi
@@ -11,3 +12,6 @@ executive:
 	rm -f *.aux ${TARGET}.log ${TARGET}.blg ${TARGET}.dvi ;
 	rm -f ${TARGET}Notes.bib
 
+talk:
+	cp ~/Dropbox/writings/bib/library.bib .;
+	pdflatex --shell-escape -file-line-error ${SLIDES}.tex;
