@@ -11,6 +11,7 @@ thesis:
 	dvipdf ${TARGET}.dvi
 	rm -f *.aux ${TARGET}.log ${TARGET}.blg ${TARGET}.dvi ;
 	rm -f ${TARGET}Notes.bib
+	cp ${TARGET}.pdf ~/Downloads/
 
 talk:
 	cp ~/Dropbox/writings/bib/library.bib .;
