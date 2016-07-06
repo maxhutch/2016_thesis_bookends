@@ -32,15 +32,21 @@ Negative Atwood numbers correspond to stable density stratifications, which osci
 For a derivation of \eref{simple_growth}, see \aref{LST}.
 
 \subsection{Viscous and diffusive linear models}
-Chandrasekhar~\cite{Chandrasekhar1955} and Hide~\cite{Hide1955} generalized the linear theory to viscous fluids.
+Chandrasekhar~\cite{Chandrasekhar1955} and Hide~\cite{Hide1955} generalized the linear theory to viscous fluids by including an isotropic incompressible Newtonian shear stress.
+Chandrasekhar worked out the constant property, $\mu_1 = \mu_2$ case and Hide included an approximate combination of distinct viscosities.
+Here, we are concerned with the simpler constant propety case:
 \begin{equation} \elabel{visc_growth}
   \gamma = \sqrt{A g k + \nu^2 k^4} - \nu k^2
 \end{equation} 
 where 
 $\nu$ is the kinematic viscosity.
 
-LeLevier et al.~\cite{LeLevier1955} generalized the linear theory to continuous density gradients.
-Duff \etal~\cite{Duff1962} generalized the linear theory to miscible interfaces, producing an expression for the growth rate:
+LeLevier et al.~\cite{LeLevier1955} generalized the linear theory to continuous density gradients, specifically exponentially smoothed profiles for the form $\bar\rho \pm e^{\mp K z} \delta\rho$.
+\begin{equation}
+\gamma = \sqrt{\frac{A g k K}{k + K}}
+\end{equation}
+
+Duff \etal~\cite{Duff1962} generalized the linear theory to miscible interfaces and incorporated Chandrasekhar and Hide's viscous theories, producing an combined expression for the growth rate:
 \begin{equation} \elabel{duff_simple}
 \gamma = \sqrt{\frac{A g k}{\psi(A,k\delta)} + \nu^2 k^4} - (\nu + D) k^2
 \end{equation}
