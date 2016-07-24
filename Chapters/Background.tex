@@ -62,12 +62,21 @@ In the constant propety case, $\delta = 2 \sqrt{D t}$, introducing a time-depend
 \end{equation}
 
 \subsection{Weakly nonlinear expansions}
-Berning and Rubenchik provide a weakly nonlinear formulation of the Rayleigh-Taylor instability, taken to the third order~\cite{Berning1998}.
-Weakly nonlinear theories can calculate the onset of saturation, i.e. the slowing of exponential growth, and the coupling of modes in more complex 3 dimensional flows, e.g. honeycomb lattices of bubbles and spikes.
+Jacobs and Catton provide a third order weakly non-linear theory for the inviscid unit Atwood Rayleigh-Taylor instability~\cite{Jacobs1988}.
+Their weakly non-linear theory is primarily used to compare linear growth rates across a variety of perturbation symmetries in 3D.
+In particular, hexagonal and axi-symmetric perturbations are found to grow faster than rectangular perturbations.
+
+Berning and Rubenchik extend the theory to arbitrary Atwood immiscible flows at higher order, but take only the third order~\cite{Berning1998}.
+They perform a similar geometric comparison to Jacobs and Catton, but also use the harmonic couplings to characterize linear saturation.
+
+The perturbation expansion has been taken to at least the 10th order by Liu \etal~\cite{Wang2010}.
+However, there is limited progress to be made with such expansions, as singularities with branching point structures develop at moderate bubble displacements~\cite{Berning1998}.
+Put another way, the interface and velocity potentials are not analytic in the span-wise position, e.g. when the interface rolls up.
 
 \section{Potential flow models}
 
-The next class of models to be applied to the Rayleigh-Taylor instability are potential flow models of high Atwood number flows.
+The next class of models to be applied to the Rayleigh-Taylor instability are potential flow models.
+These models assume that little vorticity is generated and that it is confined to the interface, which is true at high Atwood numbers.
 
 \subsection{Layzer's unit Atwood model}
 
@@ -129,43 +138,64 @@ The assumption that the flow is irrotational applies only at high Atwood number.
 At moderate and low Atwood numbers, secondary Kelvin-Helmholtz (KH) instabilities develop at the vertical sheer layer separating the two fluids~\cite{Ramaprabhu2006,Wilkinson2007}.
 The effects of the vorticity in the lighter fluid were addressed theoretically by Banerjee et al~\cite{Banerjee2011} and numerically by Ramaprabhu et al.~\cite{Ramaprabhu2012}.
 
+\subsection{Abarzhi and Sohn's models}
+
+\subsection{Departure from potential flow}
+
+\subsection{Banerjee's rotational model}
+
+\cite{Banerjee2011}
 
 \section{Buoyancy-drag models}
 
 Buoyancy-drag models were developed concurrently with potential flow models, in part to provide a physical interpretation for their results.
-
-The primary assumption of the buoyancy-drag model is time invariance in the frame of the `bubble.'
-In other words, the buoyancy-drag model assumes that there exists a region of the flow, which includes the bubble tip, that is stationary in an inertial frame.
+They balance buoyant and parasitic forces related to the geometry of a model bubble.
+Historically, buoyancy-drag models have had only 1 or 2 adjustable parameters, so they are evaluated more on their ability to reproduce specific features of the flow, e.g. the terminal velocity, rather than the full time-history.
+Here, we focus on models applicable to single-mode non-interacting bubbles.
 
 \subsection{Bubble model of Davies and Taylor}
 
 Early experiments on the Rayleigh-Taylor instability by Davies and Taylor~\cite{Davies1950a} were performed by measuring the dynamics of large bubbles of gas rising through a dense liquid.
 In their analysis, they relate the terminal velocity of the bubble to a drag coefficient, implicitly defining a bouyancy-drag model of the form:
-\begin{equation}
-\dot{U} = \rho g V - C_D \pi A^2 \frac{1}{2} \rho U^2
+\begin{equation} \elabel{dtbd}
+\dot{v} \rho \mathcal{V} = \rho g \mathcal{V} - C_D \pi D^2 \frac{1}{2} \rho v^2,
 \end{equation}
+where $v$ is the gas bubble velocity,
+$\rho$ is the density of the liquid,
+$g$ is the gravitational acceleration,
+$\mathcal{V}$ is the bubble volume,
+$C_D$ is a drag coefficient, and
+$D$ is the bubble diameter.
 
-also \cite{Alon1995}
+%also \cite{Alon1995}
 
 \subsection{Tube model of Dimonte and Schneider}
 
-Tubes! \cite{Dimonte1996}
-
-\subsection{Spanwise homogenous model of Dimonte}
-
-\cite{Dimonte2000a}
+Dimonte and Schneider develop a buoyancy-drag model for tube-shaped bubbles~\cite{Dimonte1996,Dimonte2000a} based on Davies and Taylor's model, \eref{dtbd}.
+They let the ratio of the area to the volume go with the inverse bubble height, $\mathcal{A} / \mathcal{V} \sim 1/h$.
+They also add a rescaling of the buoyant term by $\beta$, attributed to Youngs:
+\begin{equation}
+\dot{v_b}  = \beta A g - C_d \frac{v_b^2}{h_b}, 
+\end{equation}
+where $v_b$ is the bubble velocity,
+$\beta < 1$ accounts for the relatively smaller buoyant portion of the bubble due to entrainment,
+$C_d$ is a drag coefficient, and
+$h_b$ is the bubble height.
+$\beta$ and $C_d$ depend on the Atwood number, but Dimonte proposes $\beta = 1/2$ and $C_d = 2$ for $A << 1$~\cite{Dimonte2000}.
+However, the model is stated to apply to self-similar bubble fronts.
 
 \subsection{Self-similar model of Oron}
 
 A simple model of the stagnation stage is buoyancy-drag~\cite{Oron2001}:
 \begin{equation} \elabel{buoyancy_drag}
-(\rho_1 + \rho_2) \mathcal{V} \ddot{h} = (\rho_2 - \rho_1) \mathcal{V} g - C \dot{h}^2 \rho \mathcal{A}
+(\rho_1 + C_a \rho_2) \mathcal{V} \ddot{h} = (\rho_2 - \rho_1) \mathcal{V} g - C_d \dot{h}^2 \rho_2 \mathcal{A}
 \end{equation}
 where $\rho_2 > \rho_1$ are the densities of the two fluids, 
+$C_a$ is an added mass coefficient,
 $\mathcal{V}$ is the volume of the bubble, 
 $h$ is the height of the bubble,
 $g$ is the gravitational acceleration,
-$C$ is a drag-like coefficient, and
+$C_d$ is a drag-like coefficient, and
 $\mathcal{A}$ is the bubble surface area.
 There is ambiguity as to the value of un-subscripted $\rho$, but in the low Atwood number limit $\rho_1 \approx \rho_2 = \rho$ removes it:
 \begin{equation}
@@ -191,7 +221,6 @@ which relates to the drag-like coefficient as:
 \text{Fr} = \sqrt{\frac{2}{C}}
 \end{equation}
 
-\section{Bubble merger models}
 
 \section{Problems with single mode buoyancy-drag models}
 
