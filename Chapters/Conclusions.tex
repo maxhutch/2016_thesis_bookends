@@ -38,24 +38,26 @@ However, only the initial interface amplitude and velocity were measured.
 These measurements where transformed into a quiscent initial condition by assuming the early time dynamics of the linear theory.
 If the single mode dynamics depend on the initial condition, this could be a substantial approximation.
 
-The simulations were in agreement with the experiments, both quanlitatively with regard to stagnation and re-acceleration, and quantitatively with the stagnation velocity and onset of re-acceleration.
+The simulations were in agreement with the experiments, both quanlitatively respect to the precense of stagnation and re-acceleration, and quantitatively with respect to the stagnation velocity and bubble height at the onset of re-acceleration.
 The highest Grashof number simulation was unstable, which helped characterize the resolution requirements for the simulation.
+The Boussinseq approximation, low Schmidt number approximation, and linear initial condition approximations preserve the re-acceleration phenomena.
+More generally no physical processes beyond the incompressible Navier-Stokes with an active scalar are nessesary to stagnation and re-acceleration, so they can be studied with NekBox.
 
 In addition to validation, one of the simulations was repeated in a tank with twice the vertical extent to study late time dynamics and the interaction with the tank boundaries.
 Three distinct effects of the finite size tank were observed.
-First, the initial condition had a long-wavelength mode imposed along the diagonal that preferred the growth of bubbles in one corner and spikes in the other.
+First, the initial condition had a long-wavelength mode imposed along the diagonal that preferred the growth of bubbles in one corner and spikes in the opposite corner.
 Second, the bubbles and spikes adjacent to the walls experienced drag along the walls.
 Third, the bubbles and spikes lifted off the walls towards the center of the tank, which squezed the interior bubbles forward.
 
 These boundary interactions limit the bubble height that can be reached in drop-tank experiments to about one tank diameter.
 The technique used by Wilkinson and Jacobs to drive the initial standing wave suffers from attenuation at high wave-numbers and is limited to 4.5 modes across the diagonal.
-Together, these limit the bubble aspect ratio $h/\lambda$ 5 to 10, at which point the high Grashof bubbles in the experiment are still accelerating.
-To experimentally access the late-time dynamics of periodic arrays of bubbles will require techiques to drive initial perturbations with many more modes.
+Together, these limit the bubble aspect ratio, $h/\lambda$, to 5 to 10, at which point the high Grashof bubbles in the experiment are still accelerating.
+To experimentally access the late-time dynamics of periodic arrays of bubbles requires techiques to drive initial perturbations with many more modes.
 
 \section{Convergence and performance}
 
 The calculations required to generate data to fit the model are very expensive.
-To the cost of simulating a trajectory until the bubble stops rising goes with the Rayleigh number fo the 6th power.
+The cost of simulating a trajectory until the bubble stops rising goes with the Rayleigh number to the 6th power.
 Of the Rayleigh numbers within the scope of the model, less than half in log-space are practical to complete.
 Therefore, it is important not only to improve the performance of the method but also to avoid over-resolving the flow.
 
@@ -64,13 +66,14 @@ Those two parameters were optimized emperically.
 A test case was designed at high Rayleigh number and unit Schmidt number, but with a shorter vertical extent than the full problem.
 For each of many combinations of mesh resolution and polynomial order, the flow was evolved to a fixed time corresponding to an aspect ratio of  about 1.
 The error in the bubble height and mixed volume was compared to the computational cost.
-It was found that very high spectral orders, between 19 and 31, provided the highest accuracy for a given computational cost or, conversely, the were the lowest cost for fixed accuracy.
+It was found that very high spectral orders, between 19 and 31, provided the highest accuracy for a given computational cost or, conversely, were the lowest cost for fixed accuracy.
 
 Production simulations were performed at polynomial order 31, with a mesh size dependant on the Grashof and Schmidt numbers.
 Based on the results of the simulations, we estimate the cost of a complete trajectory as:
 \begin{equation}
-f_T \approx ??? \text{Ra}^6
+f_T \approx 3.5435 \times 10^{-23} \text{Ra}^6 \text{core hours},
 \end{equation}
+where core hours are based on Shaheen XC40 at KAUST.
 
 \section{Flow regimes}
 
