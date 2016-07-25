@@ -8,15 +8,15 @@ The Rayleigh-Taylor instability occurs when the pressure and density gradients a
 The canonical example of the Rayleigh-Taylor instability is a heavy fluid superposed over a lighter one in a gravitational field.
 The standard terminology is based on this case.
 
-Consider a horizontal planar interface at $z=0$ between a fluids of densities $\rho_h > \rho_l$ with the denser fluid at $z > 0$ and the lighter at $z < 0$, and a gravitational acceleration $-g \hat{z}$.
+Consider a horizontal planar interface at $z=0$ between two fluids of densities $\rho_h > \rho_l$, corresponding to the density of the heavier and lighter fluid, respectively.
+The denser fluid is at $z > 0$ and the lighter at $z < 0$, and a gravitational acceleration $-g \hat{z}$.
 In equilibrium, the pressure must balance the gravitational force:
 \begin{equation}
 P(x,y,z) = \begin{cases}- \rho_h g z + C& \text{ if } z > 0 \\
                         - \rho_l g z + C& \text{ else}
            \end{cases}
 \end{equation}
-A small perturbation is introduced, moving some heavy fluid below the interface and some light fluid above it.
-To the first order, the pressure does not change.
+A small perturbation is introduced, moving some heavy fluid below the interface and some light fluid above it but preserving the horizontal stratification of the pressure.
 The forcing on the heavier fluid below the interface is then:
 \begin{equation}\elabel{force1}
 \sum F = - \nabla P + F_g = \rho_l g  - \rho_h g < 0,
@@ -36,7 +36,7 @@ This section describes a few such systems of particular importance.
 \paragraph{Type Ia Supernovae}
 In type Ia supernovae (SNe Ia), a white dwarf spontaneously ignites as its mass crosses the Chandrasekhar mass due to accretion from another source.
 The fusion flame originates near the center of the star and burns outward.
-The hot ash is lighter than the fuel, creating a Rayleigh-Taylor unstable flame front.
+The hot ash trailing the flame is lighter than the fuel, creating a Rayleigh-Taylor unstable flame front.
 The primary RT instability and secondary Kelvin-Helmholtz instabilities wrinkle the flame front, enhancing mixing, burn rate, and flame speed~\cite{Zingale2005}.
 These properties affect the rate of energy release and ejecta velocity, which can be observed.
 The use of SNe Ia as standard candles underlines interest in their description.
@@ -44,10 +44,11 @@ The use of SNe Ia as standard candles underlines interest in their description.
 \paragraph{Salt fingers and the thermohaline staircase}
 Salt fingers are an instance of the Rayleigh-Taylor instability set up by a difference in the diffusivity of two mass carriers~\cite{Stern1969, Linden1973}.
 Consider a fluid in which the density perturbation is a linear combination of two fields.
-Let one of the fields have a stablizing gradient and the other a destabalizing one.
-If the destabalizing field is less diffusive than the stabalizing one, then a parcel of fluid perturbed from its equilibrium height will equilibriate with the stabalizing field before the destabalizing one, resulting in a buoyant force that pushes the parcel further from vertical equilibrium.
+Let one of the fields have a stabilizing gradient and the other a destabilizing one.
+If the destabilizing field is less diffusive than the stabilizing one, the system is unstable.
+A parcel of fluid perturbed from its equilibrium height will equilibrate with the stabilizing field before the destabilizing one, resulting in a buoyant force that pushes the parcel further from vertical equilibrium.
 
-In the oceanic case, the stabalizing field is temperature and the destabalizing field is salinity.
+In the oceanic case, the stabilizing field is temperature and the destabilizing field is salinity.
 Near the surface, evaporation perturbs the salinity field creating parcels of salty dense fluid.
 As they sink, the parcels cool more quickly than they diffuse salt, further increasing their density.
 This flow drives tall vertical convective cells, called salt fingers, that mixes the oceans.
@@ -64,9 +65,11 @@ The x-ray radiation is absorbed by the plastic ablator causing it to rapidly exp
 
 The implosion isn't perfectly uniform; the x-ray radiation provides non-uniform acceleration and there are asymmetries in the microcapsule.
 These perturbations are Rayleigh-Taylor unstable: the dense plastic ablator is being accelerated through lighter hydrogen fuel.
-The carbon in the ablator is much better at radiating energy than the hydrogen, so as the RTI mixes the plastic into the fuel the fuel cools, preventing ignition.
+The carbon in the ablator is much better at radiating energy than the hydrogen, so Rayleigh-Taylor mixing cool the fuel, preventing ignition.
 
 \section{Terminology}
+
+In this section, we introduce common Rayleigh-Taylor terminology that will be used throughout the thesis.
 
 \paragraph{Atwood number}
 The Atwood number characterizes the density contrast:
@@ -79,14 +82,17 @@ There are three distinct regimes of unstable Atwood numbers: high, low, and mode
 
 At high Atwood number, e.g. air and water, the flow is approximated in the limit of unit Atwood number.
 The internal dynamics of the light fluid are decoupled from the heavy fluid, and the transfer of momentum through the interface into the dense fluid can be neglected.
-In this regime, the flow of the dense fluid is nearly irrotational and potential flow models are reasonable.
+In this regime, the flow of the dense fluid is nearly irrotational and potential flow models are reasonably accurate.
+% When is it high enough?
 
 At low Atwood number, e.g. salt water and fresh water, the flow is approximated in the limit of zero Atwood number.
-The governing equations can be linearized, leading to the Boussinesq approximation: only terms with the product of the Atwood number and acceleration remain.
+The governing equations can be linearised, leading to the Boussinesq approximation: only terms with the product of the Atwood number and acceleration remain.
 The behavior of the bubbles and spikes are symmetric given symmetric initial conditions.
 It is often possible to treat the true two-phase problem as a single phase with an active scalar.
+% When is it Boussinsq?
 
-At moderate Atwood number, e.g. oil and water, not only is enough vorticity is generated to undermine potential flow models but also the density difference breaks bubble-spike symmetry.
+At moderate Atwood number, e.g. oil and water, not only is enough vorticity is generated to undermine potential flow models but also the density difference breaks the Boussinesq approximation and bubble-spike symmetry.
+These are truly two-phase problems in that the fluids are strongly coupled and have different governing parameters, e.g. viscosity.
 
 \paragraph{Boussinesq approximation}
 When the density contrast, $\Delta \rho$ is small compared to the average density $\bar{\rho}$, then 
@@ -101,13 +107,19 @@ When the flow is both Boussinesq and has constant properties, the density can be
 In most cases where the Boussinesq and constant property approximations are valid, the interface between the two fluids is miscible.
 For example, low-concentration solutions in a common solvent have interfaces governed by a diffusion coefficient, $D$, and small temperature gradients are governed by a thermal diffusivity $\alpha$.
 In the limit where $D$ or $\alpha$ goes to zero, the interface is immiscible but there is no surface tension.
+If there is no surface tension, the active scalar is governed by an advection-diffusion equation.
+
+\paragraph{Incompressible}
+The problem is said to be incompressible when each of the two fluids are.
+Formally, this means the flow is divergence free, $\nabla \cdot u = 0$ and occurs when the Mach number is small.
+In simulations, incompressibility has the effect of integrating out acoustic waves, significantly reducing the need to resolve small time-scales in the flow.
 
 \paragraph{Single-mode}
-The single mode Rayleigh-Taylor instability constraints the initial perturbation of the interface to a single pure frequency.
+The single mode Rayleigh-Taylor instability constrains the initial perturbation of the interface to a single pure frequency.
 In 3D, this typically implies two orthogonal wavevectors with the same wavelength.
 For the miscible constant property Boussinesq Rayleigh-Taylor instability, the single mode initial condition is:
 \begin{equation}
-\phi(x,y,z,t=0) = A \text{erf}\left(\frac{z + a_0 \cos(2 \pi x / \lambda) \cos(2 \pi y/\lambda)}{\delta}\right),
+\phi(x,y,z,t=0) = A ~ \text{erf}\left(\frac{z + a_0 \cos(2 \pi x / \lambda) \cos(2 \pi y/\lambda)}{\delta}\right),
 \end{equation}
 where $a_0$ is the perturbation height,
 $\lambda$ is the wavelength, and
@@ -117,15 +129,20 @@ Typically, the perturbation height and interface thickness are chosen to initial
 \paragraph{Multi-mode}
 The multi-mode Rayleigh-Taylor instability generically refers to the presence of more than one, and often many, wavelengths in the initial condition.
 Experimentally, the multi-mode initial condition is usually `natural`, in the sense that it is not deliberately perturbed and instead is due to natural noise sources.
-Computationally, the multi-mode condition is written as a sum of single modes with spectra $a_0(k) \sim |k|^{-p}$ for $p = 2, 3/2, \ldots$.
+Computationally, the multi-mode condition is written as a sum of single modes with spectra $z_0(k) \sim |k|^{-p}$ for $p = 2$, $3/2$, or other rational factors.
+These modes are randomized within the spectral envelop.
 
 \paragraph{Governing equations}
-Given a miscible interface between two Boussinesq,  constant property fluids, the governing equations can be recast in terms of an active scalar:
+Given a miscible interface between two Boussinesq, constant property incompressible fluids, the governing equations can be recast in terms of an active scalar:
 \begin{align}
 \der{u}{t} + u \cdot \nabla u &= \nu \nabla^2 u - \nabla P - A g \phi \hat{z}\\
 \der{\phi}{t} + u \cdot \nabla \phi &= D \nabla^2 \phi \\
-\nabla \cdot u  &= 0
+\nabla \cdot u  &= 0,
 \end{align}
+where $u$ is the fluid velocity, 
+$\phi$ is the active scalar that represents small mass differences,
+and the acceleration is aligned vertically with $\hat{z}$.
+
 These equations have three governing parameters; $(Ag)$, $\nu$, and $D$; which admit the construction of two dimensionless numbers:
 \begin{equation}
 \text{Grashof} = \frac{Ag L^3}{\nu^2}
@@ -135,6 +152,17 @@ These equations have three governing parameters; $(Ag)$, $\nu$, and $D$; which a
 \end{equation}
 If the initial and boundary conditions can be characterized by a single length scale, then these two parameters uniquely identify the system.
 In the single-mode case, this length is the wavelength $\lambda$.
+
+It is convenient to introduce another dimensionless number, the Rayleigh number:
+\begin{equation}
+\text{Rayleigh} = \text{Grashof} \cdot \text{Schmidt} = \frac{A g L^3}{\nu D},
+\end{equation}
+with which many mixing related quantities scale.
+The three dimensionless numbers are abbreviated Gr, Sc, and Ra, respectively.
+
+It is difficult to define a Reynolds number in the absense of a velocity parameter.
+The square root of the Grashof number, which has the same scaling with the viscosity, is used instead.
+It is sometimes called the perturbation Reynolds number, $\text{Re}_p = \sqrt{\text{Gr}}$.
 
 \paragraph{Bubble height and spike depth}
 
@@ -158,11 +186,12 @@ H_m[\epsilon] = \sup \left\{z : \max_{x,y} \tilde\rho(x,y,z) < 0 \right\}
 
 However, diffusive mixing across the sides of an elongated bubble dilute as it grows.
 This dilution, which is observed as a linear profile in the span-wise maximum instead of an error function profile, can dip below $\tilde\rho = 0$, at which point the growth of $H_m$ is also influenced by mixing.
+
 In the absence of this affect, $H_{m}$ tracks not only the equi-molar surface but also the inflection point in the profile $\max_{x,y} \tilde \rho$.
 This inflection point closely tracks the equi-molar surface at low diffusivity but is robust to diffusion across the bubble, remaining in the center of the error function region of the maximum density profile.
 Formally, this definition is:
 \begin{equation}
-H_m[\epsilon] = \sup \left\{z : \frac{d^2}{dz^2} \max_{x,y} \tilde\rho(x,y,z) = 0 \right\}
+H_i[\epsilon] = \sup \left\{z : \frac{d^2}{dz^2} \max_{x,y} \tilde\rho(x,y,z) = 0 \right\}
 \end{equation}
 
 Equivalent definitions can be given for the spike depth.
