@@ -174,8 +174,7 @@ $g$ is the gravitational acceleration,
 $\mathcal{V}$ is the bubble volume,
 $C_D$ is a drag coefficient, and
 $D$ is the bubble diameter.
-
-%also \cite{Alon1995}
+The coefficient $C_D$ was found to take values between $0.52$ and $1.37$.
 
 \subsection{Tube model of Dimonte and Schneider}
 
@@ -194,41 +193,21 @@ However, the model is stated to apply to self-similar bubble fronts.
 
 \subsection{Self-similar model of Oron}
 
-A simple model of the stagnation stage is buoyancy-drag~\cite{Oron2001}:
+A model by Oron \etal also rescales the bubbule mass~~\cite{Oron2001}:
 \begin{equation} \elabel{buoyancy_drag}
-(\rho_1 + C_a \rho_2) \mathcal{V} \ddot{h} = (\rho_2 - \rho_1) \mathcal{V} g - C_d \dot{h}^2 \rho_2 \mathcal{A}
+(\rho_1 + C_a \rho_2) \ddot{h} = (\rho_2 - \rho_1)g - \frac{C_d}{\lambda} \dot{h}^2 \rho_2 \mathcal{A}
 \end{equation}
 where $\rho_2 > \rho_1$ are the densities of the two fluids, 
 $C_a$ is an added mass coefficient,
-$\mathcal{V}$ is the volume of the bubble, 
 $h$ is the height of the bubble,
 $g$ is the gravitational acceleration,
 $C_d$ is a drag-like coefficient, and
-$\mathcal{A}$ is the bubble surface area.
-There is ambiguity as to the value of un-subscripted $\rho$, but in the low Atwood number limit $\rho_1 \approx \rho_2 = \rho$ removes it:
+$\lambda$ is a characteristic length.
+The use of $\lambda$, which is time-indpendant, implies the model is directed at self-similar flow.
+The values of $C_a$ and $C_d$ are assumed to be Atwood independant and set to agree with Layzer's theory:
 \begin{equation}
-\ddot{h} = A g - \frac{C}{2} \dot{h}^2 \frac{\mathcal{A}}{\mathcal{V}}
+C_a = 1 \qquad C_d = 2\pi
 \end{equation}
-
-There are two length scales in the single mode instability: $\lambda$ and $h$.
-If the bubble is self-similar or unsupported, as is generally the case in the literature, then $\mathcal{A}/\mathcal{V} \sim 1/\lambda$.
-Rolling that constant into $C$ yields:
-\begin{equation} \elabel{bouancy_drag}
-\ddot{h} = A g - C \frac{\dot{h}^2}{2 \lambda}  
-\end{equation}
-The stagnation velocity is therefore:
-\begin{equation}
-v_s = \sqrt{\frac{2 A g \lambda}{C}}
-\end{equation}
-This motivates the definition of the Froude-type number:
-\begin{equation}
-\text{Fr} = \frac{v}{\sqrt{\frac{A g \lambda}{1+A}}} \xrightarrow{A << 1} \frac{v}{\sqrt{A g \lambda}}
-\end{equation}
-which relates to the drag-like coefficient as:
-\begin{equation}
-\text{Fr} = \sqrt{\frac{2}{C}}
-\end{equation}
-
 
 \section{Problems with single mode buoyancy-drag models}
 
@@ -242,10 +221,13 @@ However, I will first give two qualitative explanations for while re-acceleratio
 
 If there is a terminal velocity regime, can it be due to form drag?
 Let $\nu \rightarrow 0$ and consider a fluid element lying on the axis
-of a bubble or spike.
+of a bubble or spike at terminal velocity.
 By symmetry, it will only have a z-component of the velocity.
 The z-forces must balance:
-$$ \rho \phi g = \pder{P}{z} $$
+\begin{equation}
+- \phi g \hat{z} = \pder{P}{z} ,
+\end{equation}
+where $\phi$ represents the mass.
 In the finger, the pressure would be decreasing with $z$.
 In the bubble, the pressure would be increasing with $z$.
 There would necessarily be a pressure gradient between the head of the finger and the tail of the bubble, and vice versa.
@@ -255,7 +237,7 @@ The resulting span-wise flow would rapidly mix the two fluids, destroying the bu
 The form of the bubble and spike require the pressure to be reasonably homogeneous span-wise.
 Only at the bubble and spike tips do we accept a span-wise flow: the displacement of stationary fluid by the tip.
 In other words, the pressure drag is highly localized to the bubble and spike tips.
-The flow from tail to tip is attenuated predominately by viscous drag.
+If the flow is terminal, then it must be attenuated predominately by viscous drag.
 
 \subsection{Historical inconsistency}
 
