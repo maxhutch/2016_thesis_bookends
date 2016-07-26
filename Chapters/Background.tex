@@ -2,25 +2,24 @@
 
 The study of the Rayleigh-Taylor instability is primarily interested in evolution of the interface, that is the rate of penetration of the light fluid into the dense one and vice versa.
 While the volumetric mixing rate is relevant in some contexts, most flows have relatively low diffusivities, i.e. high Prandtl and Schmidt number, so mixing is dominated by transport rather than diffusion.
-
 In this section, we review approaches to modeling the evolution of the interface and experimental efforts to validate those models.
-
 
 \section{Linear and weakly non-linear models} %\slabel{linear}
 
-The earliest models of the Rayleigh-Taylor instability were based on a linearization of the governing equations about the interface.
-Recently, with the aid of computational algebra, it has become possible to retain higher order terms in the expansion, demonstrating the coupling between different modes.
+The earliest models of the Rayleigh-Taylor instability were based on a linearization of the governing equations around small perturbations in the interface.
+Recently, with the aid of computational algebra, it has become possible to retain higher order terms in the expansion, demonstrating mode coupling and saturation amplitudes.
 However, even high order expansions fail as the interface loses analyticity.
 
 \subsection{Lord Rayleigh's linear model}
 
 Lord Rayleigh considered a sinusoidal perturbation of an incompressible, inviscid, immiscible, quiescent stratified interface~\cite{Rayleigh1883}.
-When the amplitude is small compared to the wavelength, the continuity and momentum equations can be linearized.
+When the amplitude is small compared to the wavelength, the continuity and momentum equations can be linearised:
 \begin{align}
 \left(\bar\rho + \tilde\rho\right) \left[\der{u}{t} + u \nabla u \right] &= - \nabla{\tilde{P}} + g(\bar\rho + \tilde\rho)\\
 \nabla \cdot u &= 0 \\
 \end{align}
-where $u, \tilde\rho, \tilde{P}$ are small and their products neglected.
+where $u, \tilde\rho, \tilde{P}$ are the perturbation velocity, density, and pressure.
+They are small and their products neglected.
 The solution is an exponential with a growth rate:
 \begin{equation} \elabel{simple_growth}
   \gamma^2 = A g k 
@@ -34,14 +33,15 @@ For a derivation of \eref{simple_growth}, see \aref{LST}.
 \subsection{Viscous and diffusive linear models}
 Chandrasekhar~\cite{Chandrasekhar1955} and Hide~\cite{Hide1955} generalized the linear theory to viscous fluids by including an isotropic incompressible Newtonian shear stress.
 Chandrasekhar worked out the constant property, $\mu_1 = \mu_2$ case and Hide included an approximate combination of distinct viscosities.
-Here, we are concerned with the simpler constant propety case:
+Here, we are concerned with the simpler constant property case:
 \begin{equation} \elabel{visc_growth}
   \gamma = \sqrt{A g k + \nu^2 k^4} - \nu k^2
 \end{equation} 
 where 
 $\nu$ is the kinematic viscosity.
+Note that the viscous growth rate has a fastest growing mode at finite wavenumber and that all wavenumbers have positive growth rates.
 
-LeLevier et al.~\cite{LeLevier1955} generalized the linear theory to continuous density gradients, specifically exponentially smoothed profiles for the form $\bar\rho \pm e^{\mp K z} \delta\rho$.
+LeLevier et al.~\cite{LeLevier1955} generalized the linear theory to continuous density gradients, specifically exponentially smoothed profiles for the form $\bar\rho \pm e^{\mp K z} \delta\rho$:
 \begin{equation}
 \gamma = \sqrt{\frac{A g k K}{k + K}}
 \end{equation}
@@ -54,12 +54,18 @@ where
 $\delta$ is the instantaneous interface thickness,
 $D$ is the diffusivity,
 and $\psi$ is a function of the Atwood number and the product of the wavenumber and the interface thickness.
-For $k \delta \lesssim 1$ and $A << 1$, $\psi \approx 1 + k \delta / \sqrt{\pi}$.
+For $k \delta << 1$ and $A << 1$, $\psi \approx 1 + k \delta / \sqrt{\pi}$.
+Note that for $D > 0$ there is a wavenumber cutoff above which the growth rate is negative, i.e. the perturbation decays.
 
-In the constant propety case, $\delta = 2 \sqrt{D t}$, introducing a time-dependence on the linear stability:
+In the constant property case, $\delta = 2 \sqrt{D t}$, introducing a time-dependence on the linear stability:
 \begin{equation} \elabel{duff_growth}
-\gamma = \sqrt{\frac{A g k}{1 + \frac{2 k}{\sqrt{\pi}}\sqrt{D t} } + \nu^2 k^4} - (\nu + D) k^2
+\gamma = \sqrt{\frac{A g k}{1 + \frac{2 k}{\sqrt{\pi}}\sqrt{D (t+t_0)} } + \nu^2 k^4} - (\nu + D) k^2,
 \end{equation}
+where $t_0$ is defined by the initial interface thickness:
+\begin{equation}
+t_0 = \frac{\delta_0^2}{4 D},
+\end{equation}
+where $\delta_0$ is the initial interface thickness.
 
 \subsection{Weakly nonlinear expansions}
 Jacobs and Catton provide a third order weakly non-linear theory for the inviscid unit Atwood Rayleigh-Taylor instability~\cite{Jacobs1988}.
