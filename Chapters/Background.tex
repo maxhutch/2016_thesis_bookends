@@ -70,9 +70,9 @@ where $\delta_0$ is the initial interface thickness.
 \subsection{Weakly nonlinear expansions}
 Jacobs and Catton provide a third order weakly non-linear theory for the inviscid unit Atwood Rayleigh-Taylor instability~\cite{Jacobs1988}.
 Their weakly non-linear theory is primarily used to compare linear growth rates across a variety of perturbation symmetries in 3D.
-In particular, hexagonal and axi-symmetric perturbations are found to grow faster than rectangular perturbations.
+Hexagonal and axi-symmetric perturbations are found to grow faster than rectangular perturbations.
 
-Berning and Rubenchik extend the theory to arbitrary Atwood immiscible flows at higher order, but take only the third order~\cite{Berning1998}.
+Berning and Rubenchik extend the theory to arbitrary Atwood immiscible flows at any higher order, but analyze only the third order expansion~\cite{Berning1998}.
 They perform a similar geometric comparison to Jacobs and Catton, but also use the harmonic couplings to characterize linear saturation.
 
 The perturbation expansion has been taken to at least the 10th order by Liu \etal~\cite{Wang2010}.
@@ -83,11 +83,12 @@ Put another way, the interface and velocity potentials are not analytic in the s
 
 The next class of models to be applied to the Rayleigh-Taylor instability are potential flow models.
 These models assume that little vorticity is generated and that it is confined to the interface, which is true at high Atwood numbers.
+At moderate and low Atwood numbers, there is significant generation and transport of vorticity via, for example, the Kelvin-Helmholtz instability, so these models break down.
 
 \subsection{Layzer's unit Atwood model}
 
-One of the first such models is due to Layzer~\cite{Layzer1955}.
-Layzer's model is of an bubble with $\rho = 0$ rising in a fluid of density $\rho = 1$ ($A = 1$).
+One of the first potential flow models is due to Layzer~\cite{Layzer1955}.
+Layzer's model is of an bubble with $\rho = 0$ rising in a fluid of density $\rho = 1$, which is unit Atwood number.
 The bubble and fluid are assumed to be incompressible and inviscid.
 The flow begins at rest, so there is no initial vorticity.
 Layzer claims the flow will therefore continue to be irrotational, because the viscous generation term of the vorticity equation is zeroed for inviscid, incompressible flows.
@@ -133,24 +134,25 @@ Goncharaov extends the Layzer model to include two fluids of arbitrary density d
 The consideration of a second fluid with non-zero density turns the Bernoulli equation \eref{LayzerBernoulli} into a difference:
 \begin{equation} \label{eqn:GonBernoulli}
 \begin{aligned}
-&\der{\phi}{t}(\eta(r,t), r, t) - \frac{1}{2} \left(\left(\pder{\phi}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi}{r}\right)^2(\eta(r,t), r, t)\right) - g \eta(r,t) \\
-&= f(t) \\
+f(t) = &   \rho_1 \der{\phi_1}{t}(\eta(r,t), r, t) - \rho_2 \der{\phi_2}{t}(\eta(r,t), r, t) \\
+& - \rho_1 \frac{1}{2} \left(\left(\pder{\phi_1}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi_1}{r}\right)^2(\eta(r,t), r, t)\right) \\
+& + \rho_2 \frac{1}{2} \left(\left(\pder{\phi_2}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi_2}{r}\right)^2(\eta(r,t), r, t)\right) \\
+& - g \rho_1 \eta(r,t) + g \rho_2 \eta(r,t) 
 \end{aligned}
 \end{equation}
 The Goncharaov model keeps the free-slip boundary condition between the two fluids, which is exact only for $A = 1$ and a reasonable approximation for $\rho_1 / \rho_2 >> 1$.
 In this respect, Goncharaov's should be reasonable for high-Atwood, high-Reynolds number flows.
-
-The assumption that the flow is irrotational applies only at high Atwood number.
-At moderate and low Atwood numbers, secondary Kelvin-Helmholtz (KH) instabilities develop at the vertical sheer layer separating the two fluids~\cite{Ramaprabhu2006,Wilkinson2007}.
-The effects of the vorticity in the lighter fluid were addressed theoretically by Banerjee et al~\cite{Banerjee2011} and numerically by Ramaprabhu et al.~\cite{Ramaprabhu2012}.
-
-\subsection{Abarzhi and Sohn's models}
+Similar potential flow models were introduced by Sohn~\cite{Sohn2003} and Abarzhi \etal~\cite{Abarzhi2003} with similar results.
 
 \subsection{Departure from potential flow}
+The assumption that the flow is irrotational applies only at high Atwood number.
+At moderate and low Atwood numbers, secondary Kelvin-Helmholtz (KH) instabilities develop at the vertical sheer layer separating the two fluids.
+Simulations by Ramaprabhu \etal ~\cite{Ramaprabhu2006} showed that after stagnating at a constant velocity in good agreement with the potential flow models, low-Atwood bubbles re-accelerated to velocities nearly twice the potential flow limit.
+The stagnation and re-acceleration stages were confirmed experimentaly by Wilkinson and Jacobs~\cite{Wilkinson2007}.
+However, those experiments were limited by their tank size and only reached the early onset of re-acceleration.
 
-\subsection{Banerjee's rotational model}
-
-\cite{Banerjee2011}
+Modeling the stagnation and re-acceleration phases is the primary open problem in the low Atwood single-mode Rayleigh-Taylor instability.
+The clear failure of potential flow models, in this regime, has motivated a renewed interest in buoyancy-drag models.
 
 \section{Buoyancy-drag models}
 
