@@ -5,7 +5,7 @@
 I have presented a simple model for the low-Atwood single mode Rayleigh-Taylor instability.
 The model has two components: an ordinary differential equation for the bubble height based on buoyancy and drag and an analytic expression for the volume of mixed fluid as a function of the bubble height, wavelength, time, and initial interface thickness.
 The models are coupled by an analytic expression for the effective Atwood number as a function of the pure Atwood number, bubble height, wavelength, and volume of mixed fluid.
-The models are seperable in that changes to mixing model formulation shouldn't significantly affect the dynamics model so long as the changed model is accurate, and vice versa.
+The models are separable in that changes to mixing model formulation shouldn't significantly affect the dynamics model so long as the changed model is accurate, and vice versa.
 
 The models have 8 non-degenerate coefficients.
 Three of the coefficients can be solved for by constraining the model to match the linear theory, i.e. the limit of small amplitude bubbles and thin interfaces.
@@ -16,7 +16,7 @@ Two give the ratios of alternative definitions of bubble volumes, e.g. based on 
 The last scales the scalar interface surface area and is related to the shape of the bubble, e.g. cylindrical vs rectangular.
 
 The estimation of the model coefficients is insufficient to evaluate the models accuracy, both qualitatively in the representation of known features of the flow and quantitatively in its predictiveness of the bubble height and mixed volume as a function of time.
-Neither does the model forumation establish the accuracy of the coefficient estimates or their independence of Grashof and Schmidt numbers.
+Neither does the model formulation establish the accuracy of the coefficient estimates or their independence of Grashof and Schmidt numbers.
 To answer these questions, we turn to direct numerical simulations to generate a dataset of low-Atwood single mode Rayleigh-Taylor experiments over a range of Grashof and Schmidt numbers.
 
 \section{Validation of DNS}
@@ -29,30 +29,30 @@ The method is implemented in the NekBox code, a descendant of Nek5000 specifical
 
 The simulations make three key approximations.
 First, the Boussinesq approximation, which is equivalent to the limit of zero Atwood number for the fixed product of the Atwood number and local acceleration, $Ag$.
-The experiments have Atwood numbers around $0.15$, which is greater than the generally accepted Bousinesq range of less than $0.05$.
+The experiments have Atwood numbers around $0.15$, which is greater than the generally accepted Boussinesq range of less than $0.05$.
 Second, the experiments were miscible but with Schmidt numbers greater than $1000$.
 For Schmidt numbers greater than unity, the cost of the simulation goes with the Schmidt number to the fourth power.
 Therefore, the simulations were performed with Schmidt numbers of $1$, $3.5$, and $7$.
 Finally, the experiments established an initial perturbation by exciting a standing wave in a stable density stratification.
 However, only the initial interface amplitude and velocity were measured.
-These measurements where transformed into a quiscent initial condition by assuming the early time dynamics of the linear theory.
+These measurements where transformed into a quiescent initial condition by assuming the early time dynamics of the linear theory.
 If the single mode dynamics depend on the initial condition, this could be a substantial approximation.
 
-The simulations were in agreement with the experiments, both quanlitatively respect to the precense of stagnation and re-acceleration, and quantitatively with respect to the stagnation velocity and bubble height at the onset of re-acceleration.
+The simulations were in agreement with the experiments, both qualitatively respect to the presence of stagnation and re-acceleration, and quantitatively with respect to the stagnation velocity and bubble height at the onset of re-acceleration.
 The highest Grashof number simulation was unstable, which helped characterize the resolution requirements for the simulation.
-The Boussinseq approximation, low Schmidt number approximation, and linear initial condition approximations preserve the re-acceleration phenomena.
-More generally no physical processes beyond the incompressible Navier-Stokes with an active scalar are nessesary to stagnation and re-acceleration, so they can be studied with NekBox.
+The Boussinesq approximation, low Schmidt number approximation, and linear initial condition approximations preserve the re-acceleration phenomena.
+More generally no physical processes beyond the incompressible Navier-Stokes with an active scalar are necessary to stagnation and re-acceleration, so they can be studied with NekBox.
 
 In addition to validation, one of the simulations was repeated in a tank with twice the vertical extent to study late time dynamics and the interaction with the tank boundaries.
 Three distinct effects of the finite size tank were observed.
 First, the initial condition had a long-wavelength mode imposed along the diagonal that preferred the growth of bubbles in one corner and spikes in the opposite corner.
 Second, the bubbles and spikes adjacent to the walls experienced drag along the walls.
-Third, the bubbles and spikes lifted off the walls towards the center of the tank, which squezed the interior bubbles forward.
+Third, the bubbles and spikes lifted off the walls towards the center of the tank, which squeezed the interior bubbles forward.
 
 These boundary interactions limit the bubble height that can be reached in drop-tank experiments to about one tank diameter.
 The technique used by Wilkinson and Jacobs to drive the initial standing wave suffers from attenuation at high wave-numbers and is limited to 4.5 modes across the diagonal.
 Together, these limit the bubble aspect ratio, $h/\lambda$, to 5 to 10, at which point the high Grashof bubbles in the experiment are still accelerating.
-To experimentally access the late-time dynamics of periodic arrays of bubbles requires techiques to drive initial perturbations with many more modes.
+To experimentally access the late-time dynamics of periodic arrays of bubbles requires techniques to drive initial perturbations with many more modes.
 
 \section{Convergence and performance}
 
@@ -62,7 +62,7 @@ Of the Rayleigh numbers within the scope of the model, less than half in log-spa
 Therefore, it is important not only to improve the performance of the method but also to avoid over-resolving the flow.
 
 The spectral element method has two resolution parameters: the size of the mesh of elements and the polynomial order of each element.
-Those two parameters were optimized emperically.
+Those two parameters were optimized empirically.
 A test case was designed at high Rayleigh number and unit Schmidt number, but with a shorter vertical extent than the full problem.
 For each of many combinations of mesh resolution and polynomial order, the flow was evolved to a fixed time corresponding to an aspect ratio of  about 1.
 The error in the bubble height and mixed volume was compared to the computational cost.
@@ -89,18 +89,18 @@ As the bubble slows, the inflow of pure fluid falls behind the mixing of fluid a
 The mixing reduces the effective Atwood number, slowing the bubble until it stops rising.
 This is the diffusive regime.
 The onset scales with the Rayleigh number, $h / \lambda \sim \text{Ra}$.
-Simlarly, the maximum height of the bubble, i.e. the penetration depth, scales linearly with the Rayleigh number.
+Similarly, the maximum height of the bubble, i.e. the penetration depth, scales linearly with the Rayleigh number.
 The relationship is $h(\infty)/\lambda = ??? \text{Ra} - ???$, defining a critical Rayleigh number ??? below which the bubble does not rise.
 
 \section{Model coefficients}
 
-The 5 unconstrained model parmeters were fit to the numerical trajectories.
+The 5 unconstrained model parameters were fit to the numerical trajectories.
 First, the mixing coefficient $C_5$ was fit directly to the mixed volume.
-Then, given $C_5$, the remaining four coefficeint was fit with L2 regularization about the parameter estimates.
+Then, given $C_5$, the remaining four coefficient was fit with L2 regularization about the parameter estimates.
 
 The $C_3$ and $C_7$ terms take a nominal value of 1, with outliers at the lowest Rayleigh numbers, in the case of $C_3$, and incomplete trajectories, in the case of $C_7$.
 The parameter dependence of $C_3$ is postulated to be due to model breakdowns in highly dissipative cases.
-The parameter dependence of $C_7$ is expected to disapear as the high Rayleigh trajectories are completd.
+The parameter dependence of $C_7$ is expected to disappear as the high Rayleigh trajectories are completed.
 
 The $C_1$ drag-type coefficient takes nominal values between $0.3$ and $0.6$.
 There are outliers at zero and greater than $0.9$, at low to moderate Rayleigh number and both low and high Schmidt number.
@@ -108,14 +108,14 @@ The cause of these outliers is a mystery; the majority of trajectories are consi
 
 The $C_2$ friction factor-type coefficient clearly varies across the parameter space.
 It is a strongly increasing function of the Grashof number and a weakly increasing function of the Schmidt number.
-A possible explination is the development of shear instabilities along the bubble sides that enhance the transport of momentum out of the bubble.
-These instabilities would be strongest as high Grashof number and could be stabalized somewhat by low Schmidt numbers.
+A possible explanation is the development of shear instabilities along the bubble sides that enhance the transport of momentum out of the bubble.
+These instabilities would be strongest as high Grashof number and could be stabilized somewhat by low Schmidt numbers.
 
 Similarly, the $C_5$ mixing coefficient varies with the diffusivity and Grashof number.
 It is a strongly decreasing function of diffusivity and is peaked with respect to the Grashof number.
 Similar to the development of momentum structures at high Grashof number, the low diffusivity cases could develop scalar structures on the interface that enhance mixing.
 The dependence on the Grashof number is mysterious; it is not clear what would cause peaked behavior.
-However, the mixing coefficient captures shape information that could depend on the viscousity and shear instabilities would transport the scalar just as they transport momentum.
+However, the mixing coefficient captures shape information that could depend on the viscosity and shear instabilities would transport the scalar just as they transport momentum.
 
 
 \section{Open problems}
@@ -130,15 +130,11 @@ The majority of the simulations that have been performed are incomplete in that 
 The truncation of the dynamics may affect the fit coefficients.
 In particular, the $C_2$, $C_5$, and $C_7$ terms are the most important to the dynamics at late times, so the fit values from clipped trajectories come with a grain of salt.
 These cases should be completed by simulation in domains with greater aspect ratios.
-The cost of completing the next set of simulations presented here is ??? core-hours each.
+The cost of completing the next set of simulations presented here is about 15 million core-hours on Shaheen XC40 each.
 
 There are experiments and simulations that could be performed to isolate the effects of subsets of the model parameters.
-These experiments deviate from the standard low-amplitude thin interface single-model initail condition but should still be coverd by the model.
+These experiments deviate from the standard low-amplitude thin interface single-model initial condition but should still be covered by the model.
 For example, the value of the $C_3$ term is greatest at late times but the forces are nearly balanced by that point, weakening its influence.
 To isolate it, the pure Atwood number could be spontaneously doubled, throwing the numerator of the dynamics model out of balance and accelerating the bubble.
 The rate of that acceleration would depend strongly on $C_3$.
 The experimental equivalent of this procedure would be to rapidly increase the local acceleration.
-
-
-
-
