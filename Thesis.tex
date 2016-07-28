@@ -46,7 +46,7 @@
 
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
 
-I, AUTHOR NAME, declare that this thesis titled, `THESIS TITLE' and the work presented in it are my own. I confirm that:
+I, Maxwell Hutchinson, declare that this thesis titled, `Data driven modeling of the low-Atwood single-mode Rayleigh-Taylor instability' and the work presented in it are my own. I confirm that:
 
 \begin{itemize} 
 \item[\tiny{$\blacksquare$}] This work was done wholly or mainly while in candidature for a research degree at this University.
@@ -92,9 +92,32 @@ If the quote is taken from someone, their name goes here
 \addtotoc{Abstract}  % Add the "Abstract" page entry to the Contents
 \abstract{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
+The Rayleigh-Taylor instabilitiy is one of the most common and well studied phenomena in fluid dynamics. 
+%, appearing and impacting such diverse flows as the doubly diffusive salt finger, nuclear flames in type 1a supernovae, and ablator mixing in inertial confinement fusion.
+Despite research dating to 
+%its characterization by Lord Rayleigh in 
+the late 19th century, the non-linear dynamics 
+%of bubbles originating 
+of the interfacial instability are still not fully understood, particularly in the case when the two fluids have nearly the same density.
+It was recently demonstrated in this, the low-Atwood regime, that the model single-mode problem departs from established potential flow models in the form of a re-acceleration beyond the predicted terminal interface velocity.
+This thesis is an attempt to model that re-acceleration and, more broadly, the late time dynamics of the single-mode low-Atwood Rayleigh-Taylor instability.
 
-The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
+The approach taken here is based on buoyancy-drag models, which express a force balance between buoyancy and parastic drag.
+The dynamical buoyancy-drag model is supplemented with a mixing model that dillutes the buoyant force over time.
+These models are written deliberately generally, with 8 unique coefficients.
+Three of these coefficients are solved for by equating the early time behavior with that of well established linear theories.
+The remaining 5 coefficientss are estimated by relating them to drag coefficients, friction factors, and geometric ratios in the interface shape.
 
+To evaluate the model and compute the 5 unknown coefficients more precisely, a set of direct numerical simulations are performed over the relevant parameter space.
+These simulations are first validated against experimental data.
+Then they are shown to converge and their resolutions are chosen such as to minimize computational cost given the accuracy scale of the model.
+The 5 coefficients are fit to the resulting data set, and the model achieves better than 2\% error in the bubble height and 4\% error in the volume of mixed fluid.
+Three coefficients are nominally independent of the parameterization of the problem, while two are shown to vary with the Rayleigh number and the diffusivity.
+
+%The approach taken in this thesis is a starting point for data-driven modeling of model fluid dynamics problems.
+%The model could be augmented with a vorticity term, possibly capturing re-acceleration.
+%Many of the simulated cases are incomplete in that the Rayleigh-Taylor front reached the top and bottom boundaries of the simulated domain.
+%The computational cost is shown to go with the Rayleigh number to the 6th power, making the compleition of these cases expensive.
 }
 
 \clearpage  % Abstract ended, start a new page
@@ -106,7 +129,12 @@ The Thesis Abstract is written here (and usually kept to just this page). The pa
 \acknowledgements{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
 
-The acknowledgements and the people to thank go here, don't forget to include your project advisor\ldots
+I would like to thank Robert Rosner for letting me chart my course through this thesis and my doctoral research more broadly.
+I thank Aleksandr Obabko and Paul Fischer for supporting Nek5000 and working through the numerics with me.
+I also thank Oana Marin and Michel Schanen for their excitement and Elia Merzari and Ron Rahaman for their support.
+I thank Alexander Heinecke and Scott Parker for their help tuning the code to run on supercomputers.
+
+I acknolwedge ALCF and KAUST.
 
 }
 \clearpage  % End of the Acknowledgements
@@ -139,14 +167,14 @@ The acknowledgements and the people to thank go here, don't forget to include yo
 }
 
 %% ----------------------------------------------------------------
-\clearpage  % Start a new page
-\lhead{\emph{Physical Constants}}  % Set the left side page header to "Physical Constants"
-\listofconstants{lrcl}  % Include a list of Physical Constants (a four column table)
-{
+%\clearpage  % Start a new page
+%\lhead{\emph{Physical Constants}}  % Set the left side page header to "Physical Constants"
+%\listofconstants{lrcl}  % Include a list of Physical Constants (a four column table)
+%{
 % Constant Name & Symbol & = & Constant Value (with units) \\
-Speed of Light & $c$ & $=$ & $2.997\ 924\ 58\times10^{8}\ \mbox{ms}^{-\mbox{s}}$ (exact)\\
-
-}
+%Speed of Light & $c$ & $=$ & $2.997\ 924\ 58\times10^{8}\ \mbox{ms}^{-\mbox{s}}$ (exact)\\
+%
+%}
 
 %% ----------------------------------------------------------------
 \clearpage  %Start a new page
@@ -169,6 +197,7 @@ Sc & Schmidt number & $\nu$ / D  \\
 }
 %% ----------------------------------------------------------------
 % End of the pre-able, contents and lists of things
+The acknowledgements and the people to thank go here, don't forget to include your project advisor\ldots
 % Begin the Dedication page
 
 \setstretch{1.3}  % Return the line spacing back to 1.3
@@ -190,7 +219,7 @@ Sc & Schmidt number & $\nu$ / D  \\
 
 \input{Chapters/Background} % Introduction
 
-\input{Chapters/Related} % Introduction
+%\input{Chapters/Related} % Introduction
 
 \input{Chapters/Standalone}
 
