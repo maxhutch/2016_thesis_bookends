@@ -17,3 +17,11 @@ talk:
 	cp ~/Dropbox/writings/bib/library.bib .;
 	pdflatex --shell-escape -file-line-error ${SLIDES}.tex;
 	pdflatex --shell-escape -file-line-error ${SLIDES}.tex;
+
+full:
+	cp ../2016_smRTI_model/main.pdf model.pdf
+	cp ../2016validation/main.pdf validation.pdf
+	pdfseparate -f 1 -l 29 Thesis.pdf front-%03d.pdf
+	pdfseparate -f 30  Thesis.pdf back-%03d.pdf
+	pdfunite front*.pdf model.pdf validation.pdf convergence.pdf back*.pdf full.pdf
+	rm front*.pdf back*.pdf
