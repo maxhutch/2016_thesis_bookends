@@ -251,3 +251,25 @@ The ratio of the volume to surface area is $h^{-1}$, not $\lambda^{-1}$, so ther
 Only by introducing a drag term that goes with the height $h$, such as skin drag, can a terminal velocity be recovered.
 This terminal velocity would be a function of the viscosity, and therefore cannot be described by potential flow.
 
+\section{Related work aimed at modeling stagnation and re-acceleration}
+Since re-acceleration was observed experimentally, multiple attempts have been made to capture re-acceleration in the models.
+
+\subsection{Vortex ring correction of Ramaprabhu}
+
+Ramaprabhu \etal ~\cite{Ramaprabhu2012} attribute the reacceleration to the formation of a vortex ring at the bubble tip.
+They add a term to their buoyancy-drag model representing the centrifugal force per unit volume:
+\begin{equation}
+\left(\rho_2 g - \rho_1 g\right) + \rho_1 \frac{\omega_0^2 R}{ 4} = \frac{C_d \rho_2 v^2}{\lambda}
+\end{equation}
+where $\omega_0$ is the average vorticity in the bubble tip.
+The model does not provide an evolution equation for $\omega_0$; it is measured from simulations ad-hoc making the model descriptive but not predictive.
+The model agrees qualitatively, but not quantiatively, from the onset of stagnation at bubble height $h / \lambda \approx 0.5$ through re-acceleration at $h/\lambda \approx 2.0$, but doesn't capture linear growth at early times or the dynamics at late times.
+Furthermore, they compare the vortex ring model to simulations using two different codes and the two codes disagree quantitatively over the re-acceleration regime and qualitatively over what follows it.
+
+\section{Vorticity and viscosity in potential flow}
+
+Banerjee \etal attempt to describe re-acceleration by adding viscous and vortical effects to a potential flow model~\cite{Banerjee2011}.
+Similar to the vortex ring correction to buoyancy-drag, the vorticity is an input to the potential flow model.
+Instead of using data from simulations, Banerjee \etal write the vorticity as an analytic function of time indepedent of the Atwood number.
+The resulting dynamics have a single re-acceleration phase before reaching an asyptotic terminal velocity.
+
