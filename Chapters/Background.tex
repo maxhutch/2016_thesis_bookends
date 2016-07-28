@@ -148,16 +148,6 @@ The Goncharaov model keeps the free-slip boundary condition between the two flui
 In this respect, Goncharaov's should be reasonable for high-Atwood, high-Reynolds number flows.
 Similar potential flow models were introduced by Sohn~\cite{Sohn2003} and Abarzhi \etal~\cite{Abarzhi2003} with similar results.
 
-\subsection{Departure from potential flow}
-The assumption that the flow is irrotational applies only at high Atwood number.
-At moderate and low Atwood numbers, secondary Kelvin-Helmholtz (KH) instabilities develop at the vertical sheer layer separating the two fluids.
-Simulations by Ramaprabhu \etal ~\cite{Ramaprabhu2006} showed that after stagnating at a constant velocity in good agreement with the potential flow models, low-Atwood bubbles re-accelerated to velocities nearly twice the potential flow limit.
-The stagnation and re-acceleration stages were confirmed experimentaly by Wilkinson and Jacobs~\cite{Wilkinson2007}.
-However, those experiments were limited by their tank size and only reached the early onset of re-acceleration.
-
-Modeling the stagnation and re-acceleration phases is the primary open problem in the low Atwood single-mode Rayleigh-Taylor instability.
-The clear failure of potential flow models, in this regime, has motivated a renewed interest in buoyancy-drag models.
-
 \section{Buoyancy-drag models}
 
 Buoyancy-drag models were developed concurrently with potential flow models, in part to provide a physical interpretation for their results.
@@ -193,7 +183,7 @@ $\beta < 1$ accounts for the relatively smaller buoyant portion of the bubble du
 $C_d$ is a drag coefficient, and
 $h_b$ is the bubble height.
 $\beta$ and $C_d$ depend on the Atwood number, but Dimonte proposes $\beta = 1/2$ and $C_d = 2$ for $A << 1$~\cite{Dimonte2000}.
-However, the model is stated to apply to self-similar bubble fronts.
+However, the model is stated to apply to self-similar bubble fronts, in wich $h_b \sim D$.
 
 \subsection{Self-similar model of Oron}
 
@@ -213,17 +203,19 @@ The values of $C_a$ and $C_d$ are assumed to be Atwood independant and set to ag
 C_a = 1 \qquad C_d = 2\pi
 \end{equation}
 
-\section{Problems with single mode buoyancy-drag models}
+\section{Problems with single mode Rayleigh-Taylor modeling}
 
-It has recently been shown, via both simulation~\cite{Ramaprabhu2006} and experiment~\cite{Wilkinson2007}, that at low Atwood number and high Reynolds number the flow continues to develop beyond the terminal velocity predicted by potential flow and buoyancy-drag into re-acceleration stage.
-For this reason, the nearly constant velocity is termed the \textit{stagnation velocity}.
-
+Simulations by Ramaprabhu \etal ~\cite{Ramaprabhu2006} showed that, after stagnating at a constant velocity, in agreement with the potential flow models, low-Atwood bubbles re-accelerated to velocities nearly twice the potential flow limit.
+The stagnation and re-acceleration stages were confirmed experimentaly by Wilkinson and Jacobs~\cite{Wilkinson2007}.
+Modeling the stagnation and re-acceleration phases is the primary open problem in the low Atwood single-mode Rayleigh-Taylor instability.
 The desire to describe this re-acceleration process, quantitatively, is the motivation for this thesis.
-However, I will first give two qualitative explanations for while re-acceleration should be expected: one based on the pressure balance and another by identifying a historical inconsistency in the development of buoyancy-drag models.
+
+First, though, I will give three qualitative explanations for why re-acceleration should have been expected: one based on the pressure balance, one based on the assumptions of potential flow models, and another by identifying a historical inconsistency in the development of buoyancy-drag models.
 
 \subsection{Pressure in the single-mode RTI}
 
 If there is a terminal velocity regime, can it be due to form drag?
+In other words, can we have terminal velocity without viscosity?
 Let $\nu \rightarrow 0$ and consider a fluid element lying on the axis
 of a bubble or spike at terminal velocity.
 By symmetry, it will only have a z-component of the velocity.
@@ -243,7 +235,13 @@ Only at the bubble and spike tips do we accept a span-wise flow: the displacemen
 In other words, the pressure drag is highly localized to the bubble and spike tips.
 If the flow is terminal, then it must be attenuated predominately by viscous drag.
 
-\subsection{Historical inconsistency}
+\subsection{Departure from potential flow}
+The assumption that the flow is irrotational applies only at high Atwood number.
+At moderate and low Atwood numbers, the interface between the light and the dense fluid is a shear layer that generates vorticity.
+If the viscosity is low enough, secondary Kelvin-Helmholtz instabilities develop in the shear layer and transport vorticity into the center of the bubble.
+While it is not immediately clear that vorticity should cause re-acceleration, it is clearly the case that the flow is not irrotational, even away from the fluid interface.
+
+\subsection{Historical inconsistency in buoyancy-drag models}
 
 The buoyancy-drag model model contains a buoyant term that goes with the bubble volume and a form drag term that goes with the bubble's area.
 The model was originally developed to describe multi-mode self-similar flow, in which there is only one length scale, the dominant wavelength $\lambda$.
