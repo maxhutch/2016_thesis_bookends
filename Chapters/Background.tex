@@ -32,8 +32,8 @@ For a derivation of \eref{simple_growth}, see \aref{LST}.
 
 \subsection{Viscous and diffusive linear models}
 Chandrasekhar~\cite{Chandrasekhar1955} and Hide~\cite{Hide1955} generalized the linear theory to viscous fluids by including an isotropic incompressible Newtonian shear stress.
-Chandrasekhar worked out the constant property, $\mu_1 = \mu_2$ case and Hide included an approximate combination of distinct viscosities.
-Here, we are concerned with the simpler constant property case:
+Chandrasekhar worked out the uniform constant property case, $\mu_1 = \mu_2$, and Hide included an approximate combination of distinct viscosities.
+Here, we are concerned with the simpler uniform constant property case:
 \begin{equation} \elabel{visc_growth}
   \gamma = \sqrt{A g k + \nu^2 k^4} - \nu k^2
 \end{equation} 
@@ -41,7 +41,7 @@ where
 $\nu$ is the kinematic viscosity.
 Note that the viscous growth rate has a fastest growing mode at finite wavenumber and that all wavenumbers have positive growth rates.
 
-LeLevier et al.~\cite{LeLevier1955} generalized the linear theory to continuous density gradients, specifically exponentially smoothed profiles for the form $\bar\rho \pm e^{\mp K z} \delta\rho$:
+LeLevier \etal~\cite{LeLevier1955} generalized the linear theory to continuous density gradients, specifically exponentially smoothed profiles for the form $\bar\rho \pm e^{\mp K z} \delta\rho$:
 \begin{equation}
 \gamma = \sqrt{\frac{A g k K}{k + K}}
 \end{equation}
@@ -57,7 +57,7 @@ and $\psi$ is a function of the Atwood number and the product of the wavenumber 
 For $k \delta << 1$ and $A << 1$, $\psi \approx 1 + k \delta / \sqrt{\pi}$.
 Note that for $D > 0$ there is a wavenumber cutoff above which the growth rate is negative, i.e. the perturbation decays.
 
-In the constant property case, $\delta = 2 \sqrt{D t}$, introducing a time-dependence on the linear stability:
+In the uniform constant property case, $\delta = 2 \sqrt{D t}$, introducing a time-dependence on the linear stability:
 \begin{equation} \elabel{duff_growth}
 \gamma = \sqrt{\frac{A g k}{1 + \frac{2 k}{\sqrt{\pi}}\sqrt{D (t+t_0)} } + \nu^2 k^4} - (\nu + D) k^2,
 \end{equation}
@@ -106,7 +106,10 @@ Incompressibility zeroes the Laplacian of the potential:
 \end{equation}
 A Bernoulli equation is used model the interface:
 \begin{equation} \label{eqn:LayzerBernoulli}
-\der{\phi}{t}(\eta(r,t), r, t) - \frac{1}{2} \left(\left(\pder{\phi}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi}{r}\right)^2(\eta(r,t), r, t)\right) - g \eta(r,t) = f(t)
+\begin{aligned}
+f(t) & = \der{\phi}{t}(\eta(r,t), r, t) \\
+& - \frac{1}{2} \left(\left(\pder{\phi}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi}{r}\right)^2(\eta(r,t), r, t)\right) - g \eta(r,t) 
+\end{aligned}
 \end{equation}
 where 
 $\eta(r,t)$ is the height of the interface,
@@ -127,10 +130,11 @@ The stagnation velocity in two and three dimensions, assuming axial symmetry in 
 V_{2d} = \frac{1}{\sqrt{3}} \sqrt{\frac{g R}{\pi}}  \qquad V_{cyl} = \sqrt{\frac{g R}{\beta_1}} 
 \end{equation}
 where $\beta_1$ is the first root of the first order Bessel function of the first kind: $J_{1}(\beta_1) = 0$.
+Layzer's potential flow model was found to agree with experimental results by Davies and Taylor~\cite{Davies1950a}.
 
 \subsection{Goncharov's high Atwood model}
 
-Goncharaov extends the Layzer model to include two fluids of arbitrary density difference and makes a different choice of simplifying approximation for the Bernoulli equation~\cite{Goncharaov2002}.
+Goncharaov extends the Layzer model to include two fluids of arbitrary density difference and makes a different choice of simplifying approximation for the Bernoulli equation~\cite{Goncharov2002}.
 The consideration of a second fluid with non-zero density turns the Bernoulli equation \eref{LayzerBernoulli} into a difference:
 \begin{equation} \label{eqn:GonBernoulli}
 \begin{aligned}

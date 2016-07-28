@@ -3,7 +3,7 @@ TARGET = Thesis
 SLIDES=talk
 
 thesis:
-	cp ~/Dropbox/writings/bib/library.bib .;
+#	cp ~/Dropbox/writings/bib/library.bib .;
 	latex --shell-escape -file-line-error ${TARGET}.tex;
 	if [ -f ${TARGET}.aux ]; then bibtex ${TARGET}.aux; fi
 	latex --shell-escape -file-line-error ${TARGET}.tex;
