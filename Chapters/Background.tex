@@ -158,7 +158,7 @@ Here, we focus on models applicable to single-mode non-interacting bubbles.
 \subsection{Bubble model of Davies and Taylor}
 
 Early experiments on the Rayleigh-Taylor instability by Davies and Taylor~\cite{Davies1950a} were performed by measuring the dynamics of large bubbles of gas rising through a dense liquid.
-In their analysis, they relate the terminal velocity of the bubble to a drag coefficient, implicitly defining a bouyancy-drag model of the form:
+In their analysis, they relate the terminal velocity of the bubble to a drag coefficient, implicitly defining a buoyancy-drag model of the form:
 \begin{equation} \elabel{dtbd}
 \dot{v} \rho \mathcal{V} = \rho g \mathcal{V} - C_D \pi D^2 \frac{1}{2} \rho v^2,
 \end{equation}
@@ -187,7 +187,7 @@ However, the model is stated to apply to self-similar bubble fronts, in wich $h_
 
 \subsection{Self-similar model of Oron}
 
-A model by Oron \etal also rescales the bubbule mass~~\cite{Oron2001}:
+A model by Oron \etal also rescales the bubble mass~~\cite{Oron2001}:
 \begin{equation} \elabel{buoyancy_drag}
 (\rho_1 + C_a \rho_2) \ddot{h} = (\rho_2 - \rho_1)g - \frac{C_d}{\lambda} \dot{h}^2 \rho_2 \mathcal{A}
 \end{equation}
@@ -197,16 +197,16 @@ $h$ is the height of the bubble,
 $g$ is the gravitational acceleration,
 $C_d$ is a drag-like coefficient, and
 $\lambda$ is a characteristic length.
-The use of $\lambda$, which is time-indpendant, implies the model is directed at self-similar flow.
-The values of $C_a$ and $C_d$ are assumed to be Atwood independant and set to agree with Layzer's theory:
+The use of $\lambda$, which is time-independent, implies the model is directed at self-similar flow.
+The values of $C_a$ and $C_d$ are assumed to be Atwood independent and set to agree with Layzer's theory:
 \begin{equation}
 C_a = 1 \qquad C_d = 2\pi
 \end{equation}
 
 \section{Problems with single mode Rayleigh-Taylor modeling}
 
-Simulations by Ramaprabhu \etal ~\cite{Ramaprabhu2006} showed that, after stagnating at a constant velocity, in agreement with the potential flow models, low-Atwood bubbles re-accelerated to velocities nearly twice the potential flow limit.
-The stagnation and re-acceleration stages were confirmed experimentaly by Wilkinson and Jacobs~\cite{Wilkinson2007}.
+Simulations by Ramaprabhu \etal ~\cite{Ramaprabhu2006} have shown that, after stagnating at a constant velocity in agreement with the potential flow models, low-Atwood bubbles re-accelerate to velocities nearly twice the potential flow limit.
+The stagnation and re-acceleration phenomena were confirmed experimentally by Wilkinson and Jacobs~\cite{Wilkinson2007}.
 Modeling the stagnation and re-acceleration phases is the primary open problem in the low Atwood single-mode Rayleigh-Taylor instability.
 The desire to describe this re-acceleration process, quantitatively, is the motivation for this thesis.
 
@@ -224,32 +224,32 @@ The z-forces must balance:
 - \phi g \hat{z} = \pder{P}{z} ,
 \end{equation}
 where $\phi$ represents the mass.
-In the finger, the pressure would be decreasing with $z$.
-In the bubble, the pressure would be increasing with $z$.
-There would necessarily be a pressure gradient between the head of the finger and the tail of the bubble, and vice versa.
-As the aspect ratio exceeded unity, the span-wise pressure gradient would exceed the gravitational forcing.
+In the falling spike, the pressure would be decreasing with $z$.
+In the rising bubble, the pressure would be increasing with $z$.
+There would necessarily be a pressure gradient between the head of the bubble and the tail of the spike, and vice versa.
+As the bubble aspect ratio exceeded unity, the span-wise pressure gradient would exceed the gravitational forcing.
 The resulting span-wise flow would rapidly mix the two fluids, destroying the bubble and spike.
 
 The form of the bubble and spike require the pressure to be reasonably homogeneous span-wise.
-Only at the bubble and spike tips do we accept a span-wise flow: the displacement of stationary fluid by the tip.
-In other words, the pressure drag is highly localized to the bubble and spike tips.
-If the flow is terminal, then it must be attenuated predominately by viscous drag.
+Only at the bubble and spike tips do we observe a span-wise flow: the displacement of stationary fluid by the tip.
+In other words, the pressure drag is highly localized to the bubble and spike tips but cannot affect the flow in the stems of the bubbles and spikes.
+If the flow is terminal, then it must be attenuated predominately by viscous drag, which can act along the sidewalls, that is the stem, of the bubbles and spikes.
 
 \subsection{Departure from potential flow}
 The assumption that the flow is irrotational applies only at high Atwood number.
 At moderate and low Atwood numbers, the interface between the light and the dense fluid is a shear layer that generates vorticity.
 If the viscosity is low enough, secondary Kelvin-Helmholtz instabilities develop in the shear layer and transport vorticity into the center of the bubble.
-While it is not immediately clear that vorticity should cause re-acceleration, it is clearly the case that the flow is not irrotational, even away from the fluid interface.
+While it is not obvious that vorticity should cause re-acceleration, it is clear that the flow is not irrotational, even away from the fluid interface, and therefore cannot be accurately modeled by potential flow.
 
 \subsection{Historical inconsistency in buoyancy-drag models}
 
-The buoyancy-drag model model contains a buoyant term that goes with the bubble volume and a form drag term that goes with the bubble's area.
+Buoyancy-drag models contain a buoyant term that goes with the bubble's volume and a form drag term that goes with the bubble's span-wise area.
 The model was originally developed to describe multi-mode self-similar flow, in which there is only one length scale, the dominant wavelength $\lambda$.
 Consequently, the ratio of the volume to the surface area is $\lambda^{-1}$, yielding a terminal velocity as a function of $\lambda$.
 
 However, the single-mode RTI has two length scales: in addition to the wavelength $\lambda$ there is the bubble height, $h$.
 In other words, single-mode RTI bubbles are cylindrical instead of spherical with an axis length that goes with the bubble height.
-The ratio of the volume to surface area is $h^{-1}$, not $\lambda^{-1}$, so there is no terminal velocity.
+The ratio of the volume to surface area is $h^{-1}$, not $\lambda^{-1}$, so force balance occurs when $\dot{h} \sim \sqrt{h}$, which is not terminal.
 Only by introducing a drag term that goes with the height $h$, such as skin drag, can a terminal velocity be recovered.
 This terminal velocity would be a function of the viscosity, and therefore cannot be described by potential flow.
 
@@ -265,13 +265,13 @@ They add a term to their buoyancy-drag model representing the centrifugal force 
 \end{equation}
 where $\omega_0$ is the average vorticity in the bubble tip.
 The model does not provide an evolution equation for $\omega_0$; it is measured from simulations ad-hoc making the model descriptive but not predictive.
-The model agrees qualitatively, but not quantiatively, from the onset of stagnation at bubble height $h / \lambda \approx 0.5$ through re-acceleration at $h/\lambda \approx 2.0$, but doesn't capture linear growth at early times or the dynamics at late times.
+The model agrees qualitatively, but not quantitatively, from the onset of stagnation at bubble height $h / \lambda \approx 0.5$ through re-acceleration at $h/\lambda \approx 2.0$, but doesn't capture linear growth at early times or the dynamics at late times.
 Furthermore, they compare the vortex ring model to simulations using two different codes and the two codes disagree quantitatively over the re-acceleration regime and qualitatively over what follows it.
 
 \section{Vorticity and viscosity in potential flow}
 
 Banerjee \etal attempt to describe re-acceleration by adding viscous and vortical effects to a potential flow model~\cite{Banerjee2011}.
 Similar to the vortex ring correction to buoyancy-drag, the vorticity is an input to the potential flow model.
-Instead of using data from simulations, Banerjee \etal write the vorticity as an analytic function of time indepedent of the Atwood number.
-The resulting dynamics have a single re-acceleration phase before reaching an asyptotic terminal velocity.
+Instead of using data from simulations, Banerjee \etal write the vorticity as an analytic function of time independent of the Atwood number.
+The resulting dynamics have a single re-acceleration phase before reaching an asymptotic terminal velocity.
 
