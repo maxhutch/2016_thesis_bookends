@@ -35,9 +35,9 @@ This section describes a few such systems of particular importance.
 
 \paragraph{Type Ia Supernovae}
 In type Ia supernovae (SNe Ia), a white dwarf spontaneously ignites as its mass crosses the Chandrasekhar mass due to accretion from another source.
-The fusion flame originates near the center of the star and burns outward.
-The hot ash trailing the flame is lighter than the fuel, creating a Rayleigh-Taylor unstable flame front.
-The primary RT instability and secondary Kelvin-Helmholtz instabilities wrinkle the flame front, enhancing mixing, burn rate, and flame speed~\cite{Zingale2005}.
+The thermonuclear flame originates near the center of the star and burns outward~\cite{oran2007origins}.
+The hot ash trailing the flame is lighter than the fuel, creating a Rayleigh-Taylor unstable flame front~\cite{Zingale2005}.
+The primary RT instability and secondary Kelvin-Helmholtz instabilities wrinkle the flame front, enhancing mixing, burn rate, and flame speed~\cite{hicks2015rayleigh}.
 These properties affect the rate of energy release and ejecta velocity, which can be observed.
 The use of SNe Ia as standard candles underlines interest in their description.
 
@@ -45,20 +45,20 @@ The use of SNe Ia as standard candles underlines interest in their description.
 Salt fingers are an instance of the Rayleigh-Taylor instability set up by a difference in the diffusivity of two mass carriers~\cite{Stern1969, Linden1973}.
 Consider a fluid in which the density perturbation is a linear combination of two fields.
 Let one of the fields have a stabilizing gradient and the other a destabilizing one.
-If the destabilizing field is less diffusive than the stabilizing one, the system is unstable.
+The combined system is unstable if the destabilizing field is less diffusive than the stabilizing one.
 A parcel of fluid perturbed from its equilibrium height will equilibrate with the stabilizing field before the destabilizing one, resulting in a buoyant force that pushes the parcel further from vertical equilibrium.
 
 In the oceanic case, the stabilizing field is temperature and the destabilizing field is salinity.
 Near the surface, evaporation perturbs the salinity field creating parcels of salty dense fluid.
 As they sink, the parcels cool more quickly than they diffuse salt, further increasing their density.
-This flow drives tall vertical convective cells, called salt fingers, that mixes the oceans.
+This flow drives tall vertical convective cells, called salt fingers, that mix the oceans.
 
 The same doubly diffusive buoyant process drives short broad convective cells at greater depths.
-Observed as thermohaline staircase~\cite{Tait1971}, a series of sharp steps in the salinity and temperature vs depth, these cells extend occur at depths greater than a kilometer and extend for thousands of square miles.
+Observed as thermohaline staircase~\cite{Tait1971}, a series of sharp steps in the salinity and temperature versus depth, these cells occur at depths greater than a kilometer and extend for thousands of square miles.
 
 \paragraph{Inertial confinement fusion}
-Inertial confinement fusion (ICF) is a fusion technique that confines hot dense plasma temporarily via an implosion, rather than magnetic field lines.
-In ICF, the cryogenic hydrogen is coated with a plastic ablator forming very small hollow spheres, or microcapsules.
+Inertial confinement fusion (ICF) is a fusion technique that confines hot dense plasma temporarily via an implosion rather than magnetic field lines.
+In ICF, cryogenic hydrogen is coated with a plastic ablator forming very small hollow spheres, or microcapsules.
 The microcapsules are dropped through a cylindrical hohlraum.
 When the capsule enters the hohlraum, the hohlraum interior is illuminated with a high energy burst of laser light and radiates x-rays into its interior.
 The x-ray radiation is absorbed by the plastic ablator causing it to rapidly expand and blow off the microcapsule, creating an implosion in the hydrogen fuel~\cite{NASICF}.
@@ -83,12 +83,14 @@ There are three distinct regimes of unstable Atwood numbers: high, low, and mode
 At high Atwood number, e.g. air and water, the flow is approximated in the limit of unit Atwood number.
 The internal dynamics of the light fluid are decoupled from the heavy fluid, and the transfer of momentum through the interface into the dense fluid can be neglected.
 In this regime, the flow of the dense fluid is nearly irrotational and potential flow models are reasonably accurate.
+The high Atwood regime requires the Atwood number to be at least one half.
 % When is it high enough?
 
 At low Atwood number, e.g. salt water and fresh water, the flow is approximated in the limit of zero Atwood number.
-The governing equations can be linearised, leading to the Boussinesq approximation: only terms with the product of the Atwood number and acceleration remain.
+The governing equations can be simplified via the Boussinesq approximation: only terms with the product of the Atwood number and acceleration remain.
 The behavior of the bubbles and spikes are symmetric given symmetric initial conditions.
 It is often possible to treat the true two-phase problem as a single phase with an active scalar.
+The valid range of Atwood numbers for the Boussinesq approximation is problem dependent~\cite{Mikaelian2014}, but typically taken to be less than $A = 0.10$.
 % When is it Boussinsq?
 
 At moderate Atwood number, e.g. oil and water, not only is enough vorticity is generated to undermine potential flow models but also the density difference breaks the Boussinesq approximation and bubble-spike symmetry.
@@ -96,7 +98,7 @@ These are truly two-phase problems in that the fluids are strongly coupled and h
 
 \paragraph{Boussinesq approximation}
 When the density contrast, $\Delta \rho$, is small compared to the average density $\bar{\rho}$, then 
-the governing equations can be linearized with respect to density.
+the the contrast can be neglected except when multiplied by the acceleration, as in $Ag$.
 This is known as the Boussinesq approximation and has the primary effect of neglecting differences in the inertia of the two fluids.
 
 \paragraph{Uniform constant property}
@@ -143,7 +145,7 @@ where $u$ is the fluid velocity,
 $\phi$ is the active scalar that represents small mass differences,
 and the acceleration is aligned vertically with $\hat{z}$.
 
-These equations have three governing parameters; $(Ag)$, $\nu$, and $D$; which admit the construction of two dimensionless numbers:
+These equations have three governing parameters; $(Ag)$, $\nu$, and $D$; which support the construction of two dimensionless numbers:
 \begin{equation}
 \text{Grashof} = \frac{Ag L^3}{\nu^2}
 \end{equation}
@@ -166,22 +168,19 @@ It is sometimes called the perturbation Reynolds number, $\text{Re}_p = \sqrt{\t
 
 \paragraph{Bubble height and spike depth}
 
-Experiments and theories focus on the observation and explanation of a set of observables that are much smaller than the full degrees of freedom of the system.
-The selection of these observables is informed by practical application and methodological analogy.
-
 The bubble height refers to the distance beyond the initial interface that the bubble front has traveled, as a function of time.
 The standard experimental definition projects the density onto a line normal to the initial interface and defines the front interface as the point at which the density is at its 99th or 95th percentile.
 More formally:
 \begin{equation}
 H_p[\epsilon] = \sup \left\{z : \int \tilde\rho(x,y,z) dx dy < (1-\epsilon) \int \tilde\rho(x,y,\infty) dx dy \right\},
 \end{equation}
-where $\tilde\rho$ is the deviation from the mean density, $\tilde\rho = \rho - \bar\rho$.
+where $\tilde\rho$ is the deviation from the mean density, $\tilde\rho = \rho - \bar\rho$, and $\epsilon$ is either $0.05$ or $0.01$ for the 95th and 99th precentile definitions, respectively.
 
 If the fluids are miscible, this definition depends on the rate of diffusion across the interface.
 To avoid dependence on diffusion across the interface, we can base the bubble height on a measurement of the equi-molar interface, which is stationary under diffusion.
 To pick out the interface, we take a span-wise maximum instead of a span-wise sum:
 \begin{equation}
-H_m[\epsilon] = \sup \left\{z : \max_{x,y} \tilde\rho(x,y,z) < 0 \right\}
+H_m = \sup \left\{z : \max_{x,y} \tilde\rho(x,y,z) < 0 \right\}
 \end{equation}
 
 However, diffusive mixing across the sides of an elongated bubble dilute as it grows.
@@ -191,7 +190,7 @@ In the absence of this affect, $H_{m}$ tracks not only the equi-molar surface bu
 This inflection point closely tracks the equi-molar surface at low diffusivity but is robust to diffusion across the bubble, remaining in the center of the error function region of the maximum density profile.
 Formally, this definition is:
 \begin{equation}
-H_i[\epsilon] = \sup \left\{z : \frac{d^2}{dz^2} \max_{x,y} \tilde\rho(x,y,z) = 0 \right\}
+H_i = \sup \left\{z : \frac{d^2}{dz^2} \max_{x,y} \tilde\rho(x,y,z) = 0 \right\}
 \end{equation}
 
 Equivalent definitions can be given for the spike depth.
@@ -210,5 +209,5 @@ The mix volume is simply the integral:
 \begin{equation}
 \Theta(t) = \int \left(1 - \left|\phi(x,y,z,t)\right|\right) dV,
 \end{equation}
-and the mixing width $\theta = \Theta / A$, where $A$ is the span-wise extent of the volume integral.
+and the mixing width $\theta = \Theta / \mathcal{A}$, where $\mathcal{A}$ is the span-wise extent of the volume integral.
 

@@ -92,21 +92,21 @@ If the quote is taken from someone, their name goes here
 \addtotoc{Abstract}  % Add the "Abstract" page entry to the Contents
 \abstract{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
-The Rayleigh-Taylor instabilitiy is one of the most common and well studied phenomena in fluid dynamics. 
+The Rayleigh-Taylor instability is one of the most common and well studied phenomena in fluid dynamics. 
 %, appearing and impacting such diverse flows as the doubly diffusive salt finger, nuclear flames in type 1a supernovae, and ablator mixing in inertial confinement fusion.
 Despite research dating to 
 %its characterization by Lord Rayleigh in 
 the late 19th century, the non-linear dynamics 
 %of bubbles originating 
 of the interfacial instability are still not fully understood, particularly in the case when the two fluids have nearly the same density.
-It was recently demonstrated in this, the low-Atwood regime, that the model single-mode problem departs from established potential flow models in the form of a re-acceleration beyond the predicted terminal interface velocity.
+It was recently demonstrated in this, the low-Atwood regime, that the idealized single-mode problem departs from established potential flow models in the form of a re-acceleration beyond the predicted terminal interface velocity.
 This thesis is an attempt to model that re-acceleration and, more broadly, the late time dynamics of the single-mode low-Atwood Rayleigh-Taylor instability.
 
-The approach taken here is based on buoyancy-drag models, which express a force balance between buoyancy and parastic drag.
-The dynamical buoyancy-drag model is supplemented with a mixing model that dillutes the buoyant force over time.
+The approach taken here is based on buoyancy-drag models, which express a force balance between buoyancy and parasitic drag.
+The dynamical buoyancy-drag model is supplemented with a mixing model that dilutes the buoyant force over time.
 These models are written deliberately generally, with 8 unique coefficients.
 Three of these coefficients are solved for by equating the early time behavior with that of well established linear theories.
-The remaining 5 coefficientss are estimated by relating them to drag coefficients, friction factors, and geometric ratios in the interface shape.
+The remaining 5 coefficients are estimated by relating them to drag coefficients, friction factors, and geometric ratios in the interface shape.
 
 To evaluate the model and compute the 5 unknown coefficients more precisely, a set of direct numerical simulations are performed over the relevant parameter space.
 These simulations are first validated against experimental data.
@@ -133,8 +133,13 @@ I would like to thank Robert Rosner for letting me chart my course through this 
 I thank Aleksandr Obabko and Paul Fischer for supporting Nek5000 and working through the numerics with me.
 I also thank Oana Marin and Michel Schanen for their excitement and Elia Merzari and Ron Rahaman for their support.
 I thank Alexander Heinecke and Scott Parker for their help tuning the code to run on supercomputers.
+I thank Elizabeth Hicks for helpful comments and advice.
 
-I acknolwedge ALCF and KAUST.
+For computer time, this research partially used the resources of the
+Supercomputing Laboratory at King Abdullah University of Science \& Technology
+ (KAUST) in Thuwal, Saudi Arabia.
+This research used resources of the Argonne Leadership Computing Facility, which
+is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
 
 }
 \clearpage  % End of the Acknowledgements
@@ -147,6 +152,7 @@ I acknolwedge ALCF and KAUST.
 \lhead{\emph{Contents}}  % Set the left side page header to "Contents"
 \tableofcontents  % Write out the Table of Contents
 
+\begin{comment}
 %% ----------------------------------------------------------------
 \lhead{\emph{List of Figures}}  % Set the left side page header to "List if Figures"
 \listoffigures  % Write out the List of Figures
@@ -165,6 +171,7 @@ I acknolwedge ALCF and KAUST.
 \textbf{LAH} & \textbf{L}ist \textbf{A}bbreviations \textbf{H}ere \\
 
 }
+\end{comment}
 
 %% ----------------------------------------------------------------
 %\clearpage  % Start a new page
@@ -215,6 +222,7 @@ Sc & Schmidt number & $\nu$ / D  \\
 % Include the chapters of the thesis, as separate files
 % Just uncomment the lines as you write the chapters
 
+\lhead{}  % Set the left side page header to "Symbols"
 \input{Chapters/Introduction} % Introduction
 
 \input{Chapters/Background} % Introduction
