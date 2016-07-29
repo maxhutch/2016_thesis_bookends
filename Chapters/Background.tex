@@ -1,7 +1,7 @@
 \chapter{Background}
 
 The study of the Rayleigh-Taylor instability is primarily interested in evolution of the interface, that is the rate of penetration of the light fluid into the dense one and vice versa.
-While the volumetric mixing rate is relevant in some contexts, most flows have relatively low diffusivity, i.e. high Prandtl and Schmidt number, so mixing is dominated by transport rather than diffusion.
+While the volumetric mixing rate is relevant in some contexts, most flows have relatively low diffusivity, i.e.\ high Prandtl and Schmidt number, so mixing is dominated by transport rather than diffusion.
 In this section, we review approaches to modeling the evolution of the interface and experimental efforts to validate those models.
 
 \section{Linear and weakly non-linear models} %\slabel{linear}
@@ -20,11 +20,12 @@ When the amplitude is small compared to the wavelength, the continuity and momen
 \end{align}
 where $u, \tilde\rho, \tilde{P}$ are the perturbation velocity, density, and pressure.
 They are small and their products neglected.
-The solution is an exponential with a growth rate:
+The solution is an sinusoidal with an exponential exponential with a growth rate:
 \begin{equation} \elabel{simple_growth}
-  \gamma^2 = A g k 
+	w \sim e^{i k x} e^{-k z} e^{\gamma t} \qquad  \gamma^2 = A g k,
 \end{equation}
-where $g$ is the acceleration experienced by the fluid, and
+where $w$ is the vertical component of the velocity, 
+$g$ is the acceleration experienced by the fluid, and
 $k = 2 \pi / \lambda$ is the wave-number of the perturbation.
 Positive Atwood numbers correspond to unstable density stratifications, which grow exponentially.
 Negative Atwood numbers correspond to stable density stratifications, which oscillate.
@@ -125,16 +126,18 @@ Finally, the fluid advects the interface:
 \end{equation}
 
 The details of the derivation can be found in \aref{Layzer} and the results are summarized here.
-The stagnation velocity in two and three dimensions, assuming axial symmetry in the latter case, are:
+The bubble accelerates to a terminal velocity.
+That velocity, in two and three dimensions, is:
 \begin{equation}
 V_{2d} = \frac{1}{\sqrt{3}} \sqrt{\frac{g R}{\pi}}  \qquad V_{cyl} = \sqrt{\frac{g R}{\beta_1}} 
 \end{equation}
 where $\beta_1$ is the first root of the first order Bessel function of the first kind: $J_{1}(\beta_1) = 0$.
-Layzer's potential flow model was found to agree with experimental results by Davies and Taylor~\cite{Davies1950a}.
+This velocity agrees with experimental results that were available to Layzer, e.g.\ those by Davies and Taylor~\cite{Davies1950a}.
 
 \subsection{Goncharov's high Atwood model}
 
-Goncharaov extends the Layzer model to include two fluids of arbitrary density difference and makes a different choice of simplifying approximation for the Bernoulli equation~\cite{Goncharov2002}.
+Goncharaov extends the Layzer model to include two fluids of arbitrary density difference.
+In doing so, he makes a different choice of simplifying approximation for the Bernoulli equation~\cite{Goncharov2002}.
 The consideration of a second fluid with non-zero density turns the Bernoulli equation \eref{LayzerBernoulli} into a difference:
 \begin{equation} \label{eqn:GonBernoulli}
 \begin{aligned}
@@ -145,7 +148,11 @@ f(t) = &   \rho_1 \der{\phi_1}{t}(\eta(r,t), r, t) - \rho_2 \der{\phi_2}{t}(\eta
 \end{aligned}
 \end{equation}
 The Goncharaov model keeps the free-slip boundary condition between the two fluids, which is exact only for $A = 1$ and a reasonable approximation for $\rho_1 / \rho_2 >> 1$.
-In this respect, Goncharaov's should be reasonable for high-Atwood, high-Reynolds number flows.
+In this respect, Goncharaov's should be reasonable for high-Atwood, nearly inviscid flows.
+The terminal velocity predicted is:
+\begin{equation}
+V = 1.02 \sqrt{\frac{2A }{1 + A} \frac{g}{k}} = \frac{1.02}{\sqrt{\pi}} \sqrt{\frac{A g \lambda}{1 + A}}
+\end{equation}
 Similar potential flow models were introduced by Sohn~\cite{Sohn2003} and Abarzhi \etal~\cite{Abarzhi2003} with similar results.
 
 \section{Buoyancy-drag models}
