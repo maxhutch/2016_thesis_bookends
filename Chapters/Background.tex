@@ -1,7 +1,7 @@
 \chapter{Background}
 
 The study of the Rayleigh-Taylor instability is primarily interested in evolution of the interface, that is the rate of penetration of the light fluid into the dense one and vice versa.
-While the volumetric mixing rate is relevant in some contexts, most flows have relatively low diffusivity, i.e. high Prandtl and Schmidt number, so mixing is dominated by transport rather than diffusion.
+While the volumetric mixing rate is relevant in some contexts, most flows have relatively low diffusivity, i.e.\ high Prandtl and Schmidt number, so mixing is dominated by transport rather than diffusion.
 In this section, we review approaches to modeling the evolution of the interface and experimental efforts to validate those models.
 
 \section{Linear and weakly non-linear models} %\slabel{linear}
@@ -20,11 +20,12 @@ When the amplitude is small compared to the wavelength, the continuity and momen
 \end{align}
 where $u, \tilde\rho, \tilde{P}$ are the perturbation velocity, density, and pressure.
 They are small and their products neglected.
-The solution is an exponential with a growth rate:
+The solution is an sinusoidal with an exponential exponential with a growth rate:
 \begin{equation} \elabel{simple_growth}
-  \gamma^2 = A g k 
+	w \sim e^{i k x} e^{-k z} e^{\gamma t} \qquad  \gamma^2 = A g k,
 \end{equation}
-where $g$ is the acceleration experienced by the fluid, and
+where $w$ is the vertical component of the velocity, 
+$g$ is the acceleration experienced by the fluid, and
 $k = 2 \pi / \lambda$ is the wave-number of the perturbation.
 Positive Atwood numbers correspond to unstable density stratifications, which grow exponentially.
 Negative Atwood numbers correspond to stable density stratifications, which oscillate.
@@ -32,8 +33,8 @@ For a derivation of \eref{simple_growth}, see \aref{LST}.
 
 \subsection{Viscous and diffusive linear models}
 Chandrasekhar~\cite{Chandrasekhar1955} and Hide~\cite{Hide1955} generalized the linear theory to viscous fluids by including an isotropic incompressible Newtonian shear stress.
-Chandrasekhar worked out the constant property, $\mu_1 = \mu_2$ case and Hide included an approximate combination of distinct viscosities.
-Here, we are concerned with the simpler constant property case:
+Chandrasekhar worked out the uniform constant property case, $\mu_1 = \mu_2$, and Hide included an approximate combination of distinct viscosities.
+Here, we are concerned with the simpler uniform constant property case:
 \begin{equation} \elabel{visc_growth}
   \gamma = \sqrt{A g k + \nu^2 k^4} - \nu k^2
 \end{equation} 
@@ -41,7 +42,7 @@ where
 $\nu$ is the kinematic viscosity.
 Note that the viscous growth rate has a fastest growing mode at finite wavenumber and that all wavenumbers have positive growth rates.
 
-LeLevier et al.~\cite{LeLevier1955} generalized the linear theory to continuous density gradients, specifically exponentially smoothed profiles for the form $\bar\rho \pm e^{\mp K z} \delta\rho$:
+LeLevier \etal~\cite{LeLevier1955} generalized the linear theory to continuous density gradients, specifically exponentially smoothed profiles for the form $\bar\rho \pm e^{\mp K z} \delta\rho$:
 \begin{equation}
 \gamma = \sqrt{\frac{A g k K}{k + K}}
 \end{equation}
@@ -57,7 +58,7 @@ and $\psi$ is a function of the Atwood number and the product of the wavenumber 
 For $k \delta << 1$ and $A << 1$, $\psi \approx 1 + k \delta / \sqrt{\pi}$.
 Note that for $D > 0$ there is a wavenumber cutoff above which the growth rate is negative, i.e. the perturbation decays.
 
-In the constant property case, $\delta = 2 \sqrt{D t}$, introducing a time-dependence on the linear stability:
+In the uniform constant property case, $\delta = 2 \sqrt{D t}$, introducing a time-dependence on the linear stability:
 \begin{equation} \elabel{duff_growth}
 \gamma = \sqrt{\frac{A g k}{1 + \frac{2 k}{\sqrt{\pi}}\sqrt{D (t+t_0)} } + \nu^2 k^4} - (\nu + D) k^2,
 \end{equation}
@@ -70,9 +71,9 @@ where $\delta_0$ is the initial interface thickness.
 \subsection{Weakly nonlinear expansions}
 Jacobs and Catton provide a third order weakly non-linear theory for the inviscid unit Atwood Rayleigh-Taylor instability~\cite{Jacobs1988}.
 Their weakly non-linear theory is primarily used to compare linear growth rates across a variety of perturbation symmetries in 3D.
-In particular, hexagonal and axi-symmetric perturbations are found to grow faster than rectangular perturbations.
+Hexagonal and axi-symmetric perturbations are found to grow faster than rectangular perturbations.
 
-Berning and Rubenchik extend the theory to arbitrary Atwood immiscible flows at higher order, but take only the third order~\cite{Berning1998}.
+Berning and Rubenchik extend the theory to arbitrary Atwood immiscible flows at any higher order, but analyze only the third order expansion~\cite{Berning1998}.
 They perform a similar geometric comparison to Jacobs and Catton, but also use the harmonic couplings to characterize linear saturation.
 
 The perturbation expansion has been taken to at least the 10th order by Liu \etal~\cite{Wang2010}.
@@ -83,11 +84,12 @@ Put another way, the interface and velocity potentials are not analytic in the s
 
 The next class of models to be applied to the Rayleigh-Taylor instability are potential flow models.
 These models assume that little vorticity is generated and that it is confined to the interface, which is true at high Atwood numbers.
+At moderate and low Atwood numbers, there is significant generation and transport of vorticity via, for example, the Kelvin-Helmholtz instability, so these models break down.
 
 \subsection{Layzer's unit Atwood model}
 
-One of the first such models is due to Layzer~\cite{Layzer1955}.
-Layzer's model is of an bubble with $\rho = 0$ rising in a fluid of density $\rho = 1$ ($A = 1$).
+One of the first potential flow models is due to Layzer~\cite{Layzer1955}.
+Layzer's model is of an bubble with $\rho = 0$ rising in a fluid of density $\rho = 1$, which is unit Atwood number.
 The bubble and fluid are assumed to be incompressible and inviscid.
 The flow begins at rest, so there is no initial vorticity.
 Layzer claims the flow will therefore continue to be irrotational, because the viscous generation term of the vorticity equation is zeroed for inviscid, incompressible flows.
@@ -105,7 +107,10 @@ Incompressibility zeroes the Laplacian of the potential:
 \end{equation}
 A Bernoulli equation is used model the interface:
 \begin{equation} \label{eqn:LayzerBernoulli}
-\der{\phi}{t}(\eta(r,t), r, t) - \frac{1}{2} \left(\left(\pder{\phi}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi}{r}\right)^2(\eta(r,t), r, t)\right) - g \eta(r,t) = f(t)
+\begin{aligned}
+f(t) & = \der{\phi}{t}(\eta(r,t), r, t) \\
+& - \frac{1}{2} \left(\left(\pder{\phi}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi}{r}\right)^2(\eta(r,t), r, t)\right) - g \eta(r,t) 
+\end{aligned}
 \end{equation}
 where 
 $\eta(r,t)$ is the height of the interface,
@@ -121,36 +126,34 @@ Finally, the fluid advects the interface:
 \end{equation}
 
 The details of the derivation can be found in \aref{Layzer} and the results are summarized here.
-The stagnation velocity in two and three dimensions, assuming axial symmetry in the latter case, are:
+The bubble accelerates to a terminal velocity.
+That velocity, in two and three dimensions, is:
 \begin{equation}
 V_{2d} = \frac{1}{\sqrt{3}} \sqrt{\frac{g R}{\pi}}  \qquad V_{cyl} = \sqrt{\frac{g R}{\beta_1}} 
 \end{equation}
 where $\beta_1$ is the first root of the first order Bessel function of the first kind: $J_{1}(\beta_1) = 0$.
+This velocity agrees with experimental results that were available to Layzer, e.g.\ those by Davies and Taylor~\cite{Davies1950a}.
 
 \subsection{Goncharov's high Atwood model}
 
-Goncharaov extends the Layzer model to include two fluids of arbitrary density difference and makes a different choice of simplifying approximation for the Bernoulli equation~\cite{Goncharaov2002}.
+Goncharaov extends the Layzer model to include two fluids of arbitrary density difference.
+In doing so, he makes a different choice of simplifying approximation for the Bernoulli equation~\cite{Goncharov2002}.
 The consideration of a second fluid with non-zero density turns the Bernoulli equation \eref{LayzerBernoulli} into a difference:
 \begin{equation} \label{eqn:GonBernoulli}
 \begin{aligned}
-&\der{\phi}{t}(\eta(r,t), r, t) - \frac{1}{2} \left(\left(\pder{\phi}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi}{r}\right)^2(\eta(r,t), r, t)\right) - g \eta(r,t) \\
-&= f(t) \\
+f(t) = &   \rho_1 \der{\phi_1}{t}(\eta(r,t), r, t) - \rho_2 \der{\phi_2}{t}(\eta(r,t), r, t) \\
+& - \rho_1 \frac{1}{2} \left(\left(\pder{\phi_1}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi_1}{r}\right)^2(\eta(r,t), r, t)\right) \\
+& + \rho_2 \frac{1}{2} \left(\left(\pder{\phi_2}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi_2}{r}\right)^2(\eta(r,t), r, t)\right) \\
+& - g \rho_1 \eta(r,t) + g \rho_2 \eta(r,t) 
 \end{aligned}
 \end{equation}
 The Goncharaov model keeps the free-slip boundary condition between the two fluids, which is exact only for $A = 1$ and a reasonable approximation for $\rho_1 / \rho_2 >> 1$.
-In this respect, Goncharaov's should be reasonable for high-Atwood, high-Reynolds number flows.
-
-The assumption that the flow is irrotational applies only at high Atwood number.
-At moderate and low Atwood numbers, secondary Kelvin-Helmholtz (KH) instabilities develop at the vertical sheer layer separating the two fluids~\cite{Ramaprabhu2006,Wilkinson2007}.
-The effects of the vorticity in the lighter fluid were addressed theoretically by Banerjee et al~\cite{Banerjee2011} and numerically by Ramaprabhu et al.~\cite{Ramaprabhu2012}.
-
-\subsection{Abarzhi and Sohn's models}
-
-\subsection{Departure from potential flow}
-
-\subsection{Banerjee's rotational model}
-
-\cite{Banerjee2011}
+In this respect, Goncharaov's should be reasonable for high-Atwood, nearly inviscid flows.
+The terminal velocity predicted is:
+\begin{equation}
+V = 1.02 \sqrt{\frac{2A }{1 + A} \frac{g}{k}} = \frac{1.02}{\sqrt{\pi}} \sqrt{\frac{A g \lambda}{1 + A}}
+\end{equation}
+Similar potential flow models were introduced by Sohn~\cite{Sohn2003} and Abarzhi \etal~\cite{Abarzhi2003} with similar results.
 
 \section{Buoyancy-drag models}
 
@@ -162,7 +165,7 @@ Here, we focus on models applicable to single-mode non-interacting bubbles.
 \subsection{Bubble model of Davies and Taylor}
 
 Early experiments on the Rayleigh-Taylor instability by Davies and Taylor~\cite{Davies1950a} were performed by measuring the dynamics of large bubbles of gas rising through a dense liquid.
-In their analysis, they relate the terminal velocity of the bubble to a drag coefficient, implicitly defining a bouyancy-drag model of the form:
+In their analysis, they relate the terminal velocity of the bubble to a drag coefficient, implicitly defining a buoyancy-drag model of the form:
 \begin{equation} \elabel{dtbd}
 \dot{v} \rho \mathcal{V} = \rho g \mathcal{V} - C_D \pi D^2 \frac{1}{2} \rho v^2,
 \end{equation}
@@ -172,8 +175,7 @@ $g$ is the gravitational acceleration,
 $\mathcal{V}$ is the bubble volume,
 $C_D$ is a drag coefficient, and
 $D$ is the bubble diameter.
-
-%also \cite{Alon1995}
+The coefficient $C_D$ was found to take values between $0.52$ and $1.37$.
 
 \subsection{Tube model of Dimonte and Schneider}
 
@@ -188,82 +190,95 @@ $\beta < 1$ accounts for the relatively smaller buoyant portion of the bubble du
 $C_d$ is a drag coefficient, and
 $h_b$ is the bubble height.
 $\beta$ and $C_d$ depend on the Atwood number, but Dimonte proposes $\beta = 1/2$ and $C_d = 2$ for $A << 1$~\cite{Dimonte2000}.
-However, the model is stated to apply to self-similar bubble fronts.
+However, the model is stated to apply to self-similar bubble fronts, in wich $h_b \sim D$.
 
 \subsection{Self-similar model of Oron}
 
-A simple model of the stagnation stage is buoyancy-drag~\cite{Oron2001}:
+A model by Oron \etal also rescales the bubble mass~~\cite{Oron2001}:
 \begin{equation} \elabel{buoyancy_drag}
-(\rho_1 + C_a \rho_2) \mathcal{V} \ddot{h} = (\rho_2 - \rho_1) \mathcal{V} g - C_d \dot{h}^2 \rho_2 \mathcal{A}
+(\rho_1 + C_a \rho_2) \ddot{h} = (\rho_2 - \rho_1)g - \frac{C_d}{\lambda} \dot{h}^2 \rho_2 \mathcal{A}
 \end{equation}
 where $\rho_2 > \rho_1$ are the densities of the two fluids, 
 $C_a$ is an added mass coefficient,
-$\mathcal{V}$ is the volume of the bubble, 
 $h$ is the height of the bubble,
 $g$ is the gravitational acceleration,
 $C_d$ is a drag-like coefficient, and
-$\mathcal{A}$ is the bubble surface area.
-There is ambiguity as to the value of un-subscripted $\rho$, but in the low Atwood number limit $\rho_1 \approx \rho_2 = \rho$ removes it:
+$\lambda$ is a characteristic length.
+The use of $\lambda$, which is time-independent, implies the model is directed at self-similar flow.
+The values of $C_a$ and $C_d$ are assumed to be Atwood independent and set to agree with Layzer's theory:
 \begin{equation}
-\ddot{h} = A g - \frac{C}{2} \dot{h}^2 \frac{\mathcal{A}}{\mathcal{V}}
+C_a = 1 \qquad C_d = 2\pi
 \end{equation}
 
-There are two length scales in the single mode instability: $\lambda$ and $h$.
-If the bubble is self-similar or unsupported, as is generally the case in the literature, then $\mathcal{A}/\mathcal{V} \sim 1/\lambda$.
-Rolling that constant into $C$ yields:
-\begin{equation} \elabel{bouancy_drag}
-\ddot{h} = A g - C \frac{\dot{h}^2}{2 \lambda}  
-\end{equation}
-The stagnation velocity is therefore:
-\begin{equation}
-v_s = \sqrt{\frac{2 A g \lambda}{C}}
-\end{equation}
-This motivates the definition of the Froude-type number:
-\begin{equation}
-\text{Fr} = \frac{v}{\sqrt{\frac{A g \lambda}{1+A}}} \xrightarrow{A << 1} \frac{v}{\sqrt{A g \lambda}}
-\end{equation}
-which relates to the drag-like coefficient as:
-\begin{equation}
-\text{Fr} = \sqrt{\frac{2}{C}}
-\end{equation}
+\section{Problems with single mode Rayleigh-Taylor modeling}
 
-
-\section{Problems with single mode buoyancy-drag models}
-
-It has recently been shown, via both simulation~\cite{Ramaprabhu2006} and experiment~\cite{Wilkinson2007}, that at low Atwood number and high Reynolds number the flow continues to develop beyond the terminal velocity predicted by potential flow and buoyancy-drag into re-acceleration stage.
-For this reason, the nearly constant velocity is termed the \textit{stagnation velocity}.
-
+Simulations by Ramaprabhu \etal ~\cite{Ramaprabhu2006} have shown that, after stagnating at a constant velocity in agreement with the potential flow models, low-Atwood bubbles re-accelerate to velocities nearly twice the potential flow limit.
+The stagnation and re-acceleration phenomena were confirmed experimentally by Wilkinson and Jacobs~\cite{Wilkinson2007}.
+Modeling the stagnation and re-acceleration phases is the primary open problem in the low Atwood single-mode Rayleigh-Taylor instability.
 The desire to describe this re-acceleration process, quantitatively, is the motivation for this thesis.
-However, I will first give two qualitative explanations for while re-acceleration should be expected: one based on the pressure balance and another by identifying a historical inconsistency in the development of buoyancy-drag models.
+
+First, though, I will give three qualitative explanations for why re-acceleration should have been expected: one based on the pressure balance, one based on the assumptions of potential flow models, and another by identifying a historical inconsistency in the development of buoyancy-drag models.
 
 \subsection{Pressure in the single-mode RTI}
 
 If there is a terminal velocity regime, can it be due to form drag?
+In other words, can we have terminal velocity without viscosity?
 Let $\nu \rightarrow 0$ and consider a fluid element lying on the axis
-of a bubble or spike.
+of a bubble or spike at terminal velocity.
 By symmetry, it will only have a z-component of the velocity.
 The z-forces must balance:
-$$ \rho \phi g = \pder{P}{z} $$
-In the finger, the pressure would be decreasing with $z$.
-In the bubble, the pressure would be increasing with $z$.
-There would necessarily be a pressure gradient between the head of the finger and the tail of the bubble, and vice versa.
-As the aspect ratio exceeded unity, the span-wise pressure gradient would exceed the gravitational forcing.
+\begin{equation}
+- \phi g \hat{z} = \pder{P}{z} ,
+\end{equation}
+where $\phi$ represents the mass.
+In the falling spike, the pressure would be decreasing with $z$.
+In the rising bubble, the pressure would be increasing with $z$.
+There would necessarily be a pressure gradient between the head of the bubble and the tail of the spike, and vice versa.
+As the bubble aspect ratio exceeded unity, the span-wise pressure gradient would exceed the gravitational forcing.
 The resulting span-wise flow would rapidly mix the two fluids, destroying the bubble and spike.
 
 The form of the bubble and spike require the pressure to be reasonably homogeneous span-wise.
-Only at the bubble and spike tips do we accept a span-wise flow: the displacement of stationary fluid by the tip.
-In other words, the pressure drag is highly localized to the bubble and spike tips.
-The flow from tail to tip is attenuated predominately by viscous drag.
+Only at the bubble and spike tips do we observe a span-wise flow: the displacement of stationary fluid by the tip.
+In other words, the pressure drag is highly localized to the bubble and spike tips but cannot affect the flow in the stems of the bubbles and spikes.
+If the flow is terminal, then it must be attenuated predominately by viscous drag, which can act along the sidewalls, that is the stem, of the bubbles and spikes.
 
-\subsection{Historical inconsistency}
+\subsection{Departure from potential flow}
+The assumption that the flow is irrotational applies only at high Atwood number.
+At moderate and low Atwood numbers, the interface between the light and the dense fluid is a shear layer that generates vorticity.
+If the viscosity is low enough, secondary Kelvin-Helmholtz instabilities develop in the shear layer and transport vorticity into the center of the bubble.
+While it is not obvious that vorticity should cause re-acceleration, it is clear that the flow is not irrotational, even away from the fluid interface, and therefore cannot be accurately modeled by potential flow.
 
-The buoyancy-drag model model contains a buoyant term that goes with the bubble volume and a form drag term that goes with the bubble's area.
+\subsection{Historical inconsistency in buoyancy-drag models}
+
+Buoyancy-drag models contain a buoyant term that goes with the bubble's volume and a form drag term that goes with the bubble's span-wise area.
 The model was originally developed to describe multi-mode self-similar flow, in which there is only one length scale, the dominant wavelength $\lambda$.
 Consequently, the ratio of the volume to the surface area is $\lambda^{-1}$, yielding a terminal velocity as a function of $\lambda$.
 
 However, the single-mode RTI has two length scales: in addition to the wavelength $\lambda$ there is the bubble height, $h$.
 In other words, single-mode RTI bubbles are cylindrical instead of spherical with an axis length that goes with the bubble height.
-The ratio of the volume to surface area is $h^{-1}$, not $\lambda^{-1}$, so there is no terminal velocity.
+The ratio of the volume to surface area is $h^{-1}$, not $\lambda^{-1}$, so force balance occurs when $\dot{h} \sim \sqrt{h}$, which is not terminal.
 Only by introducing a drag term that goes with the height $h$, such as skin drag, can a terminal velocity be recovered.
 This terminal velocity would be a function of the viscosity, and therefore cannot be described by potential flow.
+
+\section{Related work aimed at modeling stagnation and re-acceleration}
+Since re-acceleration was observed experimentally, multiple attempts have been made to capture re-acceleration in the models.
+
+\subsection{Vortex ring correction of Ramaprabhu}
+
+Ramaprabhu \etal ~\cite{Ramaprabhu2012} attribute the reacceleration to the formation of a vortex ring at the bubble tip.
+They add a term to their buoyancy-drag model representing the centrifugal force per unit volume:
+\begin{equation}
+\left(\rho_2 g - \rho_1 g\right) + \rho_1 \frac{\omega_0^2 R}{ 4} = \frac{C_d \rho_2 v^2}{\lambda}
+\end{equation}
+where $\omega_0$ is the average vorticity in the bubble tip.
+The model does not provide an evolution equation for $\omega_0$; it is measured from simulations ad-hoc making the model descriptive but not predictive.
+The model agrees qualitatively, but not quantitatively, from the onset of stagnation at bubble height $h / \lambda \approx 0.5$ through re-acceleration at $h/\lambda \approx 2.0$, but doesn't capture linear growth at early times or the dynamics at late times.
+Furthermore, they compare the vortex ring model to simulations using two different codes and the two codes disagree quantitatively over the re-acceleration regime and qualitatively over what follows it.
+
+\section{Vorticity and viscosity in potential flow}
+
+Banerjee \etal attempt to describe re-acceleration by adding viscous and vortical effects to a potential flow model~\cite{Banerjee2011}.
+Similar to the vortex ring correction to buoyancy-drag, the vorticity is an input to the potential flow model.
+Instead of using data from simulations, Banerjee \etal write the vorticity as an analytic function of time independent of the Atwood number.
+The resulting dynamics have a single re-acceleration phase before reaching an asymptotic terminal velocity.
 

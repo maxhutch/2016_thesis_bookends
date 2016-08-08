@@ -199,7 +199,6 @@
       \bigskip
       \bigskip
       {\large in the \par}
-      {\large \facname \par}
       {\large \deptname \par}
       \bigskip
       \bigskip
@@ -235,7 +234,6 @@
     \bigskip
     {\huge{\textit{Abstract}} \par}
     \bigskip
-    {\normalsize \facname \par}
     {\normalsize \deptname \par}
     \bigskip
     {\normalsize Doctor of Philosophy\par}
