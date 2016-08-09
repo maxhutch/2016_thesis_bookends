@@ -1,0 +1,38 @@
+\tikzset{
+  laser beam action/.style={
+    line width=\pgflinewidth+.4pt,draw opacity=.1,draw=#1,
+  },
+  laser beam recurs/.code 2 args={%
+    \pgfmathtruncatemacro{\level}{#1-1}%
+    \ifthenelse{\equal{\level}{0}}%
+    {\tikzset{preaction={laser beam action=#2}}}%
+    {\tikzset{preaction={laser beam action=#2,laser beam recurs={\level}{#2}}}}
+  },
+  laser beam/.style={preaction={laser beam recurs={10}{#1}},draw opacity=1,draw=#1},
+}
+
+\begin{tikzpicture}[node distance=1cm, auto,]
+%\draw[help lines, thick] (0,0) grid (8,16);
+\draw (2,3) -- (2,13) -- (6,13) -- (6,3) -- cycle;
+\draw[dashed] (2,8) -- (6,8);
+\draw[laser beam=black] (2,8) to[out=85,  in=95,  distance=3.35cm] (3,8);
+\draw[laser beam=black] (3,8) to[out=-85, in=-95, distance=3.35cm] (4,8);
+\draw[laser beam=black] (4,8) to[out=85,  in=95,  distance=3.35cm] (5,8);
+\draw[laser beam=black] (5,8) to[out=-85, in=-95, distance=3.35cm] (6,8);
+
+\draw[white, fill=white] (1.5,7) rectangle (1.98,9);
+\draw[white, fill=white] (6.02,7) rectangle (6.5,9);
+
+\draw[dotted] (6,10.5) -- (2,10.5);
+\draw[dotted] (6,5.5) -- (2,5.5);
+\node[blue] at (4,12) {Heavy: $\rho_h$};
+\node[red] at (4,4) {Light: $\rho_l$};
+\draw[ultra thick, ->] (6.5,11) node[above] {g} -- (6.5,5);
+\draw (2,13.1) edge[<->] node[above] {L} (6,13.1);
+\draw (2,5.4) edge[<->] node[below] {$\lambda$} (4,5.4);
+\draw (2,11) edge[<->] node[above] {$d$} (3,11);
+\draw (2.88,8.2) edge[<->] node[above right] {$\delta$} (3.08,8.2);
+\draw (1.8,8) edge[<->] node[left] {$h_b$} (1.8,10.5);
+\draw (1.8,8) edge[<->] node[left] {$h_s$} (1.8,5.5);
+\end{tikzpicture}
+

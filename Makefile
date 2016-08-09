@@ -14,7 +14,6 @@ thesis:
 	cp ${TARGET}.pdf ~/Downloads/
 
 talk:
-	cp ~/Dropbox/writings/bib/library.bib .;
 	pdflatex --shell-escape -file-line-error ${SLIDES}.tex;
 	pdflatex --shell-escape -file-line-error ${SLIDES}.tex;
 
