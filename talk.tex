@@ -90,7 +90,7 @@ Soap left overnight\footnote{flowviz.tumblr.com}
 \begin{exampleblock}{Physical analogs}
 \begin{itemize}
   \item Warm and cold water
-  \item Salt and fresh water
+  \item Salty and fresh water
 \end{itemize}
 \end{exampleblock}
 
@@ -204,7 +204,7 @@ where $h$ is the bubble height, $\mathcal{V}, \mathcal{A}$ are characteristic vo
 \vspace{20pt} \pause
 For the single-mode RTI, $\mathcal{V} \sim \lambda^2 h$ and $\mathcal{A} \sim \lambda^2$, so:
 \begin{equation*}
-\dot{h}\left[\ddot{h} == 0\right] \sim \sqrt{h}
+\dot{h}\left[\ddot{h} = 0\right] \sim \sqrt{h}
 \end{equation*}
 There is no terminal velocity at all!
 
@@ -218,7 +218,7 @@ F_\nu \sim C \nu h \dot{h},
 \end{equation*}
 which is linear in $h$ so it can balance the buoyancy.
 \begin{equation*}
-\dot{h}\left[\ddot{h} == 0\right] = \frac{A g \lambda^2}{C \nu}
+\dot{h}\left[\ddot{h} = 0\right] = \frac{A g \lambda^2}{C \nu}
 \end{equation*}
 \pause
 
@@ -267,14 +267,14 @@ Now we need a model for $M$, but we can check it directly.
 \begin{frame}
 Assume the bubble has two parallel diffusive planar interfaces:
 \begin{equation*}
-\phi_{1D}(r) \sim \text{erf}\left[\frac{r}{\delta}\right] - \text{erf}\left[\frac{r - d}{\delta}\right]
+\phi_{1D}(r) \sim \frac{1}{2} \left(\text{erf}\left[\frac{r}{\delta}\right] - \text{erf}\left[\frac{r - d}{\delta}\right] \right)
 \end{equation*}
 where $\phi_{1D}$ is the 1D mass profile, $\delta$ is the interface width, and $d$ is the bubble diameter.
 \vspace{20pt}\pause
 
 Integrating and multiplying by a surface area term:
 \begin{equation*}
-M \approx \overbrace{\left(C_5 \lambda h + C_6 \lambda^2\right)}^{\text{surface area}} \overbrace{\left[\frac{2 \delta}{\sqrt{\pi}} \left(1 - e^{-d^2 / \delta^2}\right) + 2 d \left(1 - \text{erf}\left[\frac{d}{\delta}\right]\right)\right]}^{\text{1D mixing}}
+M \approx \overbrace{\left(C_5 \lambda h + C_6 \lambda^2\right)}^{\text{surface area}} \overbrace{\left[\frac{\delta}{\sqrt{\pi}} \left(1 - e^{-d^2 / \delta^2}\right) + d \left(1 - \text{erf}\left[\frac{d}{\delta}\right]\right)\right]}^{\text{1D mixing}}
 \end{equation*}
 with $d = C_5 \lambda / 8$, $\delta = 2 \sqrt{D t}$, and a generic volume:
 \begin{equation*}
@@ -286,16 +286,16 @@ V = C_7 \lambda^2 h + C_8 \lambda^3
 We can constrain 3 parameters by fitting limits:
 \begin{itemize}
   \item $C_4 = (2 \pi)^{-1}$ from the inviscid immiscible linear theory
-  \item $C_6 = 1$ from matching the initial condition
-  \item $C_8 = \pi^{-1}$ from the miscible linear theory
-\end{itemize}
+  \item $C_8 = (2 \pi)^{-1}$ from the miscible linear theory
+  \item $C_6 = 2/(1 + 2 \sqrt{\pi} \delta / \lambda)$ from matching the initial condition and miscible linear theory 
+\end{itemize}\pause \vspace{10pt}
 
 We can estimate the rest by physical argument:
 \begin{itemize}
-  \item $C_1$ from known drag coefficients
-  \item $C_2$ from Poiseuille flow
-  \item $C_3, C_7$ should be about 1
-  \item $C_5$ should be about $\pi$
+  \item $C_1 \approx 0.64$ from known drag coefficients
+  \item $C_2 \approx 114$ from Poiseuille flow
+  \item $C_3, C_7 \approx 1$ from the late-time limit
+  \item $C_5 \approx \pi$ from the cylindrical geometry
 \end{itemize}
 \end{frame}
 
@@ -341,7 +341,7 @@ Will the simulations agree quantitatively?
 
 \begin{frame}{Validation results}
 \begin{center}
-\includegraphics[height=0.9\textheight]{graphics/Fr.eps}
+\includegraphics[height=0.90\textheight]{graphics/Fr.eps}
 \end{center}
 \end{frame}
 
@@ -628,12 +628,49 @@ Dissipation dominates the late-time behavior
 \textit{Re-acceleration} is (just) a moderate-time transient
 \begin{itemize}
   \item This model misses re-acceleration but gets the later flow right
-  \item There is likely a missing term in the model
-  \item The vortex ring at the bubble tip is a prime suspect
+  \item Some physics is missing from the model, with a corresponding missing term
+  \begin{itemize}
+    \item The vortex ring at the bubble tip is a prime suspect
+  \end{itemize}
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Open questions}
+\begin{columns}[c] 
+\column{0.6\textwidth}
+\begin{itemize}
+  \item Is a vortex ring responsible for re-acceleration?
+  \begin{itemize}
+    \item If so, how can it be modeled?
+  \end{itemize}
+  
+  \item What is the complete behavior at higher Rayleigh number?
+
+  \item Can this model adapt to non-cubic lattices of bubbles and spikes?
+
+  \item Can the coefficients be constrained via experiments with non-stationary initial conditions?
+\end{itemize}
+
+\column{0.4\textwidth}
+\includegraphics[width=\columnwidth]{graphics/slice_vorticity.png}
+\end{columns}
+\end{frame}
+
 \appendix
+
+\begin{frame}{Key references}
+
+{\footnotesize
+\begin{itemize}
+  \item Duff, R., Harlow, F., \& Hirt, C. (1962). Effects of diffusion on interface instability between gases. Physics of Fluids. 
+  \item Dimonte, G. (2000). Spanwise homogeneous buoyancy-drag model for Rayleigh-Taylor mixing and experimental evaluation. Physics of Plasmas.
+  \item Goncharov, V. N. (2002). Analytical Model of Nonlinear, Single-Mode, Classical Rayleigh-Taylor Instability at Arbitrary Atwood Numbers. Physical Review Letters. 
+  \item Wilkinson, J. P., \& Jacobs, J. W. (2007). Experimental study of the single-mode three-dimensional Rayleigh-Taylor instability. Physics of Fluids.
+  \item Ramaprabhu, P., et al.\ (2012). The late-time dynamics of the single-mode Rayleigh-Taylor instability. Physics of Fluids.
+\end{itemize}
+}
+\end{frame}
+
 %===============================================================%
 \section*{Backup slides}
 %===============================================================%
