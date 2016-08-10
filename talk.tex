@@ -399,11 +399,11 @@ The 4-parameter dynamics model is fit given the mixing model.
 \begin{frame}[c]{Results: Fit trajectories}
 The following slides will contain plots of non-dimensional:
 \begin{itemize}
-  \item Bubble height $H / \lambda$
-  \item Bubble velocity (Froude number): $v / \sqrt{A g \lambda}$
-  \item Mixed volume: $M / \lambda^3$
+  \item $H / \lambda$, the bubble height 
+  \item $v / \sqrt{A g \lambda}$, the bubble velocity (Froude number)
+  \item $M / \lambda^3$, the mixed volume: 
 \end{itemize}
-versus time for a few representative trajectories.
+versus $t \sqrt{A g \lambda^{-1}}$, the  non-dimensional time, for a few representative trajectories.
 \end{frame}
 
 \begin{frame}[plain]
@@ -426,8 +426,6 @@ versus time for a few representative trajectories.
 \end{columns}
 \end{frame}
 
-
-
 \begin{frame}[plain]
 \begin{columns}[c]
 \column{0.5\textwidth}
@@ -445,6 +443,26 @@ versus time for a few representative trajectories.
 \end{itemize}
 \column{0.5\textwidth}
 \includegraphics[height=1.05\textheight]{graphics/H-2-1.png}
+\end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{itemize}
+  \item $\text{Gr} = 4.3 \times 10^4$
+  \item $\text{Sc} = 8$
+  \item $\text{Ra} = 3.5 \times 10^5$
+  \item $C_1 = 0.30$
+  \item $C_2 = 161.1$
+  \item $C_3 = 1.00$
+  \item $C_5 = 3.86$
+  \item $C_7 = 2.49$
+  \item $||H-h||_2/H = 0.29\%$
+  \item $||M-m||_2/M = 0.24\%$
+\end{itemize}
+\column{0.5\textwidth}
+\includegraphics[height=1.05\textheight]{graphics/H-8-1.png}
 \end{columns}
 \end{frame}
 
@@ -487,10 +505,6 @@ versus time for a few representative trajectories.
 \includegraphics[height=1.05\textheight]{graphics/H-64-4.png}
 \end{columns}
 \end{frame}
-
-
-
-
 
 \begin{frame}[t]{Coefficients wrt Rayleigh and Schmidt}
 %A quick review:
