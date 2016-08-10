@@ -396,15 +396,101 @@ The 4-parameter dynamics model is fit given the mixing model.
 %===============================================================%
 \section{Results}
 %===============================================================%
-\begin{frame}[t]{Results: Fit trajectories}
-The model is quantitative for the bubble height and mixed volume.
-\begin{center}
-\only<2>{\includegraphics[width=0.9\textwidth]{graphics/H-4-1.png}}
-\only<3>{\includegraphics[width=0.9\textwidth]{graphics/H-8-1.png}}
-\only<4>{\includegraphics[width=0.9\textwidth]{graphics/H-8-8.png}}
-\only<5>{\includegraphics[width=0.9\textwidth]{graphics/H-64-1.png}}
-\end{center}
+\begin{frame}[c]{Results: Fit trajectories}
+The following slides will contain plots of non-dimensional:
+\begin{itemize}
+  \item Bubble height $H / \lambda$
+  \item Bubble velocity (Froude number): $v / \sqrt{A g \lambda}$
+  \item Mixed volume: $M / \lambda^3$
+\end{itemize}
+versus time for a few representative trajectories.
 \end{frame}
+
+\begin{frame}[plain]
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{itemize}
+  \item $\text{Gr} = 4.3 \times 10^4$
+  \item $\text{Sc} = 8$
+  \item $\text{Ra} = 3.5 \times 10^5$
+  \item $C_1 = 0.30$
+  \item $C_2 = 161.1$
+  \item $C_3 = 1.00$
+  \item $C_5 = 3.86$
+  \item $C_7 = 2.49$
+  \item $||H-h||_2/H = 0.29\%$
+  \item $||M-m||_2/M = 0.24\%$
+\end{itemize}
+\column{0.5\textwidth}
+\includegraphics[height=1.05\textheight]{graphics/H-8-1.png}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}[plain]
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{itemize}
+  \item $\text{Gr} = 6.9 \times 10^5$
+  \item $\text{Sc} = 2$
+  \item $\text{Ra} = 1.4 \times 10^6$
+  \item $C_1 = 0.46$
+  \item $C_2 = 136.3$
+  \item $C_3 = 1.00$
+  \item $C_5 = 3.18$
+  \item $C_7 = 1.05$
+  \item $||H-h||_2/H = 0.74\%$
+  \item $||M-m||_2/M = 2.04\%$
+\end{itemize}
+\column{0.5\textwidth}
+\includegraphics[height=1.05\textheight]{graphics/H-2-1.png}
+\end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{itemize}
+  \item $\text{Gr} = 4.3 \times 10^4$
+  \item $\text{Sc} = 1$
+  \item $\text{Ra} = 4.3 \times 10^4$
+  \item $C_1 = 0.00$
+  \item $C_2 = 96.5$
+  \item $C_3 = 1.54$
+  \item $C_5 = 2.27$
+  \item $C_7 = 1.02$
+  \item $||H-h||_2/H = 0.14\%$
+  \item $||M-m||_2/M = 1.22\%$
+\end{itemize}
+\column{0.5\textwidth}
+\includegraphics[height=1.05\textheight]{graphics/H-8-8.png}
+\end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{itemize}
+  \item $\text{Gr} = 6.8 \times 10^2$
+  \item $\text{Sc} = 16$
+  \item $\text{Ra} = 1.1 \times 10^4$
+  \item $C_1 = 0.00$
+  \item $C_2 = 69.5$
+  \item $C_3 = 9.10$
+  \item $C_5 = 2.47$
+  \item $C_7 = 1.00$
+  \item $||H-h||_2/H = 0.22\%$
+  \item $||M-m||_2/M = 0.95\%$
+\end{itemize}
+\column{0.5\textwidth}
+\includegraphics[height=1.05\textheight]{graphics/H-64-4.png}
+\end{columns}
+\end{frame}
+
+
+
+
 
 \begin{frame}[t]{Coefficients wrt Rayleigh and Schmidt}
 %A quick review:
