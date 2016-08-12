@@ -133,14 +133,14 @@ Soap left overnight\footnote{flowviz.tumblr.com}
 \phi(x,y,z,0) = \text{erf}\left[ \frac{z + a_0 \cos(2 \pi x/\lambda) \cos(2 \pi y/\lambda)}{\delta}\right]
 \end{equation*}
 \end{block}
-\begin{exampleblock}{Non-dimensionalization}
+\begin{exampleblock}{Non-dimensionalization (assuming $\delta, a_0 << 1$)}
 Key numbers (any two are complete):
 \begin{equation*}
 \text{Grashof} = \frac{A g \lambda^3}{\nu^2} \qquad \text{Schmidt} = \frac{\nu}{D} \qquad \text{Rayleigh} = \text{Gr} \text{Sc}
 \end{equation*}
 Traditional characteristic scales:
 \begin{equation*}
-\mathcal{L} = \lambda \qquad \tau = (A g k)^{-1/2} \qquad \tilde{v} = \sqrt{A g \lambda} 
+	\mathcal{L} = \lambda \qquad \tau = \sqrt{\frac{\lambda}{A g}} \qquad \tilde{v} = \sqrt{A g \lambda} 
 \end{equation*}
 \end{exampleblock}
 \end{frame}
@@ -151,7 +151,7 @@ The linear theory applies when $a_0, t << 1$:
 h \sim \cosh(\gamma t) \qquad \gamma = \sqrt{\frac{A g k}{1+\pi^{-1/2} k \delta} + \nu^2 k^4} - (\nu + D)k^2
 \end{equation*}
 
-Potential flow models apply when $\nu \rightarrow 0$ and $A \rightarrow 1$.  They predict terminal bubble velocity:
+Potential flow models apply when $A \rightarrow 1$.  They predict terminal bubble velocity:
 \begin{equation*}
 v = \sqrt{\frac{A g \lambda}{\pi (1+A)}} \quad \text{or} \quad \text{Fr} = \frac{1}{\sqrt{\pi (1 + A)}}
 \end{equation*}
@@ -162,7 +162,7 @@ However, these potential flow models are broadly applied to low-Atwood and moder
 \section{Motivation}
 %===============================================================%
 \begin{frame}[t]{Re-acceleration}
-Recall that potential flow predicts:
+Potential flow models dominated the single model literature:
 \begin{equation*}
 v = \sqrt{\frac{A g \lambda}{\pi(1+A)}} \qquad A = \frac{\rho_2 - \rho_1}{\rho_2 + \rho_1}
 \end{equation*}
@@ -177,12 +177,12 @@ v = \sqrt{\frac{A g \lambda}{\pi(1+A)}} \qquad A = \frac{\rho_2 - \rho_1}{\rho_2
 \end{itemize}
 }
 \only<2->{
-But low Atwood single mode simulations and experiments disagreed:
+	But low Atwood single mode simulations \only<3>{and experiments} disagreed:
 \includegraphics[height=0.5\textheight]{graphics/fr_flash.png}
 ~~~~
-\includegraphics[height=0.5\textheight]{graphics/wilkinson_Fr.png}
+\visible<3>{\includegraphics[height=0.5\textheight]{graphics/wilkinson_Fr.png}}
 
-{\footnotesize Simulations by Ramaprabhu and Dimonte, experiments by Wilkinson and Jacobs.}
+	{\footnotesize Simulations by Ramaprabhu and Dimonte\visible<3>{, experiments by Wilkinson and Jacobs.}}
 }
 \end{frame}
 
@@ -222,7 +222,7 @@ which is linear in $h$ so it can balance the buoyancy.
 \end{equation*}
 \pause
 
-The growth is still terminal, but generally at a greater bubble velocity than predicted by inviscid potential flow models.
+The growth is still terminal, but can be increased to $\infty$ by decreasing the viscosity towards 0.
 \vspace{20pt} \pause
 \begin{exampleblock}{}
 Let's build this idea into a full model.
@@ -254,14 +254,14 @@ If $\dot{h}$ is bounded, mixing ultimately dominates the inflow of pure fluid.
 \end{equation*}
 \pause
 
-We'll track the volume of mixed fluid instead, $V_m \equiv M$, and define the effective Atwood number wrt the volume fraction of mixed fluid:
+We'll track the volume of mixed fluid instead, $V_m \equiv m$, and define the effective Atwood number wrt the volume fraction of mixed fluid:
 \begin{equation*}
-A = A_0 \left(1 - \frac{M}{V}\right)
+A = A_0 \left(1 - \frac{m}{V}\right)
 \end{equation*}
 where $A_0$ is the Atwood number of pure fluids.
 \vspace{20pt} \pause
 
-Now we need a model for $M$, but we can check it directly.
+Now we need a model for $m$, but we can check it directly.
 \end{frame}
 
 \begin{frame}
@@ -274,7 +274,7 @@ where $\phi_{1D}$ is the 1D mass profile, $\delta$ is the interface width, and $
 
 Integrating and multiplying by a surface area term:
 \begin{equation*}
-M \approx \overbrace{\left(C_5 \lambda h + C_6 \lambda^2\right)}^{\text{surface area}} \overbrace{\left[\frac{\delta}{\sqrt{\pi}} \left(1 - e^{-d^2 / \delta^2}\right) + d \left(1 - \text{erf}\left[\frac{d}{\delta}\right]\right)\right]}^{\text{1D mixing}}
+m \approx \overbrace{\left(C_5 \lambda h + C_6 \lambda^2\right)}^{\text{surface area}} \overbrace{\left[\frac{\delta}{\sqrt{\pi}} \left(1 - e^{-d^2 / \delta^2}\right) + d \left(1 - \text{erf}\left[\frac{d}{\delta}\right]\right)\right]}^{\text{1D mixing}}
 \end{equation*}
 with $d = C_5 \lambda / 8$, $\delta = 2 \sqrt{D t}$, and a generic volume:
 \begin{equation*}
@@ -318,7 +318,7 @@ Experiments are \textit{hard}, but we might be able to use direct numerical simu
 
 Two important qualifications of the simulations:
 \begin{enumerate}
-  \item Do they include all relevant physical processes?
+  \item Do they include all relevant physics?
   \item Are they accurate and cheap enough to do a parameter sweep?
 \end{enumerate}
 \end{frame}
@@ -346,12 +346,31 @@ Will the simulations agree quantitatively?
 \end{frame}
 
 \begin{frame}{Convergence and performance}
-\begin{center}
-\vspace{-10pt}
-\includegraphics[height=0.89\textheight]{graphics/mira_H.pdf}
-\end{center}
-\vspace{-20pt}
-Selected discretization with error in height below $10^{-4}$
+\begin{columns}[c]
+\column{0.37\textwidth}
+Sampled discretizations:
+\begin{itemize}
+\item Polynomial order
+\item Mesh size
+\end{itemize}
+\vspace{10pt}
+
+Compared error vs time:
+\begin{itemize}
+\item Error $ \equiv ||H-h||_2$
+\item Total core hours 
+\end{itemize}
+\vspace{10pt}
+
+Picked efficient balance:
+\begin{itemize}
+\item $p=31,~ n = 2$ 
+\item $||H-h||_2 \approx 2 \times10^{-5}$ 
+\end{itemize}
+
+\column{0.63\textwidth}
+\includegraphics[height=0.95\textheight]{graphics/mira_H.pdf}
+\end{columns}
 \end{frame}
 
 
@@ -387,7 +406,7 @@ The 1-parameter mixing model is fit first, using the true bubble height as input
 The 4-parameter dynamics model is fit given the mixing model.
 \begin{itemize}
   \item Non-linear fit with covariance matrix assisted evolution strategy
-  \item L2 (Tinkhonov) regularization about coefficient estimates
+  \item L2 (Tikhonov) regularization about coefficient estimates
   \item Constraints set by physical argument, e.g. $C_3 \ge 1$.
   \item Polished with sequential-least-squares
 \end{itemize}
@@ -588,7 +607,7 @@ Direct numerical simulations are effective proxies for experiments
   \item Boussinesq, low-Schmidt, and incompressible approximations valid for low-Atwood RTI
   \item Simulation state of the art is capable of $\text{Ra} = 4 \times 10^{4}$
 \end{itemize}
-\vspace{10pt} \pause
+\vspace{20pt}
 
 Buoyancy-drag models can be fit with CMA-ES $+$ regularization
 \begin{itemize}
@@ -624,6 +643,7 @@ Dissipation dominates the late-time behavior
   \item The only late-time velocity is viscous
   \item Any finite viscosity and diffusivity results in mixing death
 \end{itemize}
+\vspace{20pt}
 
 \textit{Re-acceleration} is (just) a moderate-time transient
 \begin{itemize}
@@ -656,7 +676,25 @@ Dissipation dominates the late-time behavior
 \end{columns}
 \end{frame}
 
-\appendix
+
+\begin{frame}{Big thanks}
+\begin{block}{Directly}
+Robert Rosner, Aleks Obabko, Paul Fischer, Oana Marin, Michel Schanen, Elia Merzari, Ron Rahaman, Alexander Heinecke, Scott Parker, Philipp Schlatter, and Elizabeth Hicks.
+\end{block}
+
+\begin{block}{Indirectly}
+David Keyes, Matteo Parsani, David Prendergast, Sarah Tariq, Anciaux Sedrakin, and Paul Fleurat-Lessard.
+\end{block}
+
+{\scriptsize
+I acknowledge support from the Department of Energy Computational Science graduate fellowship.
+For computer time, this research partially used the resources of the
+Supercomputing Laboratory at King Abdullah University of Science \& Technology
+ (KAUST) in Thuwal, Saudi Arabia.
+ This research used resources of the Argonne Leadership Computing Facility, which
+ is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
+}
+\end{frame}
 
 \begin{frame}{Key references}
 
@@ -671,9 +709,69 @@ Dissipation dominates the late-time behavior
 }
 \end{frame}
 
+\begin{frame}{Thank you}
+
+{\Huge Questions?}
+
+\end{frame}
+
+\appendix
+
 %===============================================================%
 \section*{Backup slides}
 %===============================================================%
+
+\begin{frame}[t]{Penetration Depth}
+The \textit{penetration depth} is the height of the bubble when it stops rising.
+\begin{equation*}
+\frac{h_\infty}{\lambda} = 2.41 \times 10^{-4} ~ \text{Ra} - 0.36 \qquad \qquad \qquad \text{Ra}_c = 1500
+\end{equation*}
+\begin{center}
+\vspace{-10pt}
+\only<1>{\includegraphics[height=0.70\textheight]{graphics/PenetrationDepth-vs-Rayleigh-Schmidt.eps}}
+\only<2>{\includegraphics[height=0.70\textheight]{graphics/Depth-vs-Rayleigh.eps}}
+\end{center}
+\end{frame}
+
+\begin{frame}{Flow regimes: high Grashof}
+\begin{columns}[c]
+\column{0.26\textwidth}
+\begin{itemize}
+  \item Linear 
+  \item Saturation
+  \item Viscous
+  \item Diffusive
+  \item Reaccel.
+\end{itemize}
+
+\column{0.74\textwidth}
+\only<1>{\includegraphics[height=0.85\textheight]{graphics/Cascade-4-1.eps}}
+\only<2>{\includegraphics[height=0.85\textheight]{graphics/Cascade-short-4-1.eps}}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Flow regimes: low Grashof}
+\begin{columns}[c]
+\column{0.26\textwidth}
+\begin{itemize}
+  \item Linear 
+  \item Saturation
+  \item Viscous
+  \item Diffusive
+  \item Reaccel.
+\end{itemize}
+
+\column{0.74\textwidth}
+\only<1>{\includegraphics[height=0.85\textheight]{graphics/Cascade-32-4.eps}}
+\only<2>{\includegraphics[height=0.85\textheight]{graphics/Cascade-short-32-4.eps}}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Slices of $\phi(x,z)$ and $w(x,z)$}
+\includegraphics[width=0.5\textwidth]{graphics/slice.eps}
+\includegraphics[width=0.5\textwidth]{graphics/slice_w.eps}
+\end{frame}
+
 \begin{frame}{Backup slide}
 
 	Some stuff here.
