@@ -1,0 +1,99 @@
+% ---- ETD Document Class and Useful Packages ---- %
+\documentclass{ucetd}
+\usepackage{subfigure,epsfig,amsfonts}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mysty}
+
+%% Use these commands to set biographic information for the title page:
+\title{Data driven modeling of the low-Atwood single-mode Rayleigh-Taylor instability}
+\author{Maxwell Hutchinson}
+\department{Physics Department}
+\division{Physical Sciences Division}
+\degree{Doctor of Philosophy}
+\date{December 9th, 2016}
+
+%% Use these commands to set a dedication and epigraph text
+\dedication{Dedicated to Tracey Ziev}
+\epigraph{Epigraph Text}
+
+
+\begin{document}
+%% Basic setup commands
+% If you don't want a title page comment out the next line and uncomment the line after it:
+\maketitle
+%\omittitle
+
+% These lines can be commented out to disable the copyright/dedication/epigraph pages
+\makecopyright
+\makededication
+\makeepigraph
+
+
+%% Make the various tables of contents
+\tableofcontents
+\listoffigures
+\listoftables
+
+\acknowledgments
+% Enter Acknowledgements here
+
+I would like to thank Robert Rosner for letting me chart my course through this thesis and my doctoral research more broadly.
+I thank Aleksandr Obabko and Paul Fischer for supporting Nek5000 and working with me through the numerics.
+I also thank Oana Marin and Michel Schanen for their excitement and Elia Merzari and Ron Rahaman for their support.
+I thank Alexander Heinecke and Scott Parker for their help tuning the code to run on supercomputers.
+I thank Elizabeth Hicks for helpful comments and advice.
+
+For computer time, this research partially used the resources of the
+Supercomputing Laboratory at King Abdullah University of Science \& Technology
+ (KAUST) in Thuwal, Saudi Arabia.
+This research used resources of the Argonne Leadership Computing Facility, which
+is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
+I acknowledge support from the Department of Energy Computational Science graduate fellowship.
+
+\abstract
+% Enter Abstract here
+
+The Rayleigh-Taylor instability is one of the most common and well studied phenomena in fluid dynamics.
+Despite research dating to
+the late 19th century, the non-linear dynamics
+of the interfacial instability are still not fully understood, particularly in the case when the two fluids have nearly the same density.
+It was recently demonstrated in this, the low-Atwood regime, that the idealized single-mode problem departs from established potential flow models in the form of a re-acceleration beyond the predicted terminal interface velocity.
+This thesis is an attempt to model that re-acceleration and, more broadly, the late time dynamics of the single-mode low-Atwood Rayleigh-Taylor instability.
+
+The approach taken here is based on buoyancy-drag models, which express a force balance between buoyancy and parasitic drag.
+The dynamical buoyancy-drag model is supplemented with a mixing model that dilutes the buoyant force over time.
+These models are written deliberately generally, with 8 unique coefficients.
+Three of these coefficients are solved for by equating the early time behavior with that of well established linear theories.
+The remaining 5 coefficients are estimated by relating them to drag coefficients, friction factors, and geometric ratios in the interface shape.
+
+To evaluate the model and compute the 5 unknown coefficients more precisely, a set of direct numerical simulations are performed over the relevant parameter space.
+These simulations are first validated against experimental data.
+Then they are shown to converge and their resolutions are chosen such as to minimize computational cost given the accuracy scale of the model.
+The 5 coefficients are fit to the resulting data set, and the model achieves better than 2\% error in the bubble height and 4\% error in the volume of mixed fluid.
+Three coefficients are nominally independent of the parameterization of the problem, while two are shown to vary with the Rayleigh number and the diffusivity.
+
+
+\mainmatter
+% Main body of text follows
+
+\input{Chapters/Introduction} % Introduction
+
+\input{Chapters/Background} % Introduction
+
+\input{Chapters/Standalone}
+
+\input{Chapters/Conclusions} % Conclusion
+
+% Format a LaTeX bibliography
+\makebibliography
+
+% Figures and tables, if you decide to leave them to the end
+%\input{figure}
+%\input{table}
+
+\end{document}
+
+
