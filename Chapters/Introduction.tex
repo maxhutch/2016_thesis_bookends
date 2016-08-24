@@ -21,12 +21,12 @@ The forcing on the heavier fluid below the interface is then:
 \begin{equation}\elabel{force1}
 \sum F = - \nabla P + F_g = \rho_l g  - \rho_h g < 0,
 \end{equation}
-so the heavier fluid is forced downwards through the lighter fluid.
+so the heavier fluid is forced downwards through the lighter fluid, forming strcutures called spikes.
 Conversely, the forcing on the lighter fluid above the interface is:
 \begin{equation} \elabel{force2}
 \sum F = - \nabla P + F_g = \rho_l g  - \rho_h g > 0,
 \end{equation}
-so the lighter fluid is forced upwards through the heavier fluid.
+so the lighter fluid is forced upwards through the heavier fluid, forming structures called bubbles.
 Perturbations in the interface grow, so the configuration is unstable.
 
 \section{Instances and motivation}
@@ -88,7 +88,7 @@ The high Atwood regime requires the Atwood number to be at least one half.
 
 At low Atwood number, e.g. salt water and fresh water, the flow is approximated in the limit of zero Atwood number.
 The governing equations can be simplified via the Boussinesq approximation: only terms with the product of the Atwood number and acceleration remain.
-The behavior of the bubbles and spikes are symmetric given symmetric initial conditions.
+The behavior of the rising fluid, i.e.\ bubbles, and falling fluid, i.e.\ spikes, are symmetric given symmetric initial conditions.
 It is often possible to treat the true two-phase problem as a single phase with an active scalar.
 The valid range of Atwood numbers for the Boussinesq approximation is problem dependent~\cite{Mikaelian2014}, but typically taken to be less than $A = 0.10$.
 % When is it Boussinsq?
@@ -145,19 +145,19 @@ where $u$ is the fluid velocity,
 $\phi$ is the active scalar that represents small mass differences,
 and the acceleration is aligned vertically with $\hat{z}$.
 
-These equations have three governing parameters; $(Ag)$, $\nu$, and $D$; which support the construction of two dimensionless numbers:
+These equations have three governing parameters; $(Ag)$, $\nu$, and $D$.
+In the single-mode case, the dominant length scale is $\lambda$, which supports the construction of two dimensionless numbers:
 \begin{equation}
-\text{Grashof} = \frac{Ag L^3}{\nu^2}
+\text{Grashof} = \frac{Ag \lambda^3}{\nu^2}
 \end{equation}
 \begin{equation}
 \text{Schmidt} = \frac{\nu}{D}
 \end{equation}
-If the initial and boundary conditions can be characterized by a single length scale, then these two parameters uniquely identify the system.
-In the single-mode case, this length is the wavelength $\lambda$.
+If the initial and boundary conditions have no other length scales, e.g.\ the initial interface is a thin low-amplitude perturbation, i.e.\ $a_0, \delta << 1$, then these two parameters uniquely identify the system.
 
 It is convenient to introduce another dimensionless number, the Rayleigh number:
 \begin{equation}
-\text{Rayleigh} = \text{Grashof} \cdot \text{Schmidt} = \frac{A g L^3}{\nu D},
+\text{Rayleigh} = \text{Grashof} \cdot \text{Schmidt} = \frac{A g \lambda^3}{\nu D},
 \end{equation}
 with which many mixing related quantities scale.
 The three dimensionless numbers are abbreviated Gr, Sc, and Ra, respectively.

@@ -96,20 +96,20 @@ Layzer claims the flow will therefore continue to be irrotational, because the v
 
 Since the flow is inviscid and irrotational, Layzer uses the potential flow technique, writing the velocity as the gradient of a scalar potential:
 \begin{equation}
-v = \nabla \phi
+v = \nabla \Phi
 \end{equation}
 where 
 $v$ is the velocity and 
-$\phi$ is the scalar potential.
+$\Phi$ is the scalar potential.
 Incompressibility zeroes the Laplacian of the potential:
 \begin{equation}
-\nabla^2 \phi = 0
+\nabla^2 \Phi = 0
 \end{equation}
 A Bernoulli equation is used model the interface:
 \begin{equation} \label{eqn:LayzerBernoulli}
 \begin{aligned}
-f(t) & = \der{\phi}{t}(\eta(r,t), r, t) \\
-& - \frac{1}{2} \left(\left(\pder{\phi}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi}{r}\right)^2(\eta(r,t), r, t)\right) - g \eta(r,t) 
+f(t) & = \der{\Phi}{t}(\eta(r,t), r, t) \\
+& - \frac{1}{2} \left(\left(\pder{\Phi}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\Phi}{r}\right)^2(\eta(r,t), r, t)\right) - g \eta(r,t) 
 \end{aligned}
 \end{equation}
 where 
@@ -118,11 +118,11 @@ $g$ is the gravitational acceleration, and
 $f(t)$ is an arbitrary function of time but not space.
 The flow is axially symmetric with a vanishing radial component at transverse walls and vanishing vertical component far away from the bubble:
 \begin{equation}
-\pder{\phi}{r}(z,R,t) = 0 \qquad \pder{\phi}{z}(\pm \infty, r, t) = 0
+\pder{\Phi}{r}(z,R,t) = 0 \qquad \pder{\Phi}{z}(\pm \infty, r, t) = 0
 \end{equation}
 Finally, the fluid advects the interface:
 \begin{equation}
-\der{\eta}{t}(r,t) = \pder{\phi}{z}(\eta(r,t), r, t) - \pder{\phi}{r}(\eta(r,t), r, t) \der{\eta}{r}(r,t)
+\der{\eta}{t}(r,t) = \pder{\Phi}{z}(\eta(r,t), r, t) - \pder{\Phi}{r}(\eta(r,t), r, t) \der{\eta}{r}(r,t)
 \end{equation}
 
 The details of the derivation can be found in \aref{Layzer} and the results are summarized here.
@@ -141,9 +141,9 @@ In doing so, he makes a different choice of simplifying approximation for the Be
 The consideration of a second fluid with non-zero density turns the Bernoulli equation \eref{LayzerBernoulli} into a difference:
 \begin{equation} \label{eqn:GonBernoulli}
 \begin{aligned}
-f(t) = &   \rho_1 \der{\phi_1}{t}(\eta(r,t), r, t) - \rho_2 \der{\phi_2}{t}(\eta(r,t), r, t) \\
-& - \rho_1 \frac{1}{2} \left(\left(\pder{\phi_1}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi_1}{r}\right)^2(\eta(r,t), r, t)\right) \\
-& + \rho_2 \frac{1}{2} \left(\left(\pder{\phi_2}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\phi_2}{r}\right)^2(\eta(r,t), r, t)\right) \\
+f(t) = &   \rho_1 \der{\Phi_1}{t}(\eta(r,t), r, t) - \rho_2 \der{\Phi_2}{t}(\eta(r,t), r, t) \\
+& - \rho_1 \frac{1}{2} \left(\left(\pder{\Phi_1}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\Phi_1}{r}\right)^2(\eta(r,t), r, t)\right) \\
+& + \rho_2 \frac{1}{2} \left(\left(\pder{\Phi_2}{z}\right)^2(\eta(r,t), r, t) +\left(\pder{\Phi_2}{r}\right)^2(\eta(r,t), r, t)\right) \\
 & - g \rho_1 \eta(r,t) + g \rho_2 \eta(r,t) 
 \end{aligned}
 \end{equation}
@@ -167,15 +167,15 @@ Here, we focus on models applicable to single-mode non-interacting bubbles.
 Early experiments on the Rayleigh-Taylor instability by Davies and Taylor~\cite{Davies1950a} were performed by measuring the dynamics of large bubbles of gas rising through a dense liquid.
 In their analysis, they relate the terminal velocity of the bubble to a drag coefficient, implicitly defining a buoyancy-drag model of the form:
 \begin{equation} \elabel{dtbd}
-\dot{v} \rho \mathcal{V} = \rho g \mathcal{V} - C_D \pi D^2 \frac{1}{2} \rho v^2,
+\dot{v} \rho \mathcal{V} = \rho g \mathcal{V} - C_D \pi d^2 \frac{1}{2} \rho v^2,
 \end{equation}
 where $v$ is the gas bubble velocity,
 $\rho$ is the density of the liquid,
 $g$ is the gravitational acceleration,
 $\mathcal{V}$ is the bubble volume,
-$C_D$ is a drag coefficient, and
-$D$ is the bubble diameter.
-The coefficient $C_D$ was found to take values between $0.52$ and $1.37$.
+$C_d$ is a drag coefficient, and
+$d$ is the bubble diameter.
+The coefficient $C_d$ was found to take values between $0.52$ and $1.37$.
 
 \subsection{Tube model of Dimonte and Schneider}
 
