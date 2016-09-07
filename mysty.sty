@@ -1,5 +1,15 @@
 \ProvidesPackage{mysty}
 
+\usepackage{caption}
+\usepackage{verbatim}
+\usepackage{pgfplotstable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{dashrule}
+
+
+
 \newcommand{\sref}[1]{Section~\ref{sec:#1}}
 \newcommand{\tref}[1]{Table~\ref{tbl:#1}}
 \newcommand{\eref}[1]{Equation~\ref{eqn:#1}}
@@ -18,10 +28,14 @@
 \newcommand{\der}[2] {\frac{d #1}{d #2}}
 \newcommand{\dder}[2] {\frac{d^2 #1}{d #2^2}}
 \newcommand{\etal}[0] {et al.\ }
+\newcommand{\ie}[0] {i.e.\ }
+
 
 
 \newcommand{\cref}[1]{Chapter~\ref{sec:#1}}
 \newcommand{\aref}[1]{Appendix~\ref{sec:#1}}
 \newcommand{\clabel}[1]{\label{sec:#1}}
 \newcommand{\alabel}[1]{\label{sec:#1}}
+\DeclareMathOperator\erf{erf}
+
 
