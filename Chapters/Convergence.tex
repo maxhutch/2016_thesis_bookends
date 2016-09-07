@@ -14,6 +14,19 @@
 
 \chapter{Efficiency of High Order Spectral Element Methods on Petascale Architectures}
 
+\makeatletter
+\newcommand{\chapterauthor}[1]{%
+  {\parindent0pt\vspace*{-25pt}%
+  \linespread{1.1}\large\scshape#1%
+  \par\nobreak\vspace*{35pt}}
+  \@afterheading%
+}
+\makeatother
+
+\vspace{20pt}
+
+\chapterauthor{Maxwell Hutchinson, Alexander Heinecke, Hans Pabst, Greg Henry, Matteo Parsani, and David Keyes}
+
 % a short form should be given in case it is too long for the running head
 %\titlerunning{Lecture Notes in Computer Science: Authors' Instructions}
 
@@ -84,7 +97,7 @@ From a performance point of view, we demonstrate up to 60\% full application ban
 \input{Chapters/convergence/conclusion}
 
 
-\scriptsize
+{ \scriptsize
 
 \noindent Optimization Notice: Software and workloads used in
 performance tests may have been optimized for performance only on
@@ -101,3 +114,4 @@ For more information go to http://www.intel.com/performance.
 Phi are trademarks of Intel Corporation in the U.S. and/or other
 countries.
 
+}

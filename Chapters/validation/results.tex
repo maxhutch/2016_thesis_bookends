@@ -30,7 +30,7 @@ This could be due to the long-wavelength finite size effect discussed later, whi
 \subsubsection{Froude number}
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{plts/Fr}
+\includegraphics[width=\textwidth]{plts/Fr}
 \caption{ \flabel{froude} 
 Froude number vs height, non-dimensionalized by the wavelength.
 Lines are the derivative of cubic splines through simulation outputs.
@@ -40,7 +40,7 @@ The dotted horizontal line is positioned at Goncharov's theoretical value of $\p
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=\columnwidth]{plts/aspect}
+\includegraphics[width=\textwidth]{plts/aspect}
 \caption{ \flabel{aspect} 
 Bubble height vs time, non-dimensionalized by the wavelength and linear growth rate, respectively.
 Lines are cubic splines through simulation outputs.
@@ -76,11 +76,11 @@ These three extensions are a small sample of the types of observations that are 
 \subsubsection{Wall effects}
 
 \begin{figure*}
-\begin{subfigure}[b]{\columnwidth}
-  \includegraphics[width=\columnwidth]{plts/walls_Fr}
+\begin{subfigure}[b]{0.5\textwidth}
+  \includegraphics[width=\textwidth]{plts/walls_Fr}
 \end{subfigure}
-\begin{subfigure}[b]{\columnwidth}
-  \includegraphics[width=\columnwidth]{plts/walls_Fr_zoom}
+\begin{subfigure}[b]{0.5\textwidth}
+  \includegraphics[width=\textwidth]{plts/walls_Fr_zoom}
 \end{subfigure}
 \caption{ \flabel{froude_wall} 
 Froude number as a function of height, non-dimensionalized by the wavelength, by bubble in the 4.5 mode simulation.
@@ -90,11 +90,11 @@ Dotted line is the periodic reference calculation.
 \end{figure*}
 
 \begin{figure*}
-\begin{subfigure}[b]{\columnwidth}
-  \includegraphics[width=\columnwidth]{plts/walls_h}
+\begin{subfigure}[b]{0.5\textwidth}
+  \includegraphics[width=\textwidth]{plts/walls_h}
 \end{subfigure}
-\begin{subfigure}[b]{\columnwidth}
-  \includegraphics[width=\columnwidth]{plts/walls_h_diag}
+\begin{subfigure}[b]{0.5\textwidth}
+  \includegraphics[width=\textwidth]{plts/walls_h_diag}
 \end{subfigure}
 \caption{ \flabel{ratio_wall}
 Ratio of wall-bounded bubble height to periodic bubble height in the 4.5 mode simulation.
@@ -102,14 +102,14 @@ Ratio of wall-bounded bubble height to periodic bubble height in the 4.5 mode si
 \end{figure*}
 
 \begin{figure*}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/spatial_bubble-1}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/spatial_bubble-1}
 \end{subfigure}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/spatial_bubble-17}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/spatial_bubble-17}
 \end{subfigure}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/spatial_bubble-59}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/spatial_bubble-59}
 \end{subfigure}
 \caption{ \flabel{bubble_slice}
 Spatial distribution of bubble heights at three times.
@@ -148,11 +148,11 @@ The wall lift ultimately leads to bubble collisions that destroy the bubble latt
 \subsubsection{Late-time behavior}
 
 \begin{figure*}
-\begin{subfigure}[b]{\columnwidth}
-  \includegraphics[width=\columnwidth]{plts/Fr_long}
+\begin{subfigure}[b]{0.5\textwidth}
+  \includegraphics[width=\textwidth]{plts/Fr_long}
 \end{subfigure}
-\begin{subfigure}[b]{\columnwidth}
-  \includegraphics[width=\columnwidth]{plts/aspect_long}
+\begin{subfigure}[b]{0.5\textwidth}
+  \includegraphics[width=\textwidth]{plts/aspect_long}
 \end{subfigure}
 \caption{ \flabel{long_dynamics}
 Bubble velocity and bubble height vs time, non-dimensionalized by the wavelength and linear growth rate, for 4.5 mode simulations and experiment.
@@ -164,14 +164,14 @@ The solid vertical line marks the greatest bubble height reached in any of the e
 \end{figure*}
 
 \begin{figure*}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{plts/Fr_long_walls}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{plts/Fr_long_walls}
 \end{subfigure}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{plts/Fr_long_walls_zoom1}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{plts/Fr_long_walls_zoom1}
 \end{subfigure}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{plts/Fr_long_walls_zoom2}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{plts/Fr_long_walls_zoom2}
 \end{subfigure}
 \caption{ \flabel{long_wall_dynamics}
 Froude number as a function of height, non-dimensionalized by the wavelength, by bubble in the 4.5 mode simulation with extended vertical extent.
@@ -204,14 +204,14 @@ It is not clear if the decay of the interior bubbles at $h/\lambda = 5$ is due t
 \subsubsection{Secondary flow}
 
 \begin{figure*}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/scalar-25-20}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/scalar-25-20}
 \end{subfigure}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/scalar-35-20}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/scalar-35-20}
 \end{subfigure}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/scalar-45-20}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/scalar-45-20}
 \end{subfigure}
 \caption{ \flabel{phixy}
 Scalar field in the horizontal mid-plane for 2.5, 3.5, and 4.5 mode simulations.
@@ -221,14 +221,14 @@ Scalar field in the horizontal mid-plane for 2.5, 3.5, and 4.5 mode simulations.
 
 
 \begin{figure*}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/vorticity-25-10}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/vorticity-25-10}
 \end{subfigure}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/vorticity-35-10}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/vorticity-35-10}
 \end{subfigure}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/vorticity-45-10}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/vorticity-45-10}
 \end{subfigure}
 \caption{ \flabel{secondary}
 Secondary flow in the horizontal mid-plane.
@@ -238,14 +238,14 @@ Contours are lines of constant pressure.
 \end{figure*}
 
 \begin{figure*}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/dynamic_pressure-25-10}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/dynamic_pressure-25-10}
 \end{subfigure}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/dynamic_pressure-35-10}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/dynamic_pressure-35-10}
 \end{subfigure}
-\begin{subfigure}[b]{0.66\columnwidth}
-  \includegraphics[width=0.66\columnwidth]{figs/dynamic_pressure-45-10}
+\begin{subfigure}[b]{0.32\textwidth}
+  \includegraphics[width=\textwidth]{figs/dynamic_pressure-45-10}
 \end{subfigure}
 \caption{ \flabel{dynamic}
 Dynamic pressure in the horizontal mid-plane.
