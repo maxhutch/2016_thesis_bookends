@@ -1,0 +1,49 @@
+NekBox enhanced by LIBXSMM generated kernels on Shaheen XC40 executes the performance critical, order-dependent components of Nek above 80\% of peak memory bandwidth.
+For comparison, compiled code on the BlueGene/Q architecture is only able to
+reach 50\% of peak and for many polynomial orders operates around 30\%.
+Therefore, despite only having 1.7$\times$ the memory bandwidth, Shaheen's cores
+outperform Mira's cores by 3-6$\times$ with the greatest improvement at high
+order and for sizes that are not divisible by the vector width, 4 in this case.
+NekBox is able to scale 67.5\% utilization rates to 65,536 cores on Shaheen.
+
+%, beyond which power throttling reduces efficiency by a factor of 2 overall. 
+%However, the Helmholtz operator is relatively unaffected and able to achieve a PFLOPS of performance on 131,072 cores.
+
+For the smRTI, the efficiency frontier, i.e. the discretizations that minimize
+cost given accuracy or minimize error given cost, have polynomial orders between 15 and 31, higher than are typically used in spectral element schemes.
+The presence of high order schemes on the efficiency frontier can be understood by the combination of two effects.
+First, the increase in arithmetic intensity is hidden by the imbalance between floating point capabilities and memory bandwidth, providing high order at no marginal cost on a per time-step basis.
+Second, higher order schemes with fewer degrees are freedom are more accurate than lower order schemes with more degrees of freedom.
+It is generally possible to maintain accuracy by increasing the order while decreasing the total degrees of freedom, and, consequently the total cost.
+
+Generally the order should be chosen to be at least large enough to saturate the floating point capabilities of the architecture in the order-dependent kernels, because increasing the order to that point significantly improves accuracy at no marginal computational cost.
+On BlueGene/Q, this mark is polynomial order 15, while on the Cray XC40 it is 31.
+
+For many problems and observables, the calculation may additionally benefit from increasing the order until just before single-element operations spill out of cache.
+The improvement in accuracy is exponential with the polynomial order, so the degrees of freedom needed to achieve a level of accuracy can decrease.
+The increase in the cost with respect to order for compute-bound orders is linear, so if the decrease in the number of degrees of freedom needed is super-linear, the net result is a less expensive calculation.
+Usage in this way, which exceeds the largest element sizes that we ran on Shaheen, warrants further study.
+
+More generally, high order methods with high locality, the structured elements in SEM being only one example, are able to take advantage of wider vectors and higher compute to memory ratios to reach higher order at little to no marginal cost on a per-step basis.
+However, increases in cost can come in through coupling to the choice of time-step and an increase in iteration counts in the solvers.
+These increases can often be mitigated by reducing the total number of degrees of freedom, relative to an equivalent lower-order calculation.
+
+The next generation will include supercomputers featuring the Xeon Phi processor code-named Knights Landing, e.g., Cori at NERSC with more than 20 PFLOPS.
+As the architecture continues to evolve, we can see that updated node-level optimizations and order-sensitivity studies are key to helping scientists continue to perform large scale, high efficiency simulations. 
+
+\section*{Acknowledgment}
+
+This research used the resources of the Supercomputing Laboratory at the King Abdullah University of Science \& Technology (KAUST) in Thuwal, Saudi Arabia.
+This research used resources of the Argonne Leadership Computing Facility, which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
+
+We acknowledge useful conversations with
+Paul Fischer, 
+James Lottes,
+Aleksandr Obabko,
+Oana Marin,
+Michel Schanen,
+Scott Parker,
+Vitali Morozov,
+Matthew Otten,
+and Robert Rosner.
+

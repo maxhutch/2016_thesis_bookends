@@ -1,0 +1,103 @@
+\newcommand{\pluseq}{\mathrel{+}=}
+
+% make bold shape available for listings
+\renewcommand{\ttdefault}{pcr}
+\lstset{language=[90]Fortran,
+  basicstyle=\ttfamily\lst@ifdisplaystyle\scriptsize\fi,
+  keywordstyle=\bfseries,
+  comment=[l]{!\ },
+  escapechar=@,
+%  numbers=left,
+  tabsize=4,
+}
+
+
+\chapter{Efficiency of High Order Spectral Element Methods on Petascale Architectures}
+
+% a short form should be given in case it is too long for the running head
+%\titlerunning{Lecture Notes in Computer Science: Authors' Instructions}
+
+% the name(s) of the author(s) follow(s) next
+%
+% NB: Chinese authors should write their first names(s) in front of
+% their surnames. This ensures that the names appear correctly in
+% the running heads and the author index.
+%
+%\author{Maxwell Hutchinson\inst{1} \and Alexander Heinecke\inst{2}  \and Hans Pabst\inst{3}  
+%\and Greg Henry\inst{4}
+%\and Matteo Parsani\inst{5}
+%\and David Keyes\inst{5}
+%}
+
+%\institute{
+%Department of Physics, University of Chicago, 5720 S. Ellis Ave, Chicago IL, 60637, USA
+%Department of Physics, University of Chicago, Chicago IL, USA
+%\and
+%Intel Corporation, 2200 Mission College Blvd., Santa Clara CA, 95054, USA
+%Intel Corporation, Santa Clara CA, USA
+%\and
+%Intel Semiconductor AG, Badenerstrasse 549, 8048 Zurich, Switzerland
+%Intel Semiconductor AG, Zurich, Switzerland
+%\and
+%Intel Corporation, 2111 NE 25th Avenue, Hillsboro OR, 97124, USA
+%Intel Corporation, Hillsboro OR, USA
+%\and
+%Extreme Computing Research Center, KAUST, Thuwal, 23955, KSA
+%}
+
+
+%\maketitle
+
+
+\section{Abstract}
+High order methods for the solution of PDEs expose a trade-off between computational cost and accuracy on a per degree of freedom basis.
+In many cases, the cost increases due to higher arithmetic intensity while affecting data movement minimally.
+As architectures tend towards wider vector instructions and expect higher arithmetic intensities, the best order for a particular simulation may change.
+
+This study highlights preferred orders by identifying the high order efficiency frontier of the spectral element method implemented in Nek5000 and NekBox: the set of orders and meshes that minimize computational cost at fixed accuracy.
+First, we extract Nek's order-dependent computational kernels and demonstrate exceptional hardware utilization by hardware-aware implementations.
+Then, we perform production-scale calculations of the nonlinear single mode Rayleigh-Taylor instability on BlueGene/Q and Cray XC40-based supercomputers to highlight the influence of the architecture.
+Accuracy is defined with respect to physical observables, and computational costs are measured by the core-hour charge of the entire application.
+The total number of grid points needed to achieve a given accuracy is reduced by increasing the polynomial order.
+On the XC40 and BlueGene/Q, polynomial orders as high as 31 and 15 come at no marginal cost per timestep, respectively.
+Taken together, these observations lead to a strong preference for high order discretizations that use fewer degrees of freedom.
+From a performance point of view, we demonstrate up to 60\% full application bandwidth utilization at scale and achieve $\approx$ 1 PFlop/s of compute performance in Nek's most flop-intense methods.
+
+\section{Introduction}
+\label{sec:introduction}
+\input{Chapters/convergence/introduction}
+
+\section{Nek's Computational Core}
+\label{sec:math}
+\input{Chapters/convergence/math}
+
+\section{Kernel Analysis and Optimization}
+\label{sec:implementation}
+\input{Chapters/convergence/implementation}
+
+\section{Scenarios and Performance}
+\label{sec:benchmarks}
+\input{Chapters/convergence/benchmarks}
+
+\section{Conclusion}
+\label{sec:conclusion}
+\input{Chapters/convergence/conclusion}
+
+
+\scriptsize
+
+\noindent Optimization Notice: Software and workloads used in
+performance tests may have been optimized for performance only on
+Intel microprocessors.  Performance tests, such as SYSmark and
+MobileMark, are measured using specific computer systems,
+components, software, operations and functions.  Any change to any
+of those factors may cause the results to vary.  You should
+consult other information and performance tests to assist you in
+fully evaluating your contemplated purchases, including the
+performance of that product when combined with other products.
+For more information go to http://www.intel.com/performance.
+
+\noindent Intel, Xeon, and Intel Xeon
+Phi are trademarks of Intel Corporation in the U.S. and/or other
+countries.
+

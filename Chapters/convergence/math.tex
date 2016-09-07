@@ -1,0 +1,195 @@
+\subsection{Governing equations and time-splitting}
+Nek5000 and NekBox solve the incompressible Navier--Stokes equations:
+\begin{equation}
+\frac{\partial u}{\partial t} + u \cdot \nabla u = - \frac{1}{\rho} \nabla p + \nu \nabla^2 u + f \qquad
+\nabla \cdot u = 0,
+\end{equation}
+where $u$ is the flow velocity, 
+$\rho$ is the fluid density,
+$p$ is the pressure,
+$\nu$ is the kinematic viscosity,
+and $f$ consists of user-defined forcing terms.
+Additionally, Nek can solve advection-diffusion equations for scalars, such as the temperature or mass fraction:
+\begin{equation}
+\frac{\partial \phi_i}{\partial t} + u \cdot \nabla \phi_i =  \alpha_i \nabla^2 \phi_i + q_i,
+\end{equation}
+where $\phi_i$ is the scalar value, 
+$\alpha_i$ is the diffusivity,
+and $q_i$ is a user-defined source term, each for the $i$th scalar.
+
+The time derivative is discretized with a backward difference formula (BDF), within which the nonlinear and forcing terms are extrapolated (EX):
+\begin{equation}\elabel{semi}
+\sum_{j=0}^k \frac{\beta_i}{\Delta t} M u_i^{n-j} = - \frac{1}{\rho} D_i p^n + \nu K u_i^n + \sum_{j=1}^n a_j\left[M f_i^{n-j} - (C u_i)^{n-j} \right],
+\end{equation}
+where $M$ is the mass matrix,
+$C$ is the convection matrix,
+$K$ is the stiffness matrix,
+$D$ is the gradient matrix,
+$i \in \{1,2,3\}$ are the spatial dimension indexes, 
+$n$ is the time level index, and
+$k$ is the formal order of accuracy of the BDF/EX scheme.
+The pressure is decoupled from the new velocity, $u^n$, by taking the divergence:
+\begin{equation} \elabel{pres}
+K p^n = D_i \sum_{j=1}^n a_j F_i^{n-j},
+\end{equation}
+where $F_i^n = M f_i^n - (C u_i)^n$,
+which results in the Poisson pressure equation.
+Finally, the pressure is incorporated back into \eref{semi}:
+\begin{equation} \elabel{vel}
+\left[\nu K + \frac{b_0}{\Delta t} M \right] u_i^n = -D_i \frac{p^n}{\rho} + \sum_{j=1}^k \left[a_j F_i^{n-j} + \frac{b_j}{\Delta t} M u^{n-j} \right], 
+\end{equation}
+which results in three Helmholtz velocity equations.
+
+\begin{comment}
+The semi-discrete incompressible Navier--Stokes equations can be written as~\cite{Deville2002}:
+\begin{equation} \label{eqn:NS1}
+M \frac{d u_i^{n+1}}{dt} + \text{Re}~ C u_i^{n+1} + K u_i^{n+1} - D_i^T p^{n+1} =  M f_i^{n+1} \qquad \sum_i -D_i u_i^{n+1} = 0,
+\end{equation}
+where $M$ is the mass matrix,
+$C$ is the convection matrix,
+$K$ is the stiffness matrix,
+$D$ is the gradient matrix,
+$i \in \{1,2,3\}$ indexes spatial dimensions, and
+$n$ indexes time.
+The temporal derivative is expressed with the third-order backwards difference formula, and the convection operator with third-order explicit Adams-Bashforth extrapolation~\cite{Deville2002}.
+The advection-diffusion equations are treated similarly, but without a pressure term, and solved first.
+The forcing terms in this study depend only on $\phi$, and are evaluated directly at the next time level ($t^{n+1}$)~\cite{Tomboulides1997}.
+\end{comment}
+
+\begin{comment}
+\begin{equation} \elabel{bdf}
+\left(\frac{11}{6 \Delta t} M + K\right) u^{n+1}_i - D^T_i p^{n+1} = \frac{M}{\Delta t} \left(3 u^n_i - \frac{3}{2} u^{n-1}_i + \frac{1}{3} u^{n-2}_i \right) + M f_i^{n+1} - \text{Re} C u^{n+1}_i 
+\end{equation}
+The convection matrix and external force are extrapolated to third-order:
+\begin{equation}
+C u_i^{n+1} \approx \left(3 C u_i^n - 3 C u_i^{n-1} + C u_i^{n-2}\right)
+\end{equation}
+\end{comment}
+
+\begin{comment}
+If we group the explicit terms together as $F_i^{n+1}$ and define the Helmholtz operator $H_i = (11/6\Delta t)M + K$, 
+we can re-write the governing equations in matrix form:
+\begin{equation} \label{eqn:stokes}
+\begin{pmatrix} \mathbf{H} & -\mathbf{D}^T \\ -\mathbf{D} & 0 \end{pmatrix} \begin{pmatrix} v^{n+1} \\ p^{n+1} \end{pmatrix} = \begin{pmatrix} \mathbf{F} \\ 0 \end{pmatrix},
+\end{equation}
+where $\mathbf{D} = \left[ D_1, D_2, D_3 \right]$ is the divergence matrix,
+and $\mathbf{A} = \text{diag}(A_1, A_2, A_3)$ otherwise.
+This expression is factored by approximating $\mathbf{H}^{-1} \approx (6 \Delta t)/11 \mathbf{M}^{-1}$:
+\begin{equation} \label{eqn:NS2}
+\begin{pmatrix} I & 0 \\  \frac{6 \Delta t}{11} \mathbf{D} \mathbf{M}^{-1} & I \end{pmatrix} \begin{pmatrix} \mathbf{H} & \quad-\frac{6 \Delta t}{11} \mathbf{H} \mathbf{M}^{-1} \mathbf{D}^T \\ 0 & \quad\frac{6 \Delta t}{11} \mathbf{D} \mathbf{M}^{-1} \mathbf{D}^T \end{pmatrix} \begin{pmatrix} v^{n+1} \\ p^{n+1} \end{pmatrix} \approx \begin{pmatrix} \mathbf{F} \\ 0 \end{pmatrix}.
+\end{equation}
+Introducing a compressible intermediate velocity $\hat{v}$, and its divergence:
+\begin{equation} \label{eqn:NS3}
+\begin{pmatrix} I & 0 \\ \frac{6 \Delta t}{11} \mathbf{D} \mathbf{M}^{-1} & I \end{pmatrix}  \begin{pmatrix} \hat{v} \\ \nabla \cdot \hat{v} \end{pmatrix} = \begin{pmatrix} \mathbf{F} \\ 0 \end{pmatrix} \qquad 
+\begin{pmatrix} \mathbf{H} & -\frac{6 \Delta t}{11} \mathbf{H} \mathbf{M}^{-1} \mathbf{D}^T \\ 0 & \frac{6 \Delta t}{11} \mathbf{D} \mathbf{M}^{-1} \mathbf{D}^T \end{pmatrix} \begin{pmatrix} v^{n+1} \\ p^{n+1} \end{pmatrix} \approx \begin{pmatrix} \hat{v} \\ \nabla \cdot \hat{v} \end{pmatrix}.
+\end{equation}
+
+The scheme in \eref{NS3} represents a sequence of solves:
+\begin{inparaenum}[\itshape a\upshape)]
+\item explicit convection $\hat{v} = F$;
+\item Poisson pressure equation $\bigtriangleup p^{n+1} = \nabla \cdot \hat{v}$; and
+\item Helmholtz velocity equation $H v_i^{n+1} = \hat{v}_i - \nabla_i p^{n+1}$.
+\end{inparaenum}
+\end{comment}
+
+These steps are the core of Nek5000 and NekBox: the explicit calculation of
+right-hand sides, a Poisson solver for the pressure, \eref{pres}, and a Helmholtz solver for the three components of the velocity, \eref{vel}.
+
+\subsection{Spectral element method}
+Nek5000 and NekBox implement SEM: a two-level discretization constructed from tensor products of Gauss-Lobatto-Legendre (GLL) quadrature points within elements and continuity across elements, forming a mesh.
+Fields are represented as
+\begin{equation}
+u(x,y,z) = \sum_{i=0}^p \sum_{j=0}^p \sum_{k=0}^p \tilde{u}_{i,j,k,e} h_i(x) h_j(y) h_k(z), 
+\end{equation}
+where $p$ is the polynomial order of the method,
+$e(x,y,z)$ is the index of the element in the mesh,
+and $h_i(x)$ is the $i$th Lagrange polynomial through the GLL points of element $e$.
+The choice of Lagrange polynomials leads to diagonal mass matrices and related geometric factors.
+The spectral basis within each element enjoys exponential convergence with respect to the polynomial order.
+GLL points do not sample space uniformly, so concatenating elements is more effective at reducing grid spacing than increasing spectral order.
+Many small elements are also better able to match complex geometries than fewer larger ones.
+The spectral element method is able to satisfy both the demand for geometric flexibility with quasi-uniform coverage and spectral convergence, but the particular choice of the spectral order versus the number of elements can be difficult to optimize.
+
+In SEM, operators are written as the product of a local operator and \textit{direct stiffness summation}, which enforces continuity at the shared element boundaries.
+The local operators are decomposed into tensor products of 1D operators.
+The general form of an operator $A$ is:
+\begin{equation}
+A = (A_x \times I_y \times I_z) + (I_x \times A_y \times I_z) + (I_x \times I_y \times A_z),
+\end{equation}
+where $A_x, A_y, A_z$ are 1D projections of the operator $A$ and $I$ is the
+identity matrix.
+In this way, linear operators from $R^{N \times N \times N} \rightarrow R^{N \times N \times N}$ can be evaluated in $O(N^4)$ operations instead of $O(N^6)$~\cite{tufo1999terascale}.
+This reduces the arithmetic intensity of operator evaluation in SEM to $O(p)$.
+
+\subsection{Computational profile}
+The spectral element method, as implemented in Nek5000 and NekBox, spends its time in three computational motifs: sparse communication, vector-vector, and matrix-matrix.
+The sparse communication comes from the direct stiffness summations and the coarse part of the pressure preconditioner.
+The vector-vector workload comes from inner products in the solvers and frequent rescaling by geometric factors, which are shaped like the diagonal mass matrix.
+The matrix-matrix workload comes from local operator evaluation.
+
+The direct-stiffness summation is handled by a stand-alone library~\cite{ivanov2015evaluation,otten2016}. 
+In Nek, the pressure solve takes roughly 30\% of the run-time, distributed between operator application, inner products, and the preconditioner.
+The preconditioner is multigrid with a local additive Schwarz part and the global coarse part~\cite{lottes2005hybrid}.
+In NekBox, the coarse part of the pressure preconditioner is solved directly with FFTs or fast cosine transforms, and typically takes less than 5\% of the total runtime.
+Local communication makes up a small portion of NekBox's run time at moderate numbers of points per processor, and Nek5000 and NekBox weak scale effectively to millions of ranks~\cite{hutchinson2015direct}.
+
+The efficiency of the vector-vector computation is generally left to the compiler, aided by aggressive loop merging in the solvers.
+For architectures that support them, the compiler needs help issuing non-temporal stores, which are performance optimal only if the working set is larger than the last level cache.
+These stores are used in parts of the solver and local element evaluation, and are discussed further in \sref{implementation}.
+
+Matrix-matrix is the most accessible and performance critical portion of the workload.
+In particular, it is the only part of Nek that depends on the order, holding the
+total degrees of freedom (DOFs) fixed.
+
+\subsection{Order-dependent kernels}
+\label{sec:operators}
+There are two matrix-matrix routines that sit inside of the iterative solvers: the Helmholtz operator and a basis transformation.
+
+The Helmholtz operator is found on the left-hand side of \eref{pres} and \eref{vel}:
+$$ H u = (h_1 K + h_2 M) u, $$
+where the special case of $h_2 = 0$ is the Poisson operator.
+\begin{algorithmic}[1] \small
+\Procedure{Local Helmholtz operator}{$Hu, u, h_1, h_2$}
+\State $(H u)_{i,j,k} \gets (G_x)_{i,j,k} * \sum_l (K_x)_{i,l} u_{l,j,k} $
+\Comment {matrix-multiply size $(p^2,p,p)$}
+\For{$k =0 \to p$}
+\State $(Hu)_{i,j,k} \pluseq (G_y)_{i,j,k} * \sum_l (K_y)_{j,l} u_{i,l,k}  $
+\Comment {matrix-multiply size $(p,p,p)$}
+\EndFor
+\State $(Hu)_{i,j,k} \pluseq (G_z)_{i,j,k} * \sum_l (K_z)_{k,l} u_{i,j,l}  $
+\Comment {matrix-multiply size $(p,p^2,p)$}
+\State $(Hu)_{i,j,k} \pluseq h_1 (Hu)_{i,j,k} + h_2 M_{i,j,k} u_{i,j,k} $
+\EndProcedure
+\end{algorithmic}
+$G$ is a constant diagonal matrix derived from geometric terms and subscripts within parenthesis refer to spatial directions.
+Matrix sizes are given in BLAS notation: rows in result, columns in result, inner dimension.
+%The Helmholtz operator has an arithmetic intensity of $(p/3 + 1)$ floating point operations per load.
+
+The basis transformation is used to diagonalize the local Poisson operator in the overlapping Schwarz preconditioner, to restrict and interpolate the solution and residual in the multigrid preconditioner, and to dealias the convection operator.
+\begin{algorithmic}[1]
+\Procedure{Transform}{$v,u$}
+\State $f_{i,j,k} \gets \sum_l (A_x)_{i,l} u_{l,j,k}$
+\Comment {matrix-multiply size $(p^2,p,p)$}
+\For{$k =0 \to p$}
+\State $g_{i,j,k} \gets \sum_l (A_y)_{j,l} f_{i,l,k}$
+\Comment {matrix-multiply size $(p,p,p)$}
+\EndFor
+\State $v_{i,j,k} \gets \sum_l (A_z)_{k,l} g_{i,j,l}$
+\Comment {matrix-multiply size $(p,p^2,p)$}
+\EndProcedure
+\end{algorithmic}
+
+%Although it is not generally called from within any of the iterative solvers, the gradient operator is performance critical because it is %used to compute the dealiased convection operator in a space $(3/2)^3$ times larger than the normal basis and the pressure %contribution to the right hand sides of the solves.
+%\begin{algorithmic}[1]
+%\Procedure{Gradient}{$ux,uy,uz,u$}
+%\State $ux_{i,j,k} \gets \sum_l Dx_{i,l} u_{l,j,k}$
+%\Comment {matrix-multiply size $(p^2,p,p)$}
+%\For{$k =0 \to p$}
+%\State $uy_{i,j,k} \gets \sum_l Dy_{j,l} u_{i,l,k}$
+%\Comment {matrix-multiply size $(p,p,p)$}
+%\EndFor
+%\State $uz_{i,j,k} \gets \sum_l Dz_{k,l} u_{i,j,l}$
+%\Comment {matrix-multiply size $(p,p^2,p)$}
+%\EndProcedure
+%\end{algorithmic}
+

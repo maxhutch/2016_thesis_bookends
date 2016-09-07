@@ -1,0 +1,38 @@
+The solution of partial differential equations (PDEs) is a core problem in HPC, with particular application to computational materials science and fluid dynamics.
+PDEs are solved by discrete approximation: space and time are sampled and the PDEs is translated into a relation on those samples.
+From a mathematical point of view, these approximations are characterized by stability conditions and convergence rates.
+Schemes which do not satisfy stability conditions usually fail catastrophically with values that diverge to infinity.
+The convergence rate describes the relationship between the resolution and the error.
+For a characteristic inter-sample spacing $h$, a method is of order $p$ if the error goes as $h^p$.
+High order methods are schemes with convergence rates higher than third order~\cite{wang2013high}, many of which expose the order as a user input.
+
+From a computational point of view, the approximations are characterized by sparsity, locality, and arithmetic intensity.
+As the order increases, the sparsity and locality typically decrease while the arithmetic intensity increases.
+The improved convergence rates are `paid for' with more floating point operations (FLOP), on a per sample basis, while, for a given error tolerance, the number of samples can be decreased.
+The relationship between these computational characteristics and computational cost is complicated by features common to modern architectures: vector instructions, deep caches, and arithmetic-to-data movement imbalance.
+
+Here, we explore the relationship between order, accuracy, cost, and architecture.
+We identify the user-facing properties of high order methods: the accuracy in observables, time to solution, resource usage, and required scale.
+We also identify the user-defined inputs: the physical problem, the order, the total number of samples, the number of processors, and the computer architectures.
+To make the study more practical, we focus on the specific task of optimizing a study of the single-mode Rayleigh-Taylor instability (smRTI) as a parameter sweep over Grashof and Prandtl numbers.
+This is a high throughput use-case, where the relevant cost is resource usage and scale is fixed with respect to the size of the problem and assumed to not be a limitation.
+This leaves us with the accuracy and resource usage versus the order, number of samples, and computer architectures.
+
+We select the NekBox version of the Nek5000 code (together: Nek), which
+implements the spectral element method (SEM)~\cite{patera1984spectral} with tunable order, is known to scale to a million ranks~\cite{nekscaling}, and has been used for Rayleigh-Taylor problems in the past~\cite{hutchinson2015direct}.
+NekBox takes advantage of static, uniform meshes to solve the coarse part of the preconditioner with FFTs or DCTs, improving efficiency and scalability.
+We extract representative order-dependent kernels from Nek and analyze their
+performance on BlueGene/Q and Cray XC40 supercomputers.
+
+We also conduct a set of application benchmarks to measure the cost and accuracy.
+The cost is computed in core-hours, in the same way most users are charged.
+The accuracy is computed with respect to the smRTI's bubble height and mix volume, which are the most common observables studied in the smRTI community.
+The benchmarks vary the order and total number of samples, and are conducted on the Mira and Shaheen XC40 supercomputers at Argonne Leadership Computing Facility (ALCF) and KAUST Supercomputing Laboratory (KSL), respectively.
+
+
+\subsection{Outline}
+In \sref{math}, we review the SEM as implemented in Nek.
+In \sref{implementation}, we introduce LIBXSMM for hardware-aware implementation of Nek's performance critical kernels, and demonstrate their performance in isolation.
+In \sref{benchmarks}, we perform a convergence/performance study of SEM discretizations for the smRTI problem and present full-application performance at scale.
+\sref{conclusion} concludes with a discussion of preferred orders on the BlueGene/Q and Cray XC40 supercomputers. 
+
