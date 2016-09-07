@@ -1,0 +1,32 @@
+\section{Conclusions} \slabel{concs}
+
+The simulations described here reproduce the growth rate, stagnation velocity, and re-acceleration of the low-Atwood single mode Rayleigh Taylor instability for three experimental runs by Wilkinson and Jacobs.
+These reproductions inspire confidence not only in the NekBox code, but also in the Boussinesq approximation for $A = 0.15$ and the low-Schmidt approximation.
+
+In wall-bounded flows, the bubbles and spikes nearest to the no-slip boundaries experience lift and drag forces that slow their non-linear growth and push them towards their inner neighbors.
+There is an additional effect due to the finite domain breaking one of the 4-fold symmetries from the purely periodic problem.
+In the wall-bounded initial condition, one corner of the domain has an excess of bubbles while the opposite has an excess of spikes.
+This sets up a long-wavelength mode across the diagonal that encourages bubble growth in one corner and discourages it in the other.
+
+Ultimately, the bubble-bubble and spike-spike collisions may destroy the single-mode ordering of the flow at aspect ratio 5, but the onset of velocity decay may alternatively be due to the upper boundary.
+If the decay is due to collisions, it would limit the use of wall-bounded flows as proxies for periodic flows to moderate aspect ratios.
+The ability of wall-bounded flows to approximate periodic ones at high aspect ratio warrants further study.
+
+In addition to causing collisions, the growing boundary layer squeezes the flow in the span-wise direction, accelerating it past its fully-periodic trajectory in the stagnation and re-acceleration phases.
+
+The inner bubbles experience near constant acceleration from aspect ratio 2 to aspect ratio 5, with a maximum Froude number of 1.8.
+This contrasts results by Ramaprabhu et al.~\cite{Ramaprabhu2012} that show saturation post-reacceleration at $\text{Fr} \approx 1$.
+The saturation could be explained by excess mixing or the finite size of the domain, which extends to $h/\lambda = 6$ in their case and $9$ in ours.
+Alternatively, the acceleration could be artificially sustained by the wall lift force pushing the boundary bubbles into the interior ones.
+
+Single-mode Rayleigh-Taylor flows develop span-wise pressure gradients with local minima in bubble and spike centers and local maxima in bubble and spike corners.
+The pressure drives secondary flows of the first kind in the form of vortex quads centered on bubble-spike interface centers.
+These span-wise flows mix the fluid across otherwise laminar interfaces, perturbing the scalar profiles.
+
+\section{Acknowledgements}
+
+M. H. is grateful for useful conversations with Jeffrey Jacobs, Robert Roser, Aleksandr Obabko, Elia Merzari, Oana Marin, and Elizabeth Hicks.
+
+M. H. acknowledges support from the Department of Energy Computational Science graduate fellowship.
+This research used resources of the Argonne Leadership Computing Facility, which is a DOE Office of Science User Facility supported under Contract DE-AC02-06CH11357.
+

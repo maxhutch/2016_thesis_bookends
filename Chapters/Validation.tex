@@ -1,0 +1,34 @@
+
+
+\chapter{Direct numerical simulation of single mode three-dimensional Rayleigh-Taylor experiments}
+
+\section{Abstract}
+The single-mode Rayleigh-Taylor instability (smRTI) is well defined, poorly understood, and applicable to many fluid flows directly and through its relationship to multi-mode Rayleigh-Taylor models.
+This study reproduces three low-Atwood smRTI experimental runs (Wilkinson and Jacobs, 2007) in
+a specialized version of the Nek5000 spectral element code.
+The simulations use the initial amplitude, wavelength, acceleration, Atwood number, and viscosity from 
+the three specific experiments and impose no-slip and no-flux boundaries on the velocity and scalar, respectively.
+The simulations are shown to reproduce the linear, saturation, stagnation, and re-acceleration phases of the smRTI
+seen in the experiments.
+Additionally, access to the full velocity and scalar fields demonstrates three different finite size effects: 
+wall drag, wall lift, and a long wavelength mode along the diagonal.
+One of the simulations is extended by a factor of two in the vertical direction and the resulting late-time dynamics
+reach Froude numbers around 1.8, higher than previously reported.
+Finally, inspection of the span-wise flow reveals secondary flows of the first kind that transport the scalar 
+from the bubble-spike interfaces into the bubble and spike centers.
+The agreement between simulations and experiments inspires confidence in the spectral element method for studying
+the Rayleigh-Taylor instability.
+
+
+\input{Chapters/validation/intro}
+
+In \sref{methods}, we review the spectral element method and describe the numerical parameters of the simulations.
+In \sref{results}, we compare the numerical and experimental results, extend the domain in extent and time to reach higher aspect ratios, and introduce new behavior in the span-wise flow.
+In \sref{concs}, we discuss the validity of our methods for simulating Rayleigh-Taylor flows, the limits of wall-bounded single mode experiments, and the implications of secondary flows to mixing.
+%\aref{data} provides access to the source, input, and output files for the numerical methods.
+
+\input{Chapters/validation/methods}
+
+\input{Chapters/validation/results}
+
+\input{Chapters/validation/concs}

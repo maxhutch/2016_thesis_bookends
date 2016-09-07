@@ -1,0 +1,11 @@
+\begin{tabular}{rrrr}
+\toprule
+ Modes &           Grashof &  Schmidt &  Aspect \\
+\midrule
+   2.5 & $5.12 \times 10^{6}$ &      7.0 &   0.037 \\
+   3.5 & $3.98 \times 10^{6}$ &      3.5 &   0.025 \\
+   4.5 & $4.66 \times 10^{5}$ &      1.0 &   0.041 \\
+\hline
+   4.5 & $4.66 \times 10^{5}$ &      3.5 &   0.041 \\
+\bottomrule
+\end{tabular}

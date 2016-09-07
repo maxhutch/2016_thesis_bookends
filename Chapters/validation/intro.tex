@@ -1,0 +1,58 @@
+\section{Introduction}
+
+The Rayleigh-Taylor instability occurs when a denser fluid is supported by a lighter one.
+Low-amplitude perturbations in the interface between the two fluids grow exponentially with a rate that is well modeled by linear stability analysis~\cite{Duff1962}:
+\begin{equation} \elabel{duff}
+\gamma = \sqrt{\frac{Agk}{\psi} + \nu^2 k^4} - (\nu + D) k^2
+\end{equation}
+where 
+$g$ is the local acceleration,
+$k$ is the wave-number,
+$\nu$ is the kinematic viscosity,
+$D$ is the diffusivity,
+$A$ is the Atwood number, which characterizes the density difference:
+\begin{equation}
+	A = \frac{\rho_h - \rho_l}{\rho_h + \rho_l},
+\end{equation}
+and $\psi$ describes the effect of the interface thickness and is a function of $A$, $k$, and the thickness $\delta$.
+In the low Atwood number limit:
+\begin{equation}
+	\psi = 1 + \frac{k \delta}{\sqrt{\pi}} .
+\end{equation}
+
+At larger amplitudes, the perturbations grow non-linearly with the light fluid rising through the heavier fluid in `bubbles' and the heavy fluid falling through the lighter fluid in `spikes.'
+Early experiments by Davies and Taylor~\cite{Davies1950a} and potential flow models by Layzer~\cite{Layzer1955} for $A \approx 1$ suggested that the bubbles reach a terminal velocity, and later experiments by Dimonte and Schneider~\cite{Dimonte1996}, also at $A \approx 1$, showed that dense spikes free-fall.
+On the other hand, recent experiments by Wilkinson and Jacobs~\cite{Wilkinson2007} and simulations by Ramaprabhu et al.~\cite{Ramaprabhu2006,Ramaprabhu2012}, Wei and Livescu~\cite{Wei2012}, and others~\cite{Sohn2011} show that, at Atwood numbers less than one half, the constant velocity regime is followed by a re-acceleration regime in which the velocity doubles.
+The dynamics beyond re-acceleration have not been established, with Ramaprabhu et al. observing a return to the velocity of potential flow~\cite{Goncharov2002} while Wei and Livescu report continued constant acceleration.
+
+Here, we consider the low-Atwood number limit.
+The Boussinesq approximation, which ignores density differences that don't multiply the gravitational acceleration, simplifies the governing equations to a single incompressible phase with an active scalar representing the buoyancy:
+\begin{align} \elabel{boussinesq}
+\frac{D}{D t} u &= - \nabla P + \nu \nabla^2 u - A \vec{g} \phi, \\
+\frac{D}{Dt} \phi &= D \nabla^2 \phi, \nonumber
+\end{align}
+where $u$ is the velocity,
+$P$ is the pressure, and 
+$\phi$ is the scalar that controls the density gradient.
+Without loss of generality, we define $-1 \le \phi \le 1$.
+These equations have a symmetry under inversion of the scalar and acceleration, $\phi \rightarrow -\phi, \hat{g} \rightarrow -\hat{g}$, so we know the bubbles and spikes have the same dynamics given the same initial conditions.
+The parameter space of the equations are described by two non-dimensional numbers: the Grashof number,
+\begin{equation} \elabel{grashof}
+\text{Gr} = \frac{A g \lambda^3}{\nu^2},
+\end{equation}
+where $\lambda$ is a characteristic length, and
+the Schmidt number,
+\begin{equation} \elabel{schmidt}
+\text{Sc} = \frac{\nu}{D}
+\end{equation}
+
+We approximate the governing equations numerically using the spectral element method (SEM)~\cite{Deville2002}.
+The SEM converges exponentially with respect to spectral order and has purely dispersive errors, making it a natural method for direct numerical simulations of mixing problems.
+Unlike pseudo-spectral methods, it handles no-slip boundaries and can evenly sample the interior of the domain.
+We use a specialized version of the Nek5000 community code, NekBox~\cite{Hutchinsonb}, customized specifically to study the low Atwood number Rayleigh-Taylor instability.
+NekBox restricts the domain to a tensor product of orthogonal bases and employs fast spectral coarse preconditioners for the pressure Poisson equation.
+It is roughly an order of magnitude faster than the more general Nek5000.
+
+It is the goal of this study to validate direct numerical simulations of the low-Atwood single mode Rayleigh-Taylor instability in NekBox against the best available experimental data, that from Wilkinson and Jacobs~\cite{Wilkinson2007}.
+In the future, we will apply the same numerical methods to the broader question of the late-time dynamics of the low Atwood smRTI.
+
