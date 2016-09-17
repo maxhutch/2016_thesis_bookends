@@ -1,13 +1,13 @@
 \section{Numerical experiments} \slabel{exp}
 
 To evaluate the simple model of \sref{model}, we conduct a battery of direct numerical simulations.
-The novel components of the simple model, i.e. viscous drag and mixing, are most pronounced at late times.
+The novel components of the simple model, i.e., viscous drag and mixing, are most pronounced at late times.
 We primarily direct our effort at simulating higher aspect ratio domains to allow the bubble to reach a dissipative flow.
 
 The numerical experiments simulate the incompressible Navier-Stokes equations with the Boussinesq approximation:
 \begin{align}
-\frac{\partial u}{\partial t} + u \cdot \nabla u &= \nu \nabla^2 u - \nabla P + A g \phi \\
-\frac{\partial \phi}{\partial t} + u \cdot \nabla \phi &= D \nabla^2 \phi 
+\frac{\partial u}{\partial t} + u \cdot \nabla u &= \nu \nabla^2 u - \nabla P + A g \phi, \\
+\frac{\partial \phi}{\partial t} + u \cdot \nabla \phi &= D \nabla^2 \phi,
 \end{align}
 where $u$ is the velocity,
 $\nu$ is the kinematic viscosity,
@@ -15,31 +15,27 @@ $P$ is the pressure,
 $\phi$ the non-dimensional density,
 and $D$ is the diffusivity of $\phi$.
 
-The initial conditions are quiescent with a horizontal interface perturbed by product of cosine functions and smeared by an error function:
+The initial conditions are quiescent, with a horizontal interface perturbed by a product of cosine functions and smeared by an error function:
 \begin{equation}
-\begin{split}
-	\phi(x,y,z,t=0) = \\ 
-	\text{erf}\left(\frac{z + a_0 \cos(2 \pi (x/\lambda)) \cos(2 \pi (y/\lambda))}{\delta})\right)
-\end{split}
+\phi(x,y,z,t=0) = \text{erf}\left(\frac{z + a_0 \cos(2 \pi (x/\lambda)) \cos(2 \pi (y/\lambda))}{\delta})\right),
 \end{equation}
 where $a_0$ is the initial amplitude and $\delta$ is the initial interface thickness.
 Both $a_0$ and $\delta$ are taken to be small enough to minimize their effects on the solution, $0.01$ and $1/128$, respectively.
 The governing equations and initial condition have four dimensional parameters: $\nu$, $D$, $Ag$, $\lambda$.
 These are combined into 2 non-dimensional numbers, the Grashof number and the Schmidt number:
 \begin{equation}
-\text{Gr} = \frac{A_0 g \lambda^3}{\nu^2} \quad \text{Sc} = \frac{\nu}{D}
+\text{Gr} = \frac{A_0 g \lambda^3}{\nu^2}, \quad \text{Sc} = \frac{\nu}{D}.
 \end{equation}
 The Grashof number serves the role of a Reynolds number for instability problems without a consistent characteristic velocity.
 For this reason, the root of the Grashof number is sometimes called the \textit{perturbation Reynolds number}~\cite{Wei2012}:
 \begin{equation}
-\text{Re}_p = \sqrt{\frac{A_0 g \lambda^3}{\nu^2}}
+\text{Re}_p = \sqrt{\frac{A_0 g \lambda^3}{\nu^2}}.
 \end{equation}
 
 The domain is $\left[0.5, 0.5, 64\right]$ and rotated 45 degrees in the span-wise plane to model $\lambda = \sqrt{2}$, transforming the initial condition to:
 \begin{equation}
 \begin{split}
-	\phi(x,y,z,t=0) = \\
-	\text{erf}\left(\frac{z + a_0 \cos(\pi (x+y)) \cos(\pi (x-y))}{\delta})\right).
+\phi(x,y,z,t=0) = \text{erf}\left(\frac{z + a_0 \cos(\pi (x+y)) \cos(\pi (x-y))}{\delta})\right).
 \end{split}
 \end{equation}
 This is done so the span-wise boundaries at $x=\{0,0.5\}$ and $y=\{0,0.5\}$ are symmetric.
@@ -48,7 +44,7 @@ Based on a previous validation of the smRTI with no-slip boundaries, we expect t
 This provides significantly more data than the $h < 4 \lambda$ results of Ramaprabhu \etal~\cite{Ramaprabhu2012}.
 
 The model introduced in \sref{model} assumes the bubbles and spikes are coherent structures, that is they travel at some velocity and have a well defined interface.
-As the Grashof number increases and the bubbles and spikes break up, departing from the assumptions of the model.
+As the Grashof number increases and the bubbles and spikes break up, they depart from the assumptions of the model.
 On the other hand, at low Grashof number and finite diffusivity, diffusion moves the $\phi = 0$ interface, as opposed to simply transporting the scalar across it, which also departs from the model assumptions.
 For these reasons, we restrict our study to an intermediate range of Grashof numbers: those which are large enough to sustain bubble dynamics while not being so large as to break the bubbles apart.
 This range has been identified empirically to be approximately $6 \times 10^2 \le \text{Gr} \le 6 \times 10^5$ for Schmidt numbers greater than 1.

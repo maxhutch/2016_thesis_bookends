@@ -55,11 +55,18 @@ We take this problem, the selection of a cost-minimizing strategy for the late-t
 In addition to the isolated reproducers discussed in \sref{implementation}, we present NekBox application benchmarks based on smRTI with typical Nek settings.
 The aim of these benchmarks is to identify minimum cost discretizations that attain a given accuracy.
 
-The benchmarks are conducted for combinations of the element size taken from $\{4, 6, 8, 10, 12, 14, 16, 32\}$ and span-wise mesh size taken from $\{2, 4, 8, 12, 16, 24, 32, 48, 64, 96, 128\}$.
+The benchmarks are conducted for combinations of the element size taken from
+\begin{equation}
+\{4, 6, 8, 10, 12, 14, 16, 32\},
+\end{equation}
+and span-wise mesh size taken from 
+\begin{equation}
+\{2, 4, 8, 12, 16, 24, 32, 48, 64, 96, 128\}.
+\end{equation}
 The total number of points ranges from around 1 million to 4 billion.
 The problem is weak-scaled: the number of elements per rank is chosen as to consume approximately half of the available main memory, or around 16k and 262k points per rank on Mira and Shaheen, respectively.
 The problems are constrained to fill an integer number of nodes, which puts a lower bound on the mesh size and excludes some cases that would partially fill nodes.
-The domain is a box with dimension $[0,.5]^2 \times [-1,1]$, and the elements are cubic.
+The domain is a box with dimension $[0,0.5]^2 \times [-1,1]$, and the elements are cubic.
 The span-wise boundary conditions are symmetric and the vertical boundary conditions are no-slip in velocity and no-flux (insulating) in the scalar.
 The initial condition is stationary in velocity with a scalar given by \eref{IC}, the Grashof number is 17,324, and the Prandtl number is 1.
 The timestep is calculated based on a Courant number of $0.4$, which scales linearly with the number of elements and quadratically with the size of the element due to the spacing of the GLL nodes.
@@ -85,7 +92,8 @@ The number of ranks that participate in I/O is a fixed proportion of the total n
 \includegraphics[width=\textwidth]{gfx/cnv_o16_e32-p_yz-0033}
 \end{subfigure}
 \caption{ \flabel{slices}
-Scalar, velocity, vorticity, and pressure fields at end of simulation.
+Scalar, vertical component of the velocity, vorticity component out of the plane, and pressure fields at end of simulation.
+The color scales are dimensionless, linear, and centered at the mean value over the image.
 }
 \end{figure}
 
@@ -114,8 +122,8 @@ The root mean square error in each observable is computed over all the outputs.
 \end{subfigure}
 \caption{ \flabel{bwcomp}
 Weak scaling of bandwidth on Shaheen and Mira.
-In (a), Circles and crosses indicate memory bandwidth per core on Shaheen and Mira, respectively, vs the problem size labeled by element size.
-In (b), the ratio of the bandwidths are shown vs element size for common discretizations.
+In (a), Circles and crosses indicate memory bandwidth per core on Shaheen and Mira, respectively, vs.\ the problem size labeled by element size.
+In (b), the ratio of the bandwidths are shown vs.\ element size for common discretizations.
 The solid line indicates ratio of STREAM memory bandwidth.
 }
 
@@ -131,7 +139,7 @@ The attained memory bandwidth per core on Shaheen and Mira are plotted in \fref{
 On Shaheen, bandwidth is constant with respect to the number of elements and a weak function of the order, ranging from around 65 to 75\% of peak.
 On Mira, bandwidth is still constant with respect to the scale, but varies more strongly with polynomial order, especially at orders greater than 16 and those not divisible by 4.
 It ranges from around 15 to 50\% of peak.
-The \texttt{mxm\_bgq} library, discussed in \sref{implementation}, is used, resulting in performance spikes at QPX-supported orders, e.g. 8.
+The \texttt{mxm\_bgq} library, discussed in \sref{implementation}, is used, resulting in performance spikes at QPX-supported orders, e.g., 8.
 
 \begin{figure}
 \begin{subfigure}[t]{0.49\textwidth}
@@ -157,10 +165,10 @@ More runs are present on Mira due to the smaller BGQ nodes evenly dividing more 
 
 The accuracy is plotted versus the computational cost for a variety of discretizations in \fref{frontier}.
 The error in bubble height and mix volume are strongly correlated, so only the error in the height is plotted.
-As expected, doubling the the spectral order while keeping the number of elements fixed, e.g. $(4,32) \rightarrow (8,32)$ and $(8,8) \rightarrow (16,8)$, significantly improves the accuracy, but also increases the cost by 16-32$\times$.
+As expected, doubling the the spectral order while keeping the number of elements fixed, e.g., $(4,32) \rightarrow (8,32)$ and $(8,8) \rightarrow (16,8)$, significantly improves the accuracy, but also increases the cost by 16-32$\times$.
 The first 8$\times$ is due to an increase in the number of degrees of freedom, the next 2$\times$ is due to the shorter timestep, and, when compute-bound, the final 2$\times$ is due to an increase in the floating point load.
-Doubling the spectral order while keeping the number of points fixed, e.g. $(16, 8) \rightarrow (32,4)$  and $(8,8) \rightarrow (16,4)$, increases the cost by 2-4x, as expected, but also improves the accuracy.
-Doubling the spectral order while halving the number of points in each direction, e.g. $(8,32) \rightarrow (16,8)$ and $(14, 16) \rightarrow (28, 4)$, reduces the cost by 4-8$\times$ while maintaining or slightly improving the accuracy.
+Doubling the spectral order while keeping the number of points fixed, e.g., $(16, 8) \rightarrow (32,4)$  and $(8,8) \rightarrow (16,4)$, increases the cost by 2-4x, as expected, but also improves the accuracy.
+Doubling the spectral order while halving the number of points in each direction, e.g., $(8,32) \rightarrow (16,8)$ and $(14, 16) \rightarrow (28, 4)$, reduces the cost by 4-8$\times$ while maintaining or slightly improving the accuracy.
 
 We define the \emph{efficiency frontier} as the set of discretizations that minimize computational cost for fixed accuracy or, equivalently, minimize error given fixed computational cost.
 The efficiency frontiers on Mira and Shaheen are comprised of discretizations with very high orders, given our constraints.
@@ -248,7 +256,7 @@ To avoid log plots we show per-core performance.}
 \label{fig:shaheen_scaling}
 \end{figure}
 
-To date, our largest calculation on Shaheen occupied 131,072 cores as depicted in Fig.~\ref{fig:shaheen_scaling}
+To date, our largest calculation on Shaheen occupied 131,072 cores, as depicted in Fig.~\ref{fig:shaheen_scaling}
 for element size 32.
 NekBox achieved 197 TiB/s memory bandwidth and 290 TFLOPS in weak scaling.
 This corresponds to 47.8\% of peak memory bandwidth sustained over the entire application at high order.

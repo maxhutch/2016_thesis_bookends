@@ -24,7 +24,7 @@ LIBXSMM provides highly-optimized single-threaded small matrix-multiplication ro
 It is already successfully used in the quantum chemistry application CP2K and high-order finite element seismic wave equation solver SeisSol~\cite{breuer15high-order}. 
 
 In contrast to \texttt{mxm\_std}, LIBXSMM creates a specific kernel implementation for each small matrix multiplication size and optimizes that kernel specifically for each set of vector extensions.
-Each kernel is composed from a-priori known and best-performing basic blocks.  
+Each kernel is composed from a priori known and best-performing basic blocks.  
 Remainder handling can be performed either explicitly by application-side padding or internally by slightly less efficient fill-in basic blocks. 
 We rely on the latter in our integration of LIBXSMM into NekBox. 
 

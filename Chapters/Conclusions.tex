@@ -6,16 +6,16 @@ The last section discusses questions that this thesis has been unable to address
 \section{New model for low-Atwood single mode}
 I have presented a simple model for the low-Atwood single mode Rayleigh-Taylor instability.
 The model has two components: an ordinary differential equation for the bubble height based on buoyancy and drag and an analytic expression for the volume of mixed fluid as a function of the bubble height, wavelength, time, and initial interface thickness.
-The models are coupled by an analytic expression for the effective Atwood number as a function of the pure Atwood number, bubble height, wavelength, and volume of mixed fluid.
-The models are separable in that changes to the mixing model formulation shouldn't significantly affect the dynamics model so long as the changed model is accurate, and vice versa.
+The model components are coupled by an analytic expression for the effective Atwood number as a function of the pure Atwood number, bubble height, wavelength, and volume of mixed fluid.
+The model components are separable in that changes to the mixing model formulation shouldn't significantly affect the dynamics model so long as the changed model is accurate, and vice versa.
 
-The models have 8 unique coefficients.
-Three of the coefficients can be solved for by constraining the model to match the linear theory, i.e.\ the limit of small amplitude bubbles and thin interfaces.
+The model has 8 unique coefficients.
+Three of the coefficients can be solved for by constraining the model to match the linear theory, i.e., the limit of small amplitude bubbles and thin interfaces.
 The remaining 5 parameters can be estimated by physical arguments.
 One is related to a form drag coefficient.
 Another is related to a friction factor.
-Two give the ratios of alternative definitions of bubble volumes, e.g.\ based on the scalar versus the velocity, and are nominally unity.
-The last scales the scalar interface surface area and is related to the shape of the bubble, e.g.\ cylindrical vs rectangular.
+Two give the ratios of alternative definitions of bubble volumes, e.g., based on the scalar versus the velocity, and are nominally unity.
+The last scales the scalar interface surface area and is related to the shape of the bubble, e.g., cylindrical vs rectangular.
 
 The estimation of the model coefficients is insufficient to evaluate the model's accuracy, both qualitatively in the representation of known features of the flow and quantitatively in its predictiveness of the bubble height and mixed volume as a function of time.
 Neither does the model formulation establish the accuracy of the coefficient estimates or their independence of Grashof and Schmidt numbers.
@@ -25,7 +25,7 @@ To answer these questions, we turn to direct numerical simulations to generate a
 Before performing the direct numerical simulations, their methodology is validated against experimental data from drop tower experiments of Wilkinson and Jacobs~\cite{Wilkinson2007}.
 The simulations solve the incompressible Navier-Stokes equations for a single fluid.
 The density is modeled with the Boussinesq approximation, turning it into an active scalar coupled to the flow via the advection-diffusion equation.
-The incompressible Navier-Stokes and advection-diffusion equations are solved with the spectral element method (SEM).
+The incompressible Navier--Stokes and advection-diffusion equations are solved with the spectral element method (SEM).
 The method is implemented in the NekBox code, a descendant of Nek5000 specifically tuned for box geometries.
 
 The simulations make three key approximations.
@@ -110,7 +110,7 @@ The cause of these outliers is a mystery; the majority of trajectories are consi
 The $C_2$ friction factor-type coefficient clearly varies across the parameter space.
 It is a strongly increasing function of the Grashof number and a weakly increasing function of the Schmidt number.
 A possible explanation is the development of shear instabilities along the bubble sides that enhance the transport of momentum out of the bubble.
-These instabilities would be strongest as high Grashof number and could be stabilized somewhat by low Schmidt numbers.
+These instabilities would be strongest at high Grashof number and could be stabilized somewhat by low Schmidt numbers.
 
 Similarly, the $C_5$ mixing coefficient varies with the diffusivity and Grashof number.
 It is a strongly decreasing function of diffusivity and is peaked with respect to the Grashof number.

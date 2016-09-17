@@ -21,7 +21,7 @@ The forcing on the heavier fluid below the interface is then:
 \begin{equation}\elabel{force1}
 \sum F = - \nabla P + F_g = \rho_l g  - \rho_h g < 0,
 \end{equation}
-so the heavier fluid is forced downwards through the lighter fluid, forming strcutures called spikes.
+so the heavier fluid is forced downwards through the lighter fluid, forming structures called spikes.
 Conversely, the forcing on the lighter fluid above the interface is:
 \begin{equation} \elabel{force2}
 \sum F = - \nabla P + F_g = \rho_l g  - \rho_h g > 0,
@@ -34,9 +34,9 @@ The Rayleigh-Taylor instability is present in both natural and constructed syste
 This section describes a few such systems of particular importance.
 
 \paragraph{Type Ia Supernovae}
-In type Ia supernovae (SNe Ia), a white dwarf spontaneously ignites as its mass crosses the Chandrasekhar mass due to accretion from another source.
+In Type Ia supernovae (SNe Ia), a white dwarf spontaneously ignites as its mass crosses the Chandrasekhar mass due to accretion from another source.
 The thermonuclear flame originates near the center of the star and burns outward~\cite{oran2007origins}.
-The hot ash trailing the flame is lighter than the fuel, creating a Rayleigh-Taylor unstable flame front~\cite{Zingale2005}.
+The hot ash trailing the flame is lighter than the fuel, creating a Rayleigh-Taylor (RT) unstable flame front~\cite{Zingale2005}.
 The primary RT instability and secondary Kelvin-Helmholtz instabilities wrinkle the flame front, enhancing mixing, burn rate, and flame speed~\cite{hicks2015rayleigh}.
 These properties affect the rate of energy release and ejecta velocity, which can be observed.
 The use of SNe Ia as standard candles underlines interest in their description.
@@ -58,13 +58,13 @@ Observed as thermohaline staircase~\cite{Tait1971}, a series of sharp steps in t
 
 \paragraph{Inertial confinement fusion}
 Inertial confinement fusion (ICF) is a fusion technique that confines hot dense plasma temporarily via an implosion rather than magnetic field lines.
-In ICF, cryogenic hydrogen is coated with a plastic ablator forming very small hollow spheres, or microcapsules.
-The microcapsules are dropped through a cylindrical hohlraum.
-When the capsule enters the hohlraum, the hohlraum interior is illuminated with a high energy burst of laser light and radiates x-rays into its interior.
-The x-ray radiation is absorbed by the plastic ablator causing it to rapidly expand and blow off the microcapsule, creating an implosion in the hydrogen fuel~\cite{NASICF}.
+In ICF, cryogenic deuterium is coated with a plastic ablator forming very small hollow spheres, or microcapsules.
+The microcapsules are positioned in a cylindrical \textit{hohlraum}.
+The hohlraum interior is illuminated with a high energy burst of laser light and radiates x-rays into its interior.
+This x-ray radiation is absorbed by the plastic ablator causing it to rapidly expand and blow off the microcapsule, creating an implosion in the hydrogen fuel~\cite{NASICF}.
 
-The implosion isn't perfectly uniform; the x-ray radiation provides non-uniform acceleration and there are asymmetries in the microcapsule.
-These perturbations are Rayleigh-Taylor unstable: the dense plastic ablator is being accelerated through lighter hydrogen fuel.
+The implosion is not perfectly uniform; the x-ray radiation is not isotropic and there are asymmetries in the microcapsule.
+The resulting perturbations are Rayleigh-Taylor unstable: the dense plastic ablator is being accelerated through lighter hydrogen fuel.
 The carbon in the ablator is much better at radiating energy than the hydrogen, so Rayleigh-Taylor mixing cool the fuel, preventing ignition~\cite{goncharov2012panel}.
 
 \section{Terminology}
@@ -74,7 +74,7 @@ In this section, we introduce common Rayleigh-Taylor terminology that will be us
 \paragraph{Atwood number}
 The Atwood number characterizes the density contrast:
 \begin{equation} \elabel{atwood}
-A = \frac{\rho_1 - \rho_2}{\rho_1 + \rho_2} \in (-1,1)
+A = \frac{\rho_1 - \rho_2}{\rho_1 + \rho_2} \in (-1,1),
 \end{equation}
 where $\rho_1 > \rho_2$ corresponds to positive Atwood number.
 Negative Atwood numbers result in stable oscillating interfaces.
@@ -98,11 +98,11 @@ These are truly two-phase problems in that the fluids are strongly coupled and h
 
 \paragraph{Boussinesq approximation}
 When the density contrast, $\Delta \rho$, is small compared to the average density $\bar{\rho}$, then 
-the the contrast can be neglected except when multiplied by the acceleration, as in $Ag$.
+the contrast can be neglected except when multiplied by the acceleration, as in $Ag$.
 This is known as the Boussinesq approximation and has the primary effect of neglecting differences in the inertia of the two fluids.
 
 \paragraph{Uniform constant property}
-In the spirit of the Boussinesq approximation, which neglects differences in the inertial of the two fluids, one can further assume the two fluids share all other material properties, such as viscosity.
+In the spirit of the Boussinesq approximation, which neglects differences in the inertia of the two fluids, one can further assume the two fluids share all other material properties, such as viscosity.
 When the flow is both Boussinesq and has uniform constant properties, the density can be modeled as an active scalar with a buoyant forcing term.
 
 \paragraph{Miscible interface}
@@ -117,7 +117,7 @@ Formally, this means the flow is divergence free, $\nabla \cdot u = 0$.
 In simulations, incompressibility has the effect of integrating out acoustic waves, significantly reducing the need to resolve small time-scales in the flow.
 
 \paragraph{Single-mode}
-The single mode Rayleigh-Taylor instability constrains the initial perturbation of the interface to a single pure frequency.
+The single mode Rayleigh-Taylor instability constrains the initial perturbation of the interface to a single pure spatial frequency.
 In 3D, this typically implies two orthogonal wavevectors with the same wavelength.
 For the miscible uniform constant property Boussinesq Rayleigh-Taylor instability, the single mode initial condition is:
 \begin{equation}
@@ -132,26 +132,26 @@ Typically, the perturbation height and interface thickness are chosen to initial
 The multi-mode Rayleigh-Taylor instability generically refers to the presence of more than one, and often many, wavelengths in the initial condition.
 Experimentally, the multi-mode initial condition is usually `natural`, in the sense that it is not deliberately perturbed and instead is due to natural noise sources.
 Computationally, the multi-mode condition is written as a sum of single modes with spectra $z_0(k) \sim |k|^{-p}$ for $p = 2$, $3/2$, or other rational factors.
-These modes are randomized within the spectral envelop.
+These modes are randomized within the spectral envelope.
 
 \paragraph{Governing equations}
 Given a miscible interface between two Boussinesq, uniform constant property incompressible fluids, the governing equations can be recast in terms of an active scalar:
 \begin{align}
-\der{u}{t} + u \cdot \nabla u &= \nu \nabla^2 u - \nabla P - A g \phi \hat{z}\\
-\der{\phi}{t} + u \cdot \nabla \phi &= D \nabla^2 \phi \\
+\der{u}{t} + u \cdot \nabla u &= \nu \nabla^2 u - \nabla P - A g \phi \hat{z},\\
+\der{\phi}{t} + u \cdot \nabla \phi &= D \nabla^2 \phi, \\
 \nabla \cdot u  &= 0,
 \end{align}
 where $u$ is the fluid velocity, 
 $\phi$ is the active scalar that represents small mass differences,
 and the acceleration is aligned vertically with $\hat{z}$.
 
-These equations have three governing parameters; $(Ag)$, $\nu$, and $D$.
+These equations have three governing parameters: $(Ag)$, $\nu$, and $D$.
 In the single-mode case, the dominant length scale is $\lambda$, which supports the construction of two dimensionless numbers:
 \begin{equation}
-\text{Grashof} = \frac{Ag \lambda^3}{\nu^2}
+\text{Grashof} = \frac{Ag \lambda^3}{\nu^2},
 \end{equation}
 \begin{equation}
-\text{Schmidt} = \frac{\nu}{D}
+\text{Schmidt} = \frac{\nu}{D}.
 \end{equation}
 If the initial and boundary conditions have no other length scales, e.g.\ the initial interface is a thin low-amplitude perturbation, i.e.\ $a_0, \delta << 1$, then these two parameters uniquely identify the system.
 
@@ -159,10 +159,10 @@ It is convenient to introduce another dimensionless number, the Rayleigh number:
 \begin{equation}
 \text{Rayleigh} = \text{Grashof} \cdot \text{Schmidt} = \frac{A g \lambda^3}{\nu D},
 \end{equation}
-with which many mixing related quantities scale.
+with which many mixing-related quantities scale.
 The three dimensionless numbers are abbreviated Gr, Sc, and Ra, respectively.
 
-It is difficult to define a Reynolds number in the absense of a velocity parameter.
+It is difficult to define a Reynolds number in the absence of a velocity parameter.
 The square root of the Grashof number, which has the same scaling with the viscosity, is used instead.
 It is sometimes called the perturbation Reynolds number, $\text{Re}_p = \sqrt{\text{Gr}}$.
 
@@ -180,7 +180,7 @@ If the fluids are miscible, this definition depends on the rate of diffusion acr
 To avoid dependence on diffusion across the interface, we can base the bubble height on a measurement of the equi-molar interface, which is stationary under diffusion.
 To pick out the interface, we take a span-wise maximum instead of a span-wise sum:
 \begin{equation}
-H_m = \sup \left\{z : \max_{x,y} \tilde\rho(x,y,z) < 0 \right\}
+H_m = \sup \left\{z : \max_{x,y} \tilde\rho(x,y,z) < 0 \right\}.
 \end{equation}
 
 However, diffusive mixing across the sides of an elongated bubble dilute as it grows.
@@ -190,9 +190,8 @@ In the absence of this affect, $H_{m}$ tracks not only the equi-molar surface bu
 This inflection point closely tracks the equi-molar surface at low diffusivity but is robust to diffusion across the bubble, remaining in the center of the error function region of the maximum density profile.
 Formally, this definition is:
 \begin{equation}
-H_i = \sup \left\{z : \frac{d^2}{dz^2} \max_{x,y} \tilde\rho(x,y,z) = 0 \right\}
+H_i = \sup \left\{z : \frac{d^2}{dz^2} \max_{x,y} \tilde\rho(x,y,z) = 0 \right\}.
 \end{equation}
-
 Equivalent definitions can be given for the spike depth.
 If the flow is Boussinesq and the initial condition is symmetric, the bubble height and spike depth can be averaged.
 

@@ -2,17 +2,17 @@ NekBox enhanced by LIBXSMM generated kernels on Shaheen XC40 executes the perfor
 For comparison, compiled code on the BlueGene/Q architecture is only able to
 reach 50\% of peak and for many polynomial orders operates around 30\%.
 Therefore, despite only having 1.7$\times$ the memory bandwidth, Shaheen's cores
-outperform Mira's cores by 3-6$\times$ with the greatest improvement at high
+outperform Mira's cores by 3-6$\times$, with the greatest improvement at high
 order and for sizes that are not divisible by the vector width, 4 in this case.
 NekBox is able to scale 67.5\% utilization rates to 65,536 cores on Shaheen.
 
 %, beyond which power throttling reduces efficiency by a factor of 2 overall. 
 %However, the Helmholtz operator is relatively unaffected and able to achieve a PFLOPS of performance on 131,072 cores.
 
-For the smRTI, the efficiency frontier, i.e. the discretizations that minimize
+For the smRTI, the efficiency frontier, i.e., the discretizations that minimize
 cost given accuracy or minimize error given cost, have polynomial orders between 15 and 31, higher than are typically used in spectral element schemes.
 The presence of high order schemes on the efficiency frontier can be understood by the combination of two effects.
-First, the increase in arithmetic intensity is hidden by the imbalance between floating point capabilities and memory bandwidth, providing high order at no marginal cost on a per time-step basis.
+First, the increase in arithmetic intensity is hidden by the imbalance between floating point capabilities and memory bandwidth, providing high order at no marginal cost on a per time step basis.
 Second, higher order schemes with fewer degrees are freedom are more accurate than lower order schemes with more degrees of freedom.
 It is generally possible to maintain accuracy by increasing the order while decreasing the total degrees of freedom, and, consequently the total cost.
 

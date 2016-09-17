@@ -26,7 +26,9 @@ The bubbles are logically separated by the solid grid and each unique bubble is 
 \end{figure}
 
 \begin{table}
+\begin{center}
 \input{tbl/params.tbl}
+\end{center}
 \caption{ \tlabel{params}
 Parameters of simulations.
 The aspect ratio is defined with respect to the quiescent amplitude, $a_0$, from \eref{rollback}.
@@ -74,7 +76,7 @@ The generally accepted Boussinesq limit is $A = 0.05$, which is three times smal
 Previous simulations directed at single-mode re-acceleration have been performed at $A \ge 0.15$, so it is not known whether re-acceleration persists in the limit as $A \rightarrow 0$.
 
 The three simulations reproducing experimental runs are conducted on the Mira supercomputer at Argonne Leadership Computing Facility (ALCF).
-The resolution and time-step was chosen to numerical stability constraints: a $256\times256\times512$ mesh of 7th order elements for 11,509,170,176 degrees of freedom.
+The resolution and time-step was chosen to ensure numerical stability: a $256\times256\times512$ mesh of 7th order elements for 11,509,170,176 degrees of freedom.
 The simulation was distributed over 524,288 cores and 1,048,576 MPI processes.
 64 outputs were written to disk, each 6/8ths of a TiB.
 The number of elements and degrees of freedom are doubled for the extension to twice the vertical extent.
@@ -82,13 +84,13 @@ The number of elements and degrees of freedom are doubled for the extension to t
 \subsection{Post-processing}
 The simulation outputs the velocity, pressure, and scalar fields at the Gauss-Lobatto-Legendre points in double precision.
 They are post-processed into low-dimensional observables: the bubble height and two-dimensional slices of the velocity, vorticity, pressure, and scalar through the horizontal mid-plane and vertical diagonal.
-Post-processing is performed using the `nek-analyze' post-processing framework, which implements a MapReduce-like backend for parallel, out-of-core analysis.
+Post-processing is performed using the `nek-analyze' post-processing framework, which implements a MapReduce-like~\cite{dean2008mapreduce} backend for parallel, out-of-core analysis.
 
 The bubble height is defined as:
 \begin{equation} \elabel{h_exp}
 H = \sup \left\{ z : \min_{x,y} \phi(x,y,z) < 0\right\},
 \end{equation}
-which, avoids measuring the diffusive growth by tracking the center of the interface profile instead of the ends.
+which avoids measuring the diffusive growth by tracking the center of the interface profile instead of the ends.
 The bubble velocity is found by fitting a cubic spline to $H(t)$ and differentiating.
 
 The height of individual bubbles, $H_{i,j}$, is found by restricting $\min_{x,y}$ in \eref{h_exp} to the span-wise square of diagonal length $\lambda$ centered on the bubble in the $i$-by-$j$-th position.

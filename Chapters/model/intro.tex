@@ -6,7 +6,7 @@ Analytic models based on potential flow have been reasonably effective for flows
 However, recent experiments at low Atwood number have demonstrated a significant departure from the potential flow limit:
 Rayleigh-Taylor bubbles are seen accelerating past the terminal velocity predicted by potential flow models~\cite{Wilkinson2007}.
 The acceleration persists beyond times which are experimentally accessible, so numerous efforts have been made to compute the late time flow numerically~\cite{Ramaprabhu2012,Wei2012}.
-Ultimately, the goal is to use these numerical experiments to inform a simple model that captures the key features of the flow, as potential flow models do for high Atwood number flows.
+Ultimately, the goal is to use these numerical experiments to inform a simple model that captures the key features and mechanisms of the flow, as potential flow models do for high Atwood number flows.
 
 This study concerns the dynamics of the single-mode Rayleigh-Taylor instability (smRTI), where the interface between a heavy fluid and a light fluid is perturbed with a single wavelength $\lambda$ and corresponding wavenumber $k$.
 If the Atwood number is low, then at early times the interface grows exponentially with a rate given by a linear approximation~\cite{Duff1962}:
@@ -20,7 +20,7 @@ $\nu$ is the kinematic viscosity, and
 $D$ is the diffusivity.
 As the amplitude approaches the wavelength, the linear growth saturates.
 At unit Atwood number, the non-linear regime is described by potential flow, in which Layzer~\cite{Layzer1955} found the interface approaches a terminal velocity proportional to the root of the acceleration and wavelength: $v_L \sim \sqrt{g \lambda}$:
-Potential flow models have been extended $A < 1$, with the most successful model by Goncharov~\cite{Goncharov2002}:
+Potential flow models have been extended to $A < 1$, with the most successful model by Goncharov~\cite{Goncharov2002}:
 \begin{equation} \elabel{goncharov}
 v_G = \frac{1}{\sqrt{\pi}} \sqrt{\frac{A g \lambda}{1+A}}
 \end{equation}
@@ -31,7 +31,7 @@ Re-acceleration was not present in popular potential flow and buoyancy-drag mode
 
 Experiments have thus far been unable to observe more than the onset of the re-acceleration phase.
 Therefore, the community has turned to numerical studies to compute late-time dynamics.
-At least two such efforts have been under-taken, one by Ramaprabu \etal~\cite{Ramaprabhu2012} and one by Wei and Livescu~\cite{Wei2012}, leading to slightly different conclusions.
+At least two such efforts have been undertaken, one by Ramaprabu \etal~\cite{Ramaprabhu2012} and one by Wei and Livescu~\cite{Wei2012}, leading to slightly different conclusions.
 In the study by Ramaprabhu, the flow accelerates to around twice the stagnation velocity and then decelerates back to the stagnation velocity, indicating that re-acceleration may be a transient.
 In the study by Wei and Livescu, the flow re-accelerates and then breaks up into many small pockets of buoyant fluid, which themselves continue to accelerate at nearly a fixed rate.
 

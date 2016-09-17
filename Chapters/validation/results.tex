@@ -5,9 +5,11 @@
 \subsubsection{Linear growth rate}
 
 \begin{table}
+\begin{center}
 \input{tbl/linear.tbl}
+\end{center}
 \caption{ \tlabel{linear}
-Growth rate: linear theory vs simulation.
+Growth rate: linear theory vs.\ simulation.
 Theoretical values are calculated as in \eref{duff}.
 Simulation values are calculated as in \eref{linear_sim}.
 The aspect ratio is shown for the second sample, $h_1 / \lambda$.
@@ -32,7 +34,7 @@ This could be due to the long-wavelength finite size effect discussed later, whi
 \begin{figure}
 \includegraphics[width=\textwidth]{plts/Fr}
 \caption{ \flabel{froude} 
-Froude number vs height, non-dimensionalized by the wavelength.
+Froude number vs.\ height, non-dimensionalized by the wavelength.
 Lines are the derivative of cubic splines through simulation outputs.
 Points are from experiment via direct measurement of the bubble velocity~\cite{JacobsPrivate}.
 The dotted horizontal line is positioned at Goncharov's theoretical value of $\pi^{-1/2}$~\cite{Goncharov2002}.
@@ -42,7 +44,7 @@ The dotted horizontal line is positioned at Goncharov's theoretical value of $\p
 \begin{figure}
 \includegraphics[width=\textwidth]{plts/aspect}
 \caption{ \flabel{aspect} 
-Bubble height vs time, non-dimensionalized by the wavelength and linear growth rate, respectively.
+Bubble height vs.\ time, non-dimensionalized by the wavelength and linear growth rate, respectively.
 Lines are cubic splines through simulation outputs.
 Points are from experiment~\cite{JacobsPrivate}.
 The points are shifted in time to minimize the square deviation from the spline summed over the plotted points.
@@ -50,7 +52,7 @@ The points are shifted in time to minimize the square deviation from the spline 
 \end{figure}
 
 The experiments observe only the diagonal plane and measure the height with respect to the most internal bubble.
-Therefore, we plot in \fref{froude} the non-dimensional velocity, i.e. the Froude number, of the central bubble alone:
+Therefore, we plot in \fref{froude} the non-dimensional velocity, i.e., the Froude number, of the central bubble alone:
 \begin{equation}
 	\text{Fr} = \frac{v}{\sqrt{ A g \lambda}}
 \end{equation}
@@ -58,8 +60,8 @@ In each case, the simulation exhibits the same qualitative behavior as the exper
 exponential growth saturating to a stagnation velocity around Goncharov's theoretical value of $\text{Fr} = \pi^{-1/2}$~\cite{Goncharov2002}.
 In cases where the simulation and experimental data extend in time, the beginnings of re-acceleration are also seen.
 
-The 2.5 mode case exhibits peculiar behavior with two inflection points around aspect ratio $h / \lambda = 0.2$.
-This is not an issue with the splines, as can be seen in \fref{aspect}, which plots the non-dimensional height vs non-dimensional time without splines.
+The 2.5 mode case exhibits peculiar behavior, with two inflection points around aspect ratio $h / \lambda = 0.2$.
+This is not an issue with the splines, as can be seen in \fref{aspect}, which plots the non-dimensional height vs.\ non-dimensional time without splines.
 The 2.5 mode case, which has the highest Grashof and Schmidt numbers, went unstable.
 Upon inspection, the 5\% filtering was unable to suppress the oscillations in the scalar field.
 This simulation could be retried with greater resolution, but, given the stability of the 3.5 mode case, the computational cost would be up to 43$\times$ greater, which is why it was not repeated in this study.
@@ -70,7 +72,7 @@ Given the agreement between the simulations and the experiment, we can use the s
 In this study, we extend the subject cases and analysis in three ways.
 First, we calculate the height of each bubble in the tank individually and use the results to study finite size effects.
 Second, we extend the 4.5 mode experiment by a factor of two in the vertical extent of the domain and simulation time to delay interaction with the top boundary and reach later times and larger bubble heights.
-Finally, we consider the span-wise, vs stream-wise, flow by taking slices of the midplane and observing pressure driven secondary flows.
+Finally, we consider the span-wise, vs.\ stream-wise, flow by taking slices of the midplane and observing pressure driven secondary flows.
 These three extensions are a small sample of the types of observations that are available numerically.
 
 \subsubsection{Wall effects}
@@ -102,20 +104,20 @@ Ratio of wall-bounded bubble height to periodic bubble height in the 4.5 mode si
 \end{figure*}
 
 \begin{figure*}
-\begin{subfigure}[b]{0.32\textwidth}
+\begin{subfigure}[b]{0.49\textwidth}
   \includegraphics[width=\textwidth]{figs/spatial_bubble-1}
 \end{subfigure}
-\begin{subfigure}[b]{0.32\textwidth}
+\begin{subfigure}[b]{0.49\textwidth}
   \includegraphics[width=\textwidth]{figs/spatial_bubble-17}
 \end{subfigure}
-\begin{subfigure}[b]{0.32\textwidth}
+\begin{subfigure}[b]{0.49\textwidth}
   \includegraphics[width=\textwidth]{figs/spatial_bubble-59}
 \end{subfigure}
 \caption{ \flabel{bubble_slice}
-Spatial distribution of bubble heights at three times.
-The first time corresponds to the minimum in \fref{ratio_wall}, which is during the transition from linear to non-linear growth
-The second time is taken from the stagnation phase.
-The third time is taken from the end of the simulation when the central bubbles are squeezed by the growing boundary layer.
+Spatial distribution of bubble heights at three times, with red denoting greater bubble heights and blue denoting lesser bubble heights.
+The first time is when the ratio of the wall-bounded to periodic bubble height is at a minimum, which is during the transition from linear to non-linear growth; a long wavelength mode is seen across the diagonal.
+The second time is taken from the stagnation phase; the long wavelength mode is still present.
+The third time is taken from the end of the simulation; the central bubbles are being squeeze significantly ahead of the bubbles near the wall.
 }
 \end{figure*}
 
@@ -155,7 +157,7 @@ The wall lift ultimately leads to bubble collisions that destroy the bubble latt
   \includegraphics[width=\textwidth]{plts/aspect_long}
 \end{subfigure}
 \caption{ \flabel{long_dynamics}
-Bubble velocity and bubble height vs time, non-dimensionalized by the wavelength and linear growth rate, for 4.5 mode simulations and experiment.
+Bubble velocity and bubble height vs.\ time, non-dimensionalized by the wavelength and linear growth rate, for 4.5 mode simulations and experiment.
 Lines are from simulation output, one case with the same vertical extent as the simulation and in the other with twice that vertical extent.
 Points are from experiment via direct measurement of the bubble velocity and bubble height.
 The dotted horizontal line is positioned at Goncharov's theoretical value of $\pi^{-1/2}$~\cite{Goncharov2002}.
