@@ -198,7 +198,7 @@
 	\addcontentsline{toc}{chapter}{References}
 	\begin{singlespace}
 		\bibliography{library}
-		\bibliographystyle{plain}
+		\bibliographystyle{myplain}
 	\end{singlespace}
 }
 
