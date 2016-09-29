@@ -20,9 +20,9 @@ The RTI describes how the dense fluid is pushed through and mixes with lighter f
 This dynamic mixing process is essential to the behavior of flows found in exploding stars~\cite{Bell2004}, the oceans and atmosphere~\cite{Linden1973}, and inertial confinement fusion.
 In the latter case, dense plastic ablator is pushed into and mixed with the lighter hydrogen fuel.
 The carbon-laden ablator radiates energy much more quickly than the fuel, reducing hot-spot temperature and preventing ignition.
-The study of the RTI and related mixing is a priority research direction for inertial confinement fusion performance~\cite{Gocharov2012}.
+The study of the RTI and related mixing is a priority research direction for inertial confinement fusion performance~\cite{Goncharov2012}.
 
-Nek5000 and NekBox~\cite{NekBox} are used to model the incompressible Boussinesq equations, which approximate the RTI at low density contrasts:
+Nek5000 and NekBox~\cite{NekBox2} are used to model the incompressible Boussinesq equations, which approximate the RTI at low density contrasts:
 \begin{align}
 \frac{\partial u}{\partial t} + u \cdot \nabla u &= - \nabla p + \nu \nabla^2 u + \tilde{g} T \\
 \frac{\partial T}{\partial t} + u \cdot \nabla T &= \alpha \nabla^2 T \\

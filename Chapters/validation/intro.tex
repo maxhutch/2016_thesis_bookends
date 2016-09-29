@@ -49,7 +49,7 @@ the Schmidt number,
 We approximate the governing equations numerically using the spectral element method (SEM)~\cite{Deville2002}.
 The SEM converges exponentially with respect to spectral order and has purely dispersive errors, making it a natural method for direct numerical simulations of mixing problems.
 Unlike pseudo-spectral methods, it handles no-slip boundaries and can evenly sample the interior of the domain.
-We use a specialized version of the Nek5000 community code, NekBox~\cite{Hutchinsonb}, customized specifically to study the low Atwood number Rayleigh-Taylor instability.
+We use a specialized version of the Nek5000 community code, NekBox~\cite{NekBox2}, customized specifically to study the low Atwood number Rayleigh-Taylor instability.
 NekBox restricts the domain to a tensor product of orthogonal bases and employs fast spectral coarse preconditioners for the pressure Poisson equation.
 It is roughly an order of magnitude faster than the more general Nek5000.
 
