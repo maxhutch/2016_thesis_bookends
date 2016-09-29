@@ -368,11 +368,11 @@ FUNCTION {format.pages}
 { pages empty$
     { "" }
     { pages multi.page.check
-        { "pages" pages n.dashify tie.or.space.connect }
-        { "page" pages tie.or.space.connect }
+        { "" }
+        { "" }
       if$
     }
-  if$
+ if$
 }
 
 FUNCTION {format.vol.num.pages}
@@ -383,14 +383,6 @@ FUNCTION {format.vol.num.pages}
       volume empty$
         { "there's a number but no volume in " cite$ * warning$ }
         'skip$
-      if$
-    }
-  if$
-  pages empty$
-    'skip$
-    { duplicate$ empty$
-        { pop$ format.pages }
-        { ":" * pages n.dashify * }
       if$
     }
   if$
